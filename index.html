@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base de Conocimiento Antifraude — Colombia / LatAm</title>
+<meta name="description" content="Base de conocimiento consultable de 22 modalidades de fraude vigentes en Colombia y America Latina: modus operandi, senales de alerta, controles asociados, respuesta recomendada y tipificacion penal. Incluye la Ley 2573 de 2026 y un radar de vigilancia con fuentes enlazadas.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 4 7v9c0 7.2 5 12.5 12 14 7-1.5 12-6.8 12-14V7z' fill='%23b8552b'/%3E%3Cpath d='M16 9v14' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M10.5 13.5h11' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<!-- ===================================================================
+     ANTES DE PUBLICAR: reemplaza las 4 apariciones de
+     https://USUARIO.github.io/REPO/  por tu URL real de GitHub Pages.
+     =================================================================== -->
+<link rel="canonical" href="https://USUARIO.github.io/REPO/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Base de Conocimiento Antifraude">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Base de Conocimiento Antifraude — Colombia / LatAm">
+<meta property="og:description" content="Base de conocimiento consultable de 22 modalidades de fraude vigentes en Colombia y America Latina: modus operandi, senales de alerta, controles asociados, respuesta recomendada y tipificacion penal. Incluye la Ley 2573 de 2026 y un radar de vigilancia con fuentes enlazadas.">
+<meta property="og:url" content="https://USUARIO.github.io/REPO/">
+<meta property="og:image" content="https://USUARIO.github.io/REPO/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Base de Conocimiento Antifraude — 22 modalidades vigentes en Colombia y LatAm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Base de Conocimiento Antifraude — Colombia / LatAm">
+<meta name="twitter:description" content="Base de conocimiento consultable de 22 modalidades de fraude vigentes en Colombia y America Latina: modus operandi, senales de alerta, controles asociados, respuesta recomendada y tipificacion penal. Incluye la Ley 2573 de 2026 y un radar de vigilancia con fuentes enlazadas.">
+<meta name="twitter:image" content="https://USUARIO.github.io/REPO/og.png">
+<style>
+  :root{
+    --bg:#ffffff; --panel:#f7f7f5; --panel2:#ffffff; --ink:#191917; --ink2:#5c5b57;
+    --ink3:#8a8981; --line:#e3e2dd; --line2:#d5d4ce;
+    --accent:#b8552b; --accent-soft:#f6ece6;
+    --crit:#a8302b; --crit-bg:#fbeceb;
+    --alta:#b8552b; --alta-bg:#f8ede6;
+    --media:#8a6d1f; --media-bg:#f9f2dd;
+    --ok:#2f6b4f; --ok-bg:#e8f2ec;
+    --up:#a8302b; --flat:#6b6a65;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141413; --panel:#1c1c1a; --panel2:#232321; --ink:#f0efea; --ink2:#b3b2ac;
+      --ink3:#84837d; --line:#2f2f2c; --line2:#3d3d39;
+      --accent:#e08356; --accent-soft:#2a1f19;
+      --crit:#e8756f; --crit-bg:#2e1a19;
+      --alta:#e08356; --alta-bg:#2a1e18;
+      --media:#d7bd68; --media-bg:#28241a;
+      --ok:#7fc4a0; --ok-bg:#1a2620;
+      --up:#e8756f; --flat:#93928c;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Inter,system-ui,sans-serif;
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 72px}
+
+  header.top{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:22px}
+  .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:650}
+  h1{font-size:30px;line-height:1.15;margin:8px 0 6px;letter-spacing:-.02em;font-weight:660}
+  .sub{color:var(--ink2);font-size:14px;max-width:70ch;margin:0}
+  .meta{margin-top:14px;font-size:12px;color:var(--ink3);display:flex;gap:16px;flex-wrap:wrap}
+  .meta b{color:var(--ink2);font-weight:600}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:0 0 24px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .stat .n{font-size:23px;font-weight:660;letter-spacing:-.02em;line-height:1.1}
+  .stat .l{font-size:11.5px;color:var(--ink2);margin-top:5px;line-height:1.35}
+  .stat .s{font-size:10.5px;color:var(--ink3);margin-top:6px;font-family:var(--mono)}
+
+  .controls{position:sticky;top:0;z-index:20;background:var(--bg);
+    padding:12px 0 13px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  #q{width:100%;padding:11px 13px;font-size:14.5px;color:var(--ink);
+    background:var(--panel2);border:1px solid var(--line2);border-radius:9px;font-family:inherit}
+  #q:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+  #q::placeholder{color:var(--ink3)}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+  .fgroup{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+  .flabel{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink3);margin-right:3px;font-weight:600}
+  .chip{font-size:12px;padding:5px 11px;border-radius:99px;border:1px solid var(--line2);
+    background:transparent;color:var(--ink2);cursor:pointer;font-family:inherit;transition:.12s}
+  .chip:hover{border-color:var(--accent);color:var(--ink)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:550}
+  .sep{width:1px;height:20px;background:var(--line);margin:0 4px}
+  .count{font-size:12px;color:var(--ink3);margin-left:auto;font-family:var(--mono)}
+
+  .card{border:1px solid var(--line);border-radius:11px;margin-bottom:9px;
+    background:var(--panel2);overflow:hidden;transition:border-color .12s}
+  .card:hover{border-color:var(--line2)}
+  .card.open{border-color:var(--accent)}
+  .head{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
+  .head:hover{background:var(--panel)}
+  .num{font-family:var(--mono);font-size:11px;color:var(--ink3);padding-top:4px;min-width:22px}
+  .htxt{flex:1;min-width:0}
+  .name{font-size:15.5px;font-weight:625;letter-spacing:-.01em}
+  .alias{font-size:12px;color:var(--ink3);margin-top:2px}
+  .tags{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin-left:auto;padding-top:2px}
+  .tag{font-size:10.5px;padding:3px 8px;border-radius:5px;background:var(--panel);
+    border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+  .sev{font-size:10.5px;padding:3px 9px;border-radius:5px;font-weight:650;white-space:nowrap;
+    text-transform:uppercase;letter-spacing:.05em}
+  .sev.critica{background:var(--crit-bg);color:var(--crit)}
+  .sev.alta{background:var(--alta-bg);color:var(--alta)}
+  .sev.media{background:var(--media-bg);color:var(--media)}
+  .trend{font-size:14px;padding-top:2px}
+  .trend.up{color:var(--up)} .trend.flat{color:var(--flat)}
+  .caret{color:var(--ink3);font-size:12px;padding-top:4px;transition:transform .15s}
+  .card.open .caret{transform:rotate(90deg)}
+
+  .body{display:none;padding:2px 16px 18px 50px;border-top:1px solid var(--line)}
+  .card.open .body{display:block}
+  .body p.mo{color:var(--ink2);font-size:14px;margin:14px 0 4px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}.body{padding-left:16px}}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+  .box h4{margin:0 0 8px;font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+    color:var(--accent);font-weight:680}
+  .box ul{margin:0;padding-left:16px}
+  .box li{font-size:13.2px;color:var(--ink2);margin-bottom:5px;line-height:1.45}
+  .box li:last-child{margin-bottom:0}
+  .box li b{color:var(--ink);font-weight:600}
+  .play{margin-top:14px;background:var(--accent-soft);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:12px 14px}
+  .play h4{margin:0 0 8px;font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+    color:var(--accent);font-weight:680}
+  .play ol{margin:0;padding-left:18px}
+  .play li{font-size:13.2px;color:var(--ink2);margin-bottom:5px}
+  .foot{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);
+    display:flex;gap:20px;flex-wrap:wrap;font-size:11.5px;color:var(--ink3)}
+  .foot span b{color:var(--ink2);font-weight:600}
+  .empty{text-align:center;padding:50px 20px;color:var(--ink3);font-size:14px}
+
+  h2.sec{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);
+    margin:36px 0 12px;font-weight:650;border-top:1px solid var(--line);padding-top:20px}
+  .srcs{columns:2;column-gap:26px;font-size:12.5px;color:var(--ink2)}
+  @media(max-width:700px){.srcs{columns:1}}
+  .srcs div{break-inside:avoid;margin-bottom:7px;padding-left:13px;text-indent:-13px}
+  .srcs a{color:var(--accent);text-decoration:none}
+  .srcs a:hover{text-decoration:underline}
+  .note{font-size:12.5px;color:var(--ink3);background:var(--panel);border:1px solid var(--line);
+    border-radius:9px;padding:13px 15px;margin-top:14px;line-height:1.55}
+
+  .alerta{background:var(--crit-bg);border:1px solid var(--line);border-left:3px solid var(--crit);
+    border-radius:0 10px 10px 0;padding:15px 18px;margin:0 0 22px}
+  .alerta-h{font-size:12.5px;font-weight:700;color:var(--crit);text-transform:uppercase;
+    letter-spacing:.06em;margin-bottom:9px}
+  .alerta p{margin:0 0 9px;font-size:13.5px;color:var(--ink2);line-height:1.55}
+  .alerta p:last-child{margin-bottom:0}
+  .alerta b{color:var(--ink);font-weight:640}
+
+  .radar{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:10px;margin-bottom:8px}
+  .rcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px;
+    display:flex;flex-direction:column}
+  .rhead{display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap}
+  .rtag{font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700}
+  .rdate{font-size:9.5px;color:var(--ink3);font-family:var(--mono);margin-left:auto}
+  .rcard h3{margin:0 0 7px;font-size:14px;font-weight:625;letter-spacing:-.01em;line-height:1.3}
+  .rcard p{margin:0 0 11px;font-size:12.8px;color:var(--ink2);line-height:1.5}
+  .rfoot{margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+  .rver{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:650;
+    text-transform:uppercase;letter-spacing:.06em;padding:2.5px 7px;border-radius:4px;margin-bottom:8px}
+  .rver.primaria{background:var(--ok-bg);color:var(--ok)}
+  .rver.oficial{background:var(--ok-bg);color:var(--ok)}
+  .rver.industria{background:var(--media-bg);color:var(--media)}
+  .rver.prensa{background:var(--panel2);color:var(--ink3);border:1px solid var(--line2)}
+  .rlinks{display:flex;flex-direction:column;gap:5px}
+  .rlinks a{font-size:11.5px;color:var(--accent);text-decoration:none;display:flex;
+    align-items:baseline;gap:5px;line-height:1.35}
+  .rlinks a:hover{text-decoration:underline}
+  .rlinks a::before{content:"↗";font-size:9px;opacity:.65;flex-shrink:0}
+  .rlinks a .out{color:var(--ink3);font-size:10px;font-family:var(--mono)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--ink3);
+    margin:0 0 14px;align-items:center}
+  .legend b{font-weight:600;color:var(--ink2)}
+  .lg{display:inline-flex;align-items:center;gap:5px}
+  .lgd{width:9px;height:9px;border-radius:2.5px;display:inline-block}
+  .pie{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:12.2px;color:var(--ink3);line-height:1.6;max-width:78ch}
+  .pie p{margin:0 0 10px}
+  .pie b{color:var(--ink2);font-weight:640}
+  .pie-fecha{font-family:var(--mono);font-size:10.5px;color:var(--ink3);
+    padding-top:9px;border-top:1px solid var(--line);margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Referencia operativa · Seguridad de clientes</div>
+  <h1>Base de Conocimiento Antifraude</h1>
+  <p class="sub">Modalidades vigentes en Colombia y LatAm: modus operandi, señales de alerta para cliente y para monitoreo, controles asociados, respuesta recomendada y tipificación penal.</p>
+  <div class="meta">
+    <span><b>Actualizado:</b> 13 de agosto de 2026</span>
+    <span><b>Cobertura:</b> Colombia · LatAm · benchmark global</span>
+    <span><b>Fichas:</b> <span id="total">22</span></span>
+    <span><b>Vigilancia:</b> 5 alertas activas · 30 jul – 12 ago</span>
+  </div>
+</header>
+
+<div class="alerta">
+  <div class="alerta-h">⚠ Cambio regulatorio con reloj en marcha — Ley 2573 de 2026</div>
+  <p>Promulgada el <b>19 de mayo de 2026</b>. <b>Invierte la carga de la prueba</b> en casos de suplantación: la entidad debe demostrar que verificó adecuadamente la identidad, no el cliente que fue suplantado. Aplica a entidades financieras y crediticias, operadores de telecomunicaciones y establecimientos con originación de crédito o ventas a plazos.</p>
+  <p><b>Plazo de 15 días hábiles</b> para resolver reclamos de fraude con evidencia técnica. Vencido sin respuesta activa opera <b>silencio administrativo positivo</b>: la entidad asume el 100% de la pérdida. Sanciones por vía de Ley 1266 de 2008 hasta 2.000 SMLMV (~COP 2.600 millones) y suspensión de canales digitales por vulnerabilidades comprobadas.</p>
+  <p><b>20 de noviembre de 2026</b> — fecha límite para que SIC, Superfinanciera y MinTIC reglamenten los estándares tecnológicos obligatorios. Es la ventana para incidir en la definición del estándar y para cerrar la brecha probatoria: si hoy la entidad no puede reconstruir con evidencia técnica cómo verificó una identidad, el nuevo régimen la deja expuesta por defecto.</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">+155%</div><div class="l">Crecimiento de las estafas de ingeniería social</div><div class="s">BioCatch, Tendencias 2026</div></div>
+  <div class="stat"><div class="n">218.000+</div><div class="l">Reclamaciones por fraude en canales financieros, 1S 2025</div><div class="s">Asobancaria</div></div>
+  <div class="stat"><div class="n">$5,8 M</div><div class="l">Mediana de pérdida declarada por vishing (COP)</div><div class="s">TransUnion, may-2026</div></div>
+  <div class="stat"><div class="n">13.983</div><div class="l">Casos de suplantación de identidad registrados, 2022 – may 2026</div><div class="s">SIC Colombia</div></div>
+  <div class="stat"><div class="n">48,3%</div><div class="l">De los casos de fraude de identidad en LatAm involucran IA</div><div class="s">Unico + Liminal, jul-2026</div></div>
+  <div class="stat"><div class="n">+180%</div><div class="l">Fraudes que combinan ingeniería social con identidades generadas por IA en LatAm</div><div class="s">Sumsub, 2025-2026</div></div>
+  <div class="stat"><div class="n">USD 20,9 B</div><div class="l">Pérdidas por cibercrimen reportadas en EE. UU., 2025</div><div class="s">FBI IC3, 2026</div></div>
+  <div class="stat"><div class="n">2,3%</div><div class="l">Transacciones digitales sospechosas en Colombia 2025 (mundo: 3,8%)</div><div class="s">TransUnion, may-2026</div></div>
+</div>
+
+<h2 class="sec" style="margin-top:26px">Radar del periodo · 30 jul – 12 ago 2026</h2>
+<p style="font-size:12.5px;color:var(--ink3);margin:0 0 12px">Señales extraídas de las alertas de monitoreo activas: <i>fraude bancario</i>, <i>vishing</i>, <i>smishing</i>, <i>autenticación digital</i>, <i>identity theft</i>. Cada tarjeta enlaza a sus fuentes.</p>
+<div class="legend">
+  <span><b>Trazabilidad de la fuente:</b></span>
+  <span class="lg"><span class="lgd" style="background:var(--ok)"></span> Fuente primaria u oficial — comunicado del emisor o autoridad</span>
+  <span class="lg"><span class="lgd" style="background:var(--media)"></span> Informe de industria — proveedor u organismo sectorial</span>
+  <span class="lg"><span class="lgd" style="background:var(--ink3)"></span> Prensa — corroborado por varios medios, sin fuente primaria localizada</span>
+</div>
+<div class="radar" id="radar"></div>
+
+<div class="controls">
+  <input id="q" type="search" placeholder="Buscar modalidad, señal de alerta, control, artículo del código penal…" autocomplete="off">
+  <div class="filters">
+    <div class="fgroup">
+      <span class="flabel">Fase</span>
+      <button class="chip on" data-f="fase" data-v="all">Todas</button>
+      <button class="chip" data-f="fase" data-v="Originación">Originación</button>
+      <button class="chip" data-f="fase" data-v="Autenticación">Autenticación</button>
+      <button class="chip" data-f="fase" data-v="Transacción">Transacción</button>
+      <button class="chip" data-f="fase" data-v="Post-transacción">Post-transacción</button>
+    </div>
+    <div class="sep"></div>
+    <div class="fgroup">
+      <span class="flabel">Severidad</span>
+      <button class="chip on" data-f="sev" data-v="all">Todas</button>
+      <button class="chip" data-f="sev" data-v="Crítica">Crítica</button>
+      <button class="chip" data-f="sev" data-v="Alta">Alta</button>
+      <button class="chip" data-f="sev" data-v="Media">Media</button>
+    </div>
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<div id="list"></div>
+
+<h2 class="sec">Marco regulatorio de referencia</h2>
+<div class="note">
+  <b>Ley 2573 de 2026 (19 de mayo de 2026)</b> — eje del nuevo régimen de suplantación de identidad en Colombia. Invierte la carga de la prueba: la entidad debe demostrar que adoptó medidas de seguridad digital suficientes y razonables para verificar identidad y documentos (art. 4). Obliga a entidades financieras y crediticias, operadores de telecomunicaciones y establecimientos con originación de crédito o ventas a plazos. Plazo de <b>15 días hábiles</b> para resolver reclamos con evidencia técnica; su vencimiento sin respuesta activa genera silencio administrativo positivo y la entidad asume el 100% de la pérdida. Sanciones por vía de la Ley 1266 de 2008 hasta 2.000 SMLMV y suspensión de canales digitales. <b>20 de noviembre de 2026</b>: fecha límite para que SIC, Superfinanciera y MinTIC reglamenten los estándares tecnológicos obligatorios.<br><br>
+  <b>Ley 2502 de 2025</b> — antecedente normativo en materia de suplantación de identidad, sobre el que se construye la Ley 2573.<br><br>
+  <b>Circular Externa 007 de 2018 (SFC)</b> — exige unidad de gestión de riesgos de seguridad de la información, notificación al consumidor financiero ante incidentes que afecten confidencialidad o integridad de sus datos, y divulgación de medidas remediales. <b>Circular Externa 008 de 2018 (SFC)</b> — mecanismos de protección de información en servicios de pasarela de pago. Complementan las normas de riesgo operativo (SARO) y seguridad de la información de entidades vigiladas.<br><br>
+  <b>Ley 1273 de 2009</b> — delitos informáticos: acceso abusivo (269A), uso de software malicioso (269E), violación de datos personales (269F), suplantación de sitios web (269G), hurto por medios informáticos (269I), transferencia no consentida de activos (269J). <b>Código Penal</b> — estafa (246), estafa agravada / delito masa (246-267), extorsión (244), captación masiva y habitual (316).<br><br>
+  <b>Junio 2026</b> — la SFC lanzó la herramienta pública "Protégete de los fraudes", con clasificación oficial de modalidades (phishing, smishing, vishing, suplantación de identidad, fraude amigable, cambiazo). Útil como lenguaje común con el regulador y en comunicación al cliente. La SFC ha señalado que la entidad puede ser responsable cuando incumple sus deberes de monitoreo.<br><br>
+  <b>Referencia regional (ago-2026)</b> — Ciudad de México tipificó penalmente el phishing, el smishing y el vishing, elevando el fraude digital a delito con pena privativa de la libertad. Precedente relevante para el debate colombiano sobre tipificación específica frente al uso actual de la Ley 1273 de 2009.
+</div>
+
+<h2 class="sec">Fuentes consultadas</h2>
+<div class="srcs">
+  <div>· <a href="https://www.superfinanciera.gov.co/publicaciones/10116157/colombianos-cuentan-con-una-nueva-herramienta-para-reforzar-la-defensa-frente-al-fraude-financiero/">Superintendencia Financiera de Colombia — "Protégete de los fraudes" (jun-2026)</a></div>
+  <div>· <a href="https://noticias.transunion.co/los-casos-sospechosos-de-fraude-digital-en-colombia-se-situan-por-debajo-de-la-tasa-mundial-en-2025-mientras-que-estafas-como-el-vishing-provocan-perdidas-a-los-consumidores">TransUnion Colombia — Reporte de Fraude Digital (may-2026)</a></div>
+  <div>· <a href="https://www.bloomberglinea.com/latinoamerica/colombia/fraude-financiero-aumenta-en-colombia-el-panorama-y-como-prevenirlo-en-2026/">Bloomberg Línea — Panorama del fraude financiero en Colombia (ene-2026), cifras de Asobancaria y DataCrédito</a></div>
+  <div>· <a href="https://www.fbi.gov/news/press-releases/cryptocurrency-and-ai-scams-bilk-americans-of-billions">FBI IC3 — 2025 Internet Crime Report</a></div>
+  <div>· <a href="https://codigoqro.mx/nota/global/2026/07/10/fraude-identidad-ia-alcanza-48-3-casos-america-latina">Unico + Liminal — Informe de Inteligencia sobre Fraude de Identidad LatAm (jul-2026)</a></div>
+  <div>· <a href="https://www.elcolombiano.com/tecnologia/ojo-delincuentes-ya-usan-bre-b-y-llaves-virtuales-para-robar-siga-estas-claves-para-no-caer-LB29289938">El Colombiano / Kaspersky — Fraude sobre Bre-B y llaves virtuales</a></div>
+  <div>· <a href="https://estudiopenal.com/alerta-2026-las-nuevas-modalidades-de-estafa-en-colombia-que-debes-conocer">Estudio Penal — Modalidades de estafa en Colombia 2026 y tipificación</a></div>
+  <div>· <a href="https://www.ambitojuridico.com/noticias/mercantil/financiero-cambiario-y-seguros/medidas-de-proteccion-de-la-informacion-de">Ámbito Jurídico — Circulares Externas 007 y 008 de 2018 (SFC)</a></div>
+  <div>· <a href="https://www.portafolio.co/amp/economia/finanzas/el-cambiazo-modalidad-de-robo-que-sigue-creciendo-en-colombia-y-ya-no-ocurre-solo-en-cajeros-automaticos-493781">Portafolio — Evolución del cambiazo fuera del cajero</a></div>
+  <div>· <a href="https://www.asobancaria.com/informes-seguridad-bancaria/">Asobancaria — Informes de Seguridad Bancaria / Delitos Informáticos</a></div>
+  <div>· <a href="https://veridas.com/es/guia-ley-2573-colombia/">Veridas — Guía de la Ley 2573 de 2026 (obligaciones, plazos y sanciones)</a></div>
+  <div>· <a href="https://facephi.com/observatory/ley-2573-suplantacion-identidad-colombia/">FacePhi — Ley 2573: obligaciones para bancos y telcos en Colombia</a></div>
+  <div>· <a href="https://priascadavid.com/capsulas-academicas/suplantacion-identidad-colombia-leyes-2502-2025-2573-2026/">Prias Cadavid Abogados — Leyes 2502 de 2025 y 2573 de 2026</a></div>
+  <div>· <a href="https://www.itsitio.com/ar/seguridad/la-ia-cambio-el-phishing-menos-ataques-pero-cada-vez-mas-dificiles-de-detectar/">ITSitio — Informe BioCatch de Tendencias de Fraude Bancario Digital 2026, WEF y Sumsub</a></div>
+  <div>· <a href="https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22626.html">Visa — Adquisición de BioCatch (USD 2.400 millones, ago-2026)</a></div>
+  <div>· <a href="https://es-us.finanzas.yahoo.com/noticias/wall-street-sufre-oleada-ciberataques-161703335.html">Bloomberg vía Yahoo Finanzas — Oleada de vishing con IA en Wall Street</a></div>
+  <div>· <a href="https://24-horas.mx/cdmx/fraude-digital-ya-amerita-carcel-tipifican-phishing-en-cdmx/">24 Horas — CDMX tipifica phishing, smishing y vishing</a></div>
+  <div>· <a href="https://www.diariodelsur.com.co/la-identidad-digital-deja-de-ser-una-buena-practica-ley-2573-eleva-los-estandares-para-prevenir-la-suplantacion-de-identidad/">Diario del Sur — Ley 2573 y cifras de suplantación de la SIC</a></div>
+  <div>· <a href="https://www.europapress.es/economia/finanzas-00340/noticia-asufin-reclama-medidas-efectivas-aumento-ciberestafas-casi-100000-consultas-seis-meses-20260811102420.html">Europa Press / Asufin — Aumento de ciberestafas en España</a></div>
+</div>
+
+<div class="note" style="margin-top:18px">
+  <b>Vigilancia continua.</b> La sección <i>Radar del periodo</i> se alimenta de cinco alertas de monitoreo activas — <i>"fraude bancario"</i>, <i>vishing</i>, <i>smishing</i>, <i>"autenticación digital"</i> e <i>"identity theft"</i> — revisadas para el periodo del 30 de julio al 12 de agosto de 2026. Las señales de prensa se contrastaron contra fuente primaria antes de incorporarse; las que no pudieron verificarse quedaron fuera.
+</div>
+
+<div class="note" style="margin-top:18px">
+  <b>Nota metodológica.</b> Las cifras provienen de las fuentes citadas con su año. Los apartados de <i>señales de monitoreo</i>, <i>controles</i> y <i>respuesta recomendada</i> son lectura analítica construida a partir de la evidencia y de práctica estándar de la industria — no son texto de la fuente ni constituyen recomendación regulatoria. Verificar contra la política interna de la entidad antes de operacionalizar.
+</div>
+
+
+<footer class="pie">
+  <p><b>Recurso público de consulta.</b> Documento de referencia sobre modalidades de fraude
+  financiero, elaborado a partir de fuentes públicas citadas al pie de cada sección. Se publica
+  sin autoría atribuida y no representa la posición de ninguna entidad financiera, gremio ni
+  organismo regulador.</p>
+  <p>Los apartados de <i>señales de monitoreo</i>, <i>controles</i> y <i>respuesta recomendada</i>
+  son lectura analítica basada en la evidencia citada y en práctica estándar de la industria; no
+  constituyen recomendación regulatoria, asesoría legal ni de seguridad. Verifique contra la
+  normativa vigente y la política de su organización antes de operacionalizar cualquier control.</p>
+  <p>Las cifras se atribuyen a su fuente y año. El semáforo de trazabilidad del radar indica el
+  grado de verificación de cada señal. Si detecta un error o una cifra desactualizada, la
+  corrección es bienvenida a través del repositorio.</p>
+  <p class="pie-fecha">Última actualización: 13 de agosto de 2026 · Contenido en español ·
+  Uso libre con cita de la fuente original</p>
+</footer>
+</div>
+
+<script>
+const R=[
+{tag:"Amenaza · Crítica",fecha:"6–7 ago 2026",ver:"prensa",vlbl:"Prensa · 3 medios",
+t:"Oleada de vishing con IA contra grandes gestoras de Wall Street",
+d:"Clonación de voz de directivos y colegas para atacar a empleados, no a clientes. Google reporta además extorsión telefónica dirigida a firmas financieras durante 2026. El vector es el service desk y el personal interno, no la banca digital.",
+s:[["Bloomberg vía Yahoo Finanzas — Wall Street sufre una oleada de ciberataques de vishing impulsados por IA","https://es-us.finanzas.yahoo.com/noticias/wall-street-sufre-oleada-ciberataques-161703335.html"],
+["iProUP — Gestoras de Wall Street bajo ataques impulsados por IA","https://www.iproup.com/economia-digital/70470-hackeo-inteligencia-artificial-puso-alerta-fondos-billonarios-wall-street.amp"],
+["El Ecosistema Startup — Google: hackers extorsionan con llamadas a firmas financieras","https://ecosistemastartup.com/google-hackers-extorsionan-con-llamadas-a-firmas-financieras-en-2026/"]]},
+
+{tag:"Regulación · Colombia",fecha:"6 ago 2026",ver:"primaria",vlbl:"Análisis jurídico especializado",
+t:"Ley 2573 invierte la carga de la prueba",
+d:"La entidad debe probar que verificó la identidad, no el cliente que fue suplantado. Plazo de 15 días hábiles, silencio administrativo positivo y reglamentación técnica pendiente para el 20 de noviembre de 2026.",
+s:[["Veridas — Guía de la Ley 2573 de 2026: obligaciones, plazos y sanciones","https://veridas.com/es/guia-ley-2573-colombia/"],
+["Prias Cadavid Abogados — Leyes 2502 de 2025 y 2573 de 2026","https://priascadavid.com/capsulas-academicas/suplantacion-identidad-colombia-leyes-2502-2025-2573-2026/"],
+["FacePhi — Obligaciones para bancos y telcos en Colombia","https://facephi.com/observatory/ley-2573-suplantacion-identidad-colombia/"],
+["Diario del Sur — Cifras de suplantación de la SIC (13.983 casos)","https://www.diariodelsur.com.co/la-identidad-digital-deja-de-ser-una-buena-practica-ley-2573-eleva-los-estandares-para-prevenir-la-suplantacion-de-identidad/"]]},
+
+{tag:"Industria",fecha:"3 ago 2026",ver:"primaria",vlbl:"Comunicado del emisor",
+t:"Visa adquiere BioCatch por USD 2.400 millones",
+d:"Consolidación del mercado de biometría conductual para detección pre-pago. Señal de hacia dónde se mueve el estándar de detección: comportamiento en sesión, no solo identidad en el acceso.",
+s:[["Visa — Comunicado oficial: Visa to Acquire BioCatch","https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22626.html"],
+["CNBC — Visa to buy fraud-detection firm BioCatch for $2.4 billion","https://www.cnbc.com/2026/08/03/visa-buys-biocatch-fraud-detection.html"],
+["Forrester — Análisis de la adquisición","https://www.forrester.com/blogs/visa-to-acquire-behavioral-biometrics-specialist-biocatch-for-2-4-billion/"]]},
+
+{tag:"Modalidad emergente",fecha:"2–10 ago 2026",ver:"oficial",vlbl:"Alerta CONDUSEF",
+t:"Task scam — falsas ofertas de trabajo por tareas",
+d:"Reclutamiento por WhatsApp con microtareas remuneradas que generan confianza mediante pagos reales iniciales, seguido de recargas para desbloquear comisiones mayores. Suplanta marcas conocidas. CONDUSEF emitió alerta en México.",
+s:[["Infobae — Cómo opera el task scam, la nueva estafa por WhatsApp (alerta CONDUSEF)","https://www.infobae.com/mexico/2026/08/02/como-opera-el-task-scam-la-nueva-estafa-por-whatsapp-que-utiliza-el-nombre-de-empresas-reconocidas/"],
+["Proceso — Cómo identificar una task scam","https://www.proceso.com.mx/ciencia-tecnologia/2026/8/10/estafa-de-trabajo-por-whatsapp-como-identificar-una-task-scam-377734.html"],
+["Observatorio de RR. HH. — El fraude laboral que acumula cientos de millones en pérdidas","https://www.observatoriorh.com/personas-y-empresas/task-scam-el-ultimo-fraude-laboral-que-ya-acumula-cientos-de-millones-en-perdidas.html"]]},
+
+{tag:"Regulación · Colombia",fecha:"6 ago 2026",ver:"prensa",vlbl:"Prensa citando a la SFC",
+t:"Cuándo responde el banco por un fraude",
+d:"La Superfinanciera señala que la entidad puede ser responsable cuando incumple sus deberes de monitoreo. Leído junto con la Ley 2573, el estándar de diligencia deja de ser declarativo y pasa a ser probatorio.",
+s:[["El Colombiano — ¿Le robaron plata de la cuenta? En qué casos debe responder la entidad","https://www.elcolombiano.com/negocios/robo-dinero-cuenta-bancaria-casos-entidad-financiera-responde-FN39613556"]]},
+
+{tag:"Amenaza · Colombia",fecha:"5 ago 2026",ver:"prensa",vlbl:"Prensa · 2 medios",
+t:"Suplantación de Bre-B por SMS en Bogotá",
+d:"Campaña activa de smishing que notifica consignaciones falsas y exige autorizar o devolver la transferencia. Bre-B no requiere autorización del receptor: la premisa del mensaje es falsa por diseño.",
+s:[["Infobae — Alerta por fraude digital en Bogotá: así suplantan la plataforma de Bre-B","https://www.infobae.com/colombia/2026/08/05/alerta-por-fraude-digital-en-bogota-asi-suplantan-la-plataforma-de-bre-b-a-traves-de-mensajes-de-texto/"],
+["El Colombiano / Kaspersky — Delincuentes ya usan Bre-B y llaves virtuales para robar","https://www.elcolombiano.com/tecnologia/ojo-delincuentes-ya-usan-bre-b-y-llaves-virtuales-para-robar-siga-estas-claves-para-no-caer-LB29289938"]]},
+
+{tag:"Regulación · México",fecha:"1 ago 2026",ver:"prensa",vlbl:"Prensa",
+t:"CDMX tipifica phishing, smishing y vishing",
+d:"El fraude digital pasa a ameritar pena privativa de la libertad. Precedente regional relevante para el debate colombiano sobre tipificación específica frente al uso actual de la Ley 1273 de 2009.",
+s:[["24 Horas — Fraude digital ya amerita cárcel: tipifican phishing en CDMX","https://24-horas.mx/cdmx/fraude-digital-ya-amerita-carcel-tipifican-phishing-en-cdmx/"]]},
+
+{tag:"Métrica de amenaza",fecha:"11 ago 2026",ver:"industria",vlbl:"BioCatch · WEF · Sumsub",
+t:"La IA reduce el volumen y sube la calidad del ataque",
+d:"El phishing generado con IA creció 1.265% desde finales de 2022 (WEF) y las estafas de ingeniería social 155% (BioCatch), mientras el volumen bruto de incidentes cae. La métrica de intentos bloqueados pierde valor como indicador de exposición.",
+s:[["ITSitio — Informe BioCatch de Tendencias de Fraude Bancario Digital 2026, con datos de WEF y Sumsub","https://www.itsitio.com/ar/seguridad/la-ia-cambio-el-phishing-menos-ataques-pero-cada-vez-mas-dificiles-de-detectar/"]]},
+
+{tag:"Tecnología · Defensa",fecha:"12 ago 2026",ver:"prensa",vlbl:"Prensa",
+t:"Validación de comunicaciones empresariales",
+d:"Modelo de llamada verificada / branded calling que autentica al emisor antes de que suene el teléfono. Respuesta estructural al vishing y al spoofing de números, que traslada el control del cliente a la entidad.",
+s:[["Portal Metropolitano — Fraude telefónico: las empresas toman el control","https://portalmetropolitano.cl/fraude-telefonico-las-empresas-toman-el-control/"]]},
+
+{tag:"Contexto · España",fecha:"11–12 ago 2026",ver:"industria",vlbl:"Asufin (asociación de usuarios)",
+t:"Las consultas por fraude bancario se cuadruplican",
+d:"Cerca de 100.000 consultas en seis meses según Asufin; 148.292 víctimas de fraude bancario y de tarjeta, con una tasa de cibercriminalidad de 9,6 delitos por cada 1.000 habitantes. Referencia comparada de presión reputacional y regulatoria.",
+s:[["Europa Press — Asufin reclama medidas ante el aumento de ciberestafas","https://www.europapress.es/economia/finanzas-00340/noticia-asufin-reclama-medidas-efectivas-aumento-ciberestafas-casi-100000-consultas-seis-meses-20260811102420.html"],
+["Law&Trends — Cibercrimen y desprotección jurídica del ciudadano (cifras)","https://www.lawandtrends.com/noticias/penal/cibercrimen-y-desproteccion-juridica-del-ciudadano-usurpacion-de-identidad-fraude-bancario-digital-paralisis-1.html"],
+["Cinco Días — Las ciberestafas se disparan y toca hacer más","https://cincodias.elpais.com/opinion/2026-08-11/las-ciberestafas-se-disparan-y-toca-hacer-mas.html"]]}
+];
+
+const D=[
+{n:"Vishing — falso asesor bancario",a:"Llamada suplantando al banco · voice phishing",sev:"Crítica",fase:"Autenticación",canal:"Voz",trend:"up",
+mo:"El atacante llama haciéndose pasar por el área de seguridad o servicio al cliente de la entidad. Menciona datos parciales reales del cliente (obtenidos de filtraciones o de la propia red social) para generar credibilidad, reporta una supuesta transacción no reconocida y pide al cliente 'confirmar su identidad' entregando el OTP, la clave dinámica o el código de retiro sin tarjeta. Suele preceder o acompañar una toma de cuenta en curso.",
+sc:["Llamada entrante que pide leer un código recibido por SMS o app","La entidad nunca solicita clave, token, OTP ni código de retiro","Presión de urgencia: 'si no confirma ahora pierde el dinero'","Piden no colgar ni llamar a la línea oficial mientras 'se resuelve'","Ofrecen 'bloquear' la cuenta o 'trasladar' el dinero a una cuenta segura"],
+sm:["Generación de OTP seguida de intento de transferencia a beneficiario nuevo en <5 min","Cambio de datos de contacto seguido inmediatamente de transacción alta","Pico de OTP reenviados para un mismo cliente","Sesión activa desde dispositivo no reconocido mientras hay llamada entrante reportada","Concentración de beneficiarios nuevos que reciben de múltiples clientes no relacionados"],
+ct:["Autenticación fuera de banda que no dependa de un código legible por voz (push con contexto de la transacción en app)","Cool-off de 24 h y límite reducido para el primer envío a beneficiario nuevo","Mostrar en el push el monto y el nombre del destinatario, no solo un código","Guion cero-OTP: campaña permanente de 'nunca pedimos códigos'","Enriquecer scoring con señal de llamada en curso / apps de detección"],
+rp:["Bloqueo inmediato de canales digitales y congelamiento de la sesión","Retención de la transferencia si sigue en ventana operativa; solicitud de reverso al banco destino","Reset de credenciales y re-enrolamiento del dispositivo con verificación reforzada","Reporte a la mesa de fraude y marcaje del beneficiario receptor en lista interna","Radicar denuncia y preservar evidencia de la llamada (número, hora, grabación si existe)"],
+tp:"Hurto por medios informáticos (269I) · Transferencia no consentida de activos (269J) · Estafa (246)",
+ds:"25% de los casos con pérdida en Colombia; mediana COP 5.801.306 (TransUnion, may-2026). Estafas de ingeniería social +155% (BioCatch, 2026). La clonación de voz con IA elimina las señales clásicas de guion y acento"},
+
+{n:"Smishing con suplantación de Bre-B",a:"SMS falso de pagos inmediatos · llaves virtuales",sev:"Crítica",fase:"Autenticación",canal:"SMS",trend:"up",
+mo:"Aprovechando la adopción reciente del sistema de pagos inmediatos, el atacante envía SMS masivos notificando una consignación recibida que 'debe autorizar' o que 'será devuelta', o exigiendo registrar la llave a través de un enlace. Bre-B no requiere autorización del receptor: la premisa misma es falsa. El enlace acortado lleva a un sitio clonado con suplantación visual de la entidad donde la víctima entrega credenciales y OTP.",
+sc:["SMS no solicitado con enlace acortado","Piden 'autorizar', 'confirmar' o 'devolver' una transferencia recibida","Anuncian registro o actualización de llaves fuera de la app oficial","El registro de llaves es gratuito y solo se hace en canales oficiales de la entidad","Lenguaje de urgencia con plazo de horas"],
+sm:["Ráfagas de logins desde un mismo rango de IP o ASN atípico tras campañas de SMS","Dominios recién registrados que imitan la marca (monitoreo de typosquatting)","Múltiples clientes autenticándose desde un mismo device fingerprint","Alta tasa de fallos de login seguidos de éxito en ventana corta","Reclamos concentrados en las 24-48 h siguientes a un envío masivo"],
+ct:["Monitoreo de marca y takedown acelerado de dominios clonados","Adopción de mensajería verificada y remitente autenticado; eliminar enlaces de los SMS legítimos","Bloqueo de sesión ante referer/origen sospechoso y binding de OTP a la sesión","Comunicación proactiva: 'nunca enviamos enlaces por SMS'","Detección de suplantación visual mediante monitoreo de assets de la marca"],
+rp:["Takedown del dominio y del acortador; reporte al CSIRT financiero y al operador de telefonía","Alerta masiva a clientes por canal oficial dentro de las primeras horas","Bloqueo preventivo de las cuentas que interactuaron con el dominio identificado","Marcaje y congelamiento de cuentas destino receptoras del flujo","Reporte a la SFC y a la Policía / CAI Virtual"],
+tp:"Suplantación de sitios web para capturar datos personales (269G) · Hurto por medios informáticos (269I)",
+ds:"Alertas activas en Colombia durante 2026; modus operandi documentado por Kaspersky — El Colombiano, 2026"},
+
+{n:"Phishing con sitio clonado",a:"Correo o web falsa · portal apócrifo",sev:"Alta",fase:"Autenticación",canal:"Correo / Web",trend:"up",
+mo:"Correo o publicación con identidad visual de la entidad, un comercio o una plataforma, anunciando puntos por vencer, una devolución, un bloqueo de cuenta o una factura pendiente. El enlace conduce a un portal clonado que captura usuario, clave y OTP en tiempo real (adversary-in-the-middle), permitiendo al atacante iniciar sesión legítima mientras la víctima cree estar autenticándose.",
+sc:["Dominio con caracteres cambiados o subdominio engañoso","Ofertas de premios, devoluciones o puntos no solicitados","El correo pide iniciar sesión desde el enlace en lugar de la app","Errores de redacción o remitente que no coincide con el dominio oficial","Formularios que piden clave y OTP en la misma pantalla"],
+sm:["Login exitoso desde geolocalización o dispositivo inconsistente con el patrón del cliente","Tiempo entre emisión y uso del OTP cercano a cero de forma sistemática","Reuso de un mismo user-agent en muchos clientes distintos","Transacciones inmediatamente posteriores al primer login desde nuevo dispositivo","Consultas de saldo masivas seguidas de transferencias"],
+ct:["Autenticación resistente a phishing (FIDO2/passkeys) para clientes de alto valor","DMARC en política de rechazo, SPF y DKIM alineados","Device binding y análisis de comportamiento en sesión","Step-up authentication ante cambio de dispositivo + transacción","Monitoreo de registro de dominios similares"],
+rp:["Invalidar sesiones activas y forzar reautenticación","Takedown y notificación al registrador y al proveedor de hosting","Revisión retroactiva de transacciones de clientes expuestos","Comunicación segmentada a la base afectada","Compartir IOC con el sector vía canal gremial"],
+tp:"Suplantación de sitios web (269G) · Acceso abusivo a sistema informático (269A) · Estafa (246)",
+ds:"Phishing entre las tres modalidades cibernéticas clasificadas oficialmente por la SFC, jun-2026"},
+
+{n:"Fraude de identidad en originación",a:"Apertura de productos con identidad suplantada",sev:"Crítica",fase:"Originación",canal:"Digital / Presencial",trend:"up",
+mo:"Uso de documentos robados, alterados o de datos filtrados para abrir cuentas, solicitar créditos o vincular productos a nombre de un tercero real. La víctima descubre el fraude cuando aparece reportada en centrales de riesgo o recibe cobros. Es la fase de mayor exposición: la tasa de fraude en creación de cuentas es un orden de magnitud superior a la de transacción.",
+sc:["Cliente que desconoce por completo un producto vinculado a su cédula","Datos de contacto que no corresponden a los históricos del titular","Solicitud desde ubicación muy distante del domicilio registrado","Documento con inconsistencias tipográficas o de material","Prisa por desembolsar y retirar de inmediato"],
+sm:["Tasa de fraude en creación de cuentas de 7,2% frente a 0,3% en transacción — priorizar controles aguas arriba","Mismo dispositivo o número telefónico usado en múltiples solicitudes con identidades distintas","Correos con patrón secuencial o dominios desechables","Velocity: varias solicitudes de la misma IP en minutos","Desembolso seguido de retiro total en menos de 24 h"],
+ct:["Verificación biométrica con prueba de vida activa y detección de presentación","Validación documental contra fuente oficial, no solo OCR","Consulta a centrales de riesgo y a listas negativas del sector","Análisis de device y de reputación telefónica en el punto de solicitud","Retención escalonada de fondos en cuentas de reciente apertura"],
+rp:["Congelamiento del producto y bloqueo de desembolsos pendientes","Reversión del reporte en centrales de riesgo para la víctima suplantada","Recolección de evidencia biométrica y documental del solicitante","Denuncia penal y reporte a la unidad de análisis financiero si hay indicio de lavado","Alimentar el modelo con el caso y marcar dispositivo/teléfono en lista negativa"],
+tp:"Falsedad personal (296) · Falsedad en documento (287-289) · Estafa (246) · Violación de datos personales (269F)",
+ds:"Creación de cuentas 7,2% vs. inicio de sesión 3,5% vs. transacción 0,3% — TransUnion, may-2026"},
+
+{n:"Identidad sintética",a:"Synthetic identity · Frankenstein ID",sev:"Alta",fase:"Originación",canal:"Digital",trend:"up",
+mo:"Construcción de un perfil que combina datos reales (a menudo de un tercero con poca huella crediticia) con datos falsos o generados, creando una identidad que no corresponde a ninguna persona pero que supera los controles de verificación. El perfil se 'cultiva' durante meses con comportamiento impecable para elevar cupos, y luego ejecuta un bust-out: consume todo el crédito disponible y desaparece.",
+sc:["Historial crediticio delgado que crece de forma anormalmente ordenada","Datos demográficos internamente inconsistentes (edad vs. antigüedad del documento)","Sin huella digital previa: no aparece en fuentes alternas de datos","Domicilio compartido con otras identidades sin relación aparente","Escalamiento rápido de cupo sin sustento de ingresos verificable"],
+sm:["Clusters de identidades que comparten teléfono, dirección, dispositivo o cuenta destino","Comportamiento de pago demasiado perfecto en cliente nuevo","Uso simultáneo de varios productos hasta el tope justo antes del incumplimiento","Ausencia total de transaccionalidad orgánica (nómina, servicios, comercios cotidianos)","Correlación entre identidades por análisis de grafos"],
+ct:["Análisis de grafo de entidades para detectar atributos compartidos","Verificación de existencia de la persona contra múltiples fuentes independientes, no una sola","Scoring de 'delgadez' de huella digital en originación","Revisión obligatoria antes de incrementos de cupo significativos","Monitoreo de patrones de bust-out"],
+rp:["Suspensión inmediata de cupos y bloqueo de disposiciones","Análisis de grafo para identificar el resto del cluster antes de actuar","Cuantificación de exposición agregada del anillo","Reporte al sector por canal gremial","Revisión del control de originación que permitió el ingreso"],
+tp:"Estafa agravada (246-267) · Falsedad personal (296) · Falsedad en documento privado (289)",
+ds:"48,3% de los casos de fraude de identidad en LatAm involucran IA — Unico + Liminal, jul-2026"},
+
+{n:"Deepfake y clonación de voz",a:"Suplantación biométrica con IA · injection attack",sev:"Crítica",fase:"Autenticación",canal:"Video / Voz",trend:"up",
+mo:"Uso de video o audio generado con IA para superar verificación biométrica, aprobar transacciones por canal telefónico o autorizar operaciones internas suplantando a un directivo. Las técnicas van desde ataques básicos de presentación (foto impresa frente a la cámara) hasta inyección directa del stream de video, que evade la cámara del dispositivo por completo.",
+sc:["Micro-inconsistencias en parpadeo, sincronía labial o iluminación","Audio con prosodia plana o cortes en respiración","Solicitud urgente y confidencial de un 'directivo' saltándose el proceso","Rechazo a cambiar de canal o a una verificación adicional en vivo","Metadatos del stream inconsistentes con el hardware declarado"],
+sm:["Detección de virtual camera o emulador en el dispositivo","Anomalías en el pipeline de captura: framerate perfecto, ausencia de ruido de sensor","Mismo rostro o embedding biométrico asociado a varias identidades","Reintentos de verificación con variaciones mínimas del mismo asset","Divergencia entre señal de liveness pasiva y activa"],
+ct:["Liveness activo con retos aleatorios y detección de inyección, no solo de presentación","Verificación de integridad del canal de captura (anti-virtual-camera, attestation del dispositivo)","Doble control fuera de banda para operaciones de alto valor: la voz nunca es autorización suficiente","Política interna: ninguna orden de pago se ejecuta por videollamada sin confirmación por canal independiente","Monitoreo de proveedores de biometría con métricas de tasa de evasión"],
+rp:["Detención de la operación y verificación por canal alterno confirmado","Preservación del asset (video/audio) para análisis forense","Revisión de todas las verificaciones aprobadas por el mismo vector en el periodo","Notificación a la mesa de fraude y al área de riesgo tecnológico","Actualizar reglas del motor biométrico y reentrenar el detector"],
+tp:"Estafa (246) · Falsedad personal (296) · Transferencia no consentida de activos (269J)",
+ds:"Deepfakes y técnicas avanzadas: 23,3% de los ataques; complejidad media 45,8%; básicos 30,9% — Unico + Liminal, jul-2026"},
+
+{n:"Toma de cuenta (ATO)",a:"Account takeover · secuestro de cuenta",sev:"Crítica",fase:"Autenticación",canal:"Digital",trend:"up",
+mo:"El atacante obtiene control de la cuenta digital del cliente mediante credenciales filtradas, phishing, malware, SIM swap o ingeniería social. Antes de transaccionar suele modificar datos de contacto, subir límites y desactivar alertas para retrasar la detección. La transferencia final va a cuentas mula que dispersan el dinero en minutos.",
+sc:["Cliente deja de recibir SMS o llamadas (posible SIM swap)","Notificaciones de cambio de correo, teléfono o clave no solicitadas","Cambios de límites transaccionales no reconocidos","Nuevos beneficiarios inscritos sin conocimiento","Cierre de sesión inesperado o imposibilidad de ingresar"],
+sm:["Secuencia: nuevo dispositivo → cambio de contacto → alta de beneficiario → transferencia","Desactivación de alertas seguida de actividad transaccional","Login desde ASN de VPN/proxy con historial de fraude","Cambio de comportamiento de navegación en sesión (velocidad, patrón de clics)","Coincidencia de credenciales con volcados de brechas conocidas"],
+ct:["Regla de 'cadena de cambios': congelar transaccionalidad 24-48 h tras modificar datos sensibles","Alertas inmutables — no desactivables por el propio canal digital","Coordinación con operadores móviles para señal de cambio reciente de SIM","MFA resistente a phishing y device binding","Monitoreo continuo de credenciales expuestas de la base de clientes"],
+rp:["Bloqueo de sesión, reset de credenciales y revocación de dispositivos confiables","Retención y solicitud de reverso sobre transferencias en ventana","Contacto con el cliente por canal verificado, nunca por el dato recién modificado","Marcaje de cuentas mula receptoras y reporte al sector","Reconstrucción de la línea de tiempo para determinar el vector de entrada"],
+tp:"Acceso abusivo (269A) · Hurto por medios informáticos (269I) · Transferencia no consentida de activos (269J)",
+ds:"Tasa de fraude en inicio de sesión: 3,5% en Colombia — TransUnion, may-2026"},
+
+{n:"Malware bancario y apps de control remoto",a:"RAT · troyano bancario · overlay",sev:"Alta",fase:"Transacción",canal:"Móvil",trend:"up",
+mo:"Se induce a la víctima a instalar una aplicación de 'soporte técnico', 'verificación' o de acceso remoto. El atacante observa la pantalla, captura credenciales mediante superposición de pantallas falsas (overlay) e incluso opera la banca desde el propio dispositivo de la víctima, lo que hace que la transacción parezca completamente legítima al motor de riesgo.",
+sc:["Instrucción de instalar una app para 'resolver' un problema o 'verificar' una inversión","Solicitud de permisos de accesibilidad o de proyección de pantalla","Dispositivo lento, con pantalla negra intermitente o comportamiento errático","La persona en la llamada 've' lo que el cliente hace","App instalada desde fuera de la tienda oficial"],
+sm:["Detección de apps de acceso remoto o de servicios de accesibilidad activos durante la sesión bancaria","Transacción con device fingerprint legítimo pero con biometría conductual anómala (patrón de touch, giroscopio inactivo)","Root/jailbreak o instalación de fuentes desconocidas","Sesión con overlay detectado sobre la app","Latencia de interacción inconsistente con uso humano directo"],
+ct:["SDK de protección en app: detección de overlay, accesibilidad, screen sharing y emuladores","Bloqueo de la sesión bancaria si hay app de control remoto activa","Biometría conductual como segunda señal independiente del dispositivo","Educación específica: 'ninguna entidad pide instalar apps para resolver un problema'","Attestation de integridad de la app y del sistema operativo"],
+rp:["Terminar la sesión y bloquear el dispositivo como confiable","Guiar al cliente en la desinstalación y en el restablecimiento del dispositivo","Reset completo de credenciales desde un dispositivo limpio","Análisis de la muestra de malware si se puede obtener; compartir IOC","Revisión de transacciones del periodo comprometido"],
+tp:"Uso de software malicioso (269E) · Acceso abusivo (269A) · Hurto por medios informáticos (269I)",
+ds:"Instalación de apps de control remoto documentada como vector en fraudes de inversión — Estudio Penal, 2026"},
+
+{n:"Cambiazo",a:"Sustitución de tarjeta · cambiazo en domicilio",sev:"Alta",fase:"Transacción",canal:"Presencial",trend:"up",
+mo:"Sustitución física de la tarjeta del cliente por otra similar, aprovechando distracción o 'ayuda' en cajeros y puntos de pago. Ya no ocurre solo en cajeros: hay variantes con falsos empleados que visitan el domicilio para 'recoger la tarjeta bloqueada' o cambiarla, y con datáfonos alterados para cobros por aproximación.",
+sc:["Personas que ofrecen ayuda no solicitada en el cajero","Visita domiciliaria de un supuesto funcionario con carné para recoger o reemplazar la tarjeta","La entidad no recoge tarjetas en el domicilio del cliente","Cajero con lector u objetos adosados","Cobros por aproximación no reconocidos de bajo monto"],
+sm:["Retiros o compras inmediatamente después de un uso en cajero con anomalía reportada","Concentración geográfica de casos alrededor de un mismo dispositivo","Transacciones contactless de bajo monto en secuencia rápida","Uso de la tarjeta en corredores comerciales atípicos para el cliente","Correlación entre reclamaciones y horario/ubicación de un ATM específico"],
+ct:["Inspección periódica y antiskimming en el parque de cajeros","Alertas transaccionales en tiempo real con opción de bloqueo inmediato desde la app","Límite y reautenticación para contactless acumulado","Campaña de 'la entidad nunca va a su casa por su tarjeta'","Migración a tokenización y billeteras para reducir dependencia del plástico"],
+rp:["Bloqueo y reexpedición inmediata de la tarjeta","Reverso de transacciones no reconocidas dentro de la política de contracargo","Inspección del cajero o punto involucrado y reporte de seguridad física","Compartir la ubicación comprometida con el sector","Denuncia y entrega de evidencia de video si está disponible"],
+tp:"Hurto calificado (240) · Hurto por medios informáticos (269I) · Falsedad personal (296)",
+ds:"Modalidad clasificada oficialmente por la SFC (jun-2026); en expansión fuera del cajero — Portafolio, 2026"},
+
+{n:"Secuestro de cuentas de mensajería",a:"WhatsApp hijacking · código de 6 dígitos",sev:"Alta",fase:"Autenticación",canal:"Mensajería",trend:"up",
+mo:"El atacante solicita a la víctima el código de verificación de seis dígitos con un pretexto (encuesta, sorteo, 'me equivoqué de número'), toma control de la cuenta y desde ella pide dinero urgente a los contactos, explotando la confianza preexistente. Variante: pedir que agregue un número desconocido a contactos para pasar filtros.",
+sc:["Alguien pide el código de verificación que acaba de llegar","Mensaje de un contacto conocido pidiendo dinero con urgencia y cambio de número","Se niega a hacer o recibir una llamada de voz o video","Cuenta cerrada de forma inesperada en el dispositivo del titular","Historia que impide verificar por otro canal ('estoy sin señal')"],
+sm:["Cuentas destino que reciben pagos de múltiples remitentes no relacionados en poco tiempo","Transferencias por debajo de umbrales de alerta, repetidas","Nuevos beneficiarios que coinciden con cuentas ya marcadas por otros casos","Reclamaciones que describen el mismo guion","Cuentas de reciente apertura con alta rotación entrante-saliente"],
+ct:["Verificación en dos pasos con PIN en la app de mensajería (educación al cliente)","Alerta contextual en la app bancaria al inscribir beneficiarios nuevos","Modelo de detección de cuentas mula por patrón de flujo entrante-saliente","Campaña de 'verifique por llamada antes de enviar dinero'","Límites bajos por defecto para el primer envío a un beneficiario"],
+rp:["Marcaje y congelamiento de la cuenta receptora identificada como mula","Solicitud de reverso mientras el dinero no haya sido dispersado","Notificación al resto de clientes que hayan transferido a la misma cuenta","Reporte a la plataforma de mensajería y a la autoridad","Alimentar la lista negativa compartida del sector"],
+tp:"Acceso abusivo (269A) · Violación de datos personales (269F) · Estafa (246)",
+ds:"Modalidad recurrente reportada en Colombia con tipificación establecida — Estudio Penal, 2026"},
+
+{n:"Estafa romántica e ingeniería social afectiva",a:"Romance scam · pig butchering",sev:"Alta",fase:"Transacción",canal:"Redes sociales",trend:"up",
+mo:"Construcción acelerada de un vínculo afectivo con bombardeo de afecto, seguida de solicitudes de dinero por emergencias inventadas, viajes o 'inversiones conjuntas'. En la variante pig butchering el vínculo se usa para conducir a la víctima a una plataforma de inversión falsa. Puede derivar en sextorsión si se obtuvieron imágenes íntimas.",
+sc:["Relación que avanza demasiado rápido sin encuentro presencial","Primera solicitud de dinero antes de conocerse","Excusas sistemáticas para no hacer videollamada","Propuesta de invertir juntos en una plataforma que la otra parte 'ya conoce'","Escalamiento de montos tras un primer retiro exitoso que genera confianza"],
+sm:["Cliente con historial estable que inicia transferencias crecientes al exterior o a exchanges","Retiros de productos de ahorro o pensionales para transferir","Cambio abrupto de perfil transaccional en cliente maduro","Transferencias recurrentes a un mismo destino no comercial","Cliente que rechaza las advertencias del canal y confirma repetidamente"],
+ct:["Fricción con propósito: pantalla de advertencia contextual ante transferencias a destinos de alto riesgo","Entrenamiento de la primera línea para detectar el guion en llamada","Modelo de detección de cambio de perfil transaccional (no solo monto absoluto)","Programa específico para clientes mayores de 60 años","Retención temporal en transferencias al exterior fuera de patrón"],
+rp:["Contacto humano con el cliente antes de ejecutar, no solo alerta automática","Documentación del caso y acompañamiento para denuncia","Solicitud de reverso o congelamiento en el destino cuando aplique","Evaluación de vulnerabilidad del cliente y activación de protocolo de cliente en riesgo","Registro del destino en lista negativa"],
+tp:"Estafa (246) · Extorsión (244) si hay amenaza con material íntimo",
+ds:"Adultos mayores de 60 años en EE. UU. reportaron USD 7,7 B en pérdidas, +37% vs. 2024 — FBI IC3, 2026"},
+
+{n:"Fraude de inversión y pirámides",a:"Captación masiva · plataformas falsas · cripto",sev:"Crítica",fase:"Transacción",canal:"Digital",trend:"up",
+mo:"Plataformas con interfaz profesional prometen rentabilidades imposibles y muestran gráficas de ganancias fabricadas. Los primeros retiros pequeños se pagan para generar confianza; luego se induce a aportes mayores y el retiro se bloquea con excusas de 'impuestos' o 'comisiones'. Suele acompañarse de instalación de apps de control remoto y de captación sin autorización regulatoria.",
+sc:["Rentabilidades del 50-100% mensual o 'garantizadas'","Entidad no verificable en el registro de la Superintendencia Financiera","Presión para reinvertir en lugar de retirar","Cobro de un 'impuesto' o 'comisión' previo para liberar el retiro","Promoción vía referidos, influencers o grupos cerrados"],
+sm:["Transferencias crecientes del cliente a exchanges o a cuentas de personas naturales","Múltiples clientes transfiriendo a un mismo destino no comercial","Cuentas receptoras con altísima rotación y dispersión inmediata","Retiro de productos de largo plazo para financiar aportes","Patrón de un retiro pequeño de vuelta seguido de aportes mucho mayores"],
+ct:["Advertencia contextual ante transferencias a destinos asociados a esquemas reportados","Lista interna de destinos vinculados a captación no autorizada","Detección de cuentas receptoras con perfil de recolección","Coordinación con la SFC para alertas públicas","Educación financiera dirigida sobre rentabilidades imposibles"],
+rp:["Congelamiento de la cuenta receptora bajo criterio de operación sospechosa","Reporte de operación sospechosa a la unidad de análisis financiero","Comunicación a los clientes con exposición identificada","Entrega de trazabilidad a las autoridades","Publicación de alerta preventiva coordinada con el gremio"],
+tp:"Captación masiva y habitual de dineros (316) · Estafa agravada (246-267) · Lavado de activos (323)",
+ds:"Los esquemas de inversión concentraron ~49% de las pérdidas por estafa; USD 11 B en fraude cripto — FBI IC3, 2026"},
+
+{n:"Suplantación de autoridad",a:"Falsa citación judicial · falso ente de control",sev:"Alta",fase:"Autenticación",canal:"Correo / Voz",trend:"up",
+mo:"Correos con logos oficiales de fiscalía, juzgados, DIAN o policía anuncian citaciones, multas o procesos, adjuntando PDF o enlaces con software malicioso. La variante telefónica exige el pago inmediato de una multa o el traslado del dinero a una 'cuenta segura del Estado' para evitar captura o embargo.",
+sc:["Correo de una autoridad solicitando datos personales o claves","Adjunto protegido con contraseña provisto en el mismo mensaje","Ninguna autoridad solicita claves, tokens ni traslados de dinero","Amenaza de captura o embargo con plazo inmediato","Instrucción de no comentar el caso con nadie"],
+sm:["Malware detectado en endpoints de clientes empresariales tras campañas dirigidas","Transferencias urgentes a cuentas de personas naturales justificadas como 'trámite legal'","Cliente que retira efectivo en montos inusuales tras contacto telefónico","Correlación de reclamos con una misma campaña de correo","Cuenta destino con patrón de recolección"],
+ct:["Filtrado avanzado de correo y sandboxing de adjuntos para clientes empresariales","Guion de primera línea ante 'trámite con autoridad' como bandera roja","Fricción y verificación humana en retiros de efectivo fuera de patrón","Campaña educativa con mensaje unificado del sector","Bloqueo de dominios suplantadores de entidades públicas"],
+rp:["Detener la operación y verificar directamente con la autoridad involucrada","Aislar y analizar el endpoint si hubo ejecución de malware","Reporte al CSIRT y compartición de IOC","Acompañamiento al cliente en la denuncia","Revisión de la campaña para identificar el universo de expuestos"],
+tp:"Uso de software malicioso (269E) · Acceso abusivo (269A) · Violación de datos personales (269F) · Estafa (246)",
+ds:"Modalidad con tipificación múltiple documentada en Colombia — Estudio Penal, 2026"},
+
+{n:"QR malicioso",a:"Quishing · código QR alterado",sev:"Media",fase:"Transacción",canal:"Presencial / Digital",trend:"up",
+mo:"Sustitución o superposición de códigos QR en espacios públicos, facturas, parquímetros o puntos de pago, redirigiendo a un portal de pago falso o a la descarga de una aplicación maliciosa. El vector aprovecha que el destino no es legible a simple vista y que el usuario no verifica el dominio antes de pagar.",
+sc:["Adhesivo de QR pegado sobre otro código","El QR lleva a un dominio distinto del comercio","Solicitud de datos de tarjeta en una página sin identidad del comercio","Monto o beneficiario que no coincide con lo esperado","QR en correo o factura no solicitada"],
+sm:["Pagos a comercios con dominio recién registrado","Concentración de reclamos ligados a una misma ubicación física","Transacciones de e-commerce con patrón de captura de tarjeta y uso posterior en otro país","Comercios con alto índice de contracargos y baja antigüedad","Uso de la misma pasarela por múltiples comercios sospechosos"],
+ct:["QR dinámico y validado en canales propios de la entidad","Vista previa del beneficiario y monto antes de confirmar el pago en la app","Educación sobre verificar el dominio y el nombre del beneficiario","Monitoreo de comercios adquiridos con señales de riesgo","Sellos de seguridad en QR físicos de la red propia"],
+rp:["Bloqueo del comercio o del destino identificado","Reverso o contracargo según la política aplicable","Reporte al administrador del espacio físico afectado","Alerta pública sobre la ubicación comprometida","Compartir el dominio malicioso como IOC"],
+tp:"Suplantación de sitios web (269G) · Hurto por medios informáticos (269I) · Uso de software malicioso (269E)",
+ds:"Códigos QR alterados en espacios públicos identificados como vector activo en 2026 — Estudio Penal"},
+
+{n:"Fraude autorizado por el cliente (APP)",a:"Authorised push payment · pago inducido",sev:"Crítica",fase:"Transacción",canal:"Pagos inmediatos",trend:"up",
+mo:"El cliente autoriza voluntariamente la transferencia, engañado sobre el destinatario o el propósito: pago a un proveedor cuya factura fue interceptada y alterada, compra de un bien inexistente, o traslado a una 'cuenta segura'. La transacción es técnicamente legítima —autenticación correcta, dispositivo conocido— lo que la hace invisible para controles centrados en la identidad. La irrevocabilidad de los pagos inmediatos elimina la ventana de recuperación.",
+sc:["Cambio de última hora en los datos bancarios de un proveedor conocido","Presión para pagar de inmediato por fuera del proceso habitual","Destinatario persona natural en una operación que debería ser empresarial","Precio muy por debajo del mercado","El cliente no puede explicar con claridad a quién le paga"],
+sm:["Primera transferencia a un beneficiario nuevo por monto atípicamente alto","Confirmación repetida y rápida de advertencias por parte del cliente (patrón de coaching)","Beneficiario que recibe de múltiples pagadores sin relación","Transferencia inmediatamente posterior a una llamada entrante prolongada","Cuenta destino abierta en los últimos 30 días"],
+ct:["Confirmación de nombre del beneficiario (confirmation of payee) antes de ejecutar","Fricción escalonada: advertencia específica al motivo declarado, no genérica","Retención de 24 h para el primer pago a beneficiario nuevo por encima de un umbral","Modelo de detección de cuentas mula del lado receptor, no solo del pagador","Acuerdos interbancarios de congelamiento rápido y devolución"],
+rp:["Solicitud inmediata de congelamiento al banco receptor — el margen es de minutos","Trazado de la dispersión hacia cuentas de segundo y tercer nivel","Evaluación de reembolso según política y grado de manipulación de la víctima","Marcaje de la cuenta mula y reporte al sector","Analizar el guion usado para reforzar la advertencia contextual"],
+tp:"Estafa (246) · Estafa agravada en delito masa (246-267) · Lavado de activos (323) para la red de mulas",
+ds:"El dinero suele retirarse en cuestión de horas — la ventana de recuperación es el factor crítico"},
+
+{n:"Falsas oportunidades comerciales",a:"Arriendos, empleo y marketplace fraudulentos",sev:"Media",fase:"Transacción",canal:"Marketplace",trend:"up",
+mo:"Sociedades fachada o perfiles falsos ofrecen arriendos a precios muy por debajo del mercado, vehículos o propiedades sobre las que no tienen disposición, u ofertas de empleo que exigen un pago previo por 'examen', 'dotación' o 'reserva'. El pago se solicita por transferencia directa, fuera de cualquier plataforma con protección.",
+sc:["Precio notablemente por debajo del mercado","Fotos genéricas o tomadas de otros anuncios","Imposibilidad de visitar el inmueble o ver el bien","Exigencia de pago anticipado para 'reservar'","Empresa sin presencia verificable en registro mercantil"],
+sm:["Cuentas de personas naturales recibiendo múltiples pagos de igual monto","Cuentas de reciente apertura con alta rotación y retiro inmediato","Concentración de reclamaciones señalando a un mismo titular","Uso de la cuenta exclusivamente para recepción y retiro","Correlación con anuncios reportados en plataformas"],
+ct:["Detección de cuentas con perfil de recolección en el lado receptor","Advertencia contextual en transferencias con concepto de 'arriendo' o 'reserva'","Educación sobre no pagar por fuera de plataformas con protección","Cooperación con marketplaces para intercambio de señales","Límites por defecto en cuentas nuevas"],
+rp:["Congelamiento de la cuenta receptora y retención de saldo disponible","Consolidación de reclamos para dimensionar el delito masa","Reporte a la autoridad y al marketplace","Notificación al resto de afectados identificados","Bloqueo del titular para apertura de nuevos productos"],
+tp:"Estafa agravada en modalidad de delito masa (246-267) · Falsedad en documento privado (289)",
+ds:"Modalidad con alta frecuencia y bajo ticket individual, pero volumen agregado relevante — Estudio Penal, 2026"},
+
+{n:"Fraude amigable y contracargos",a:"Friendly fraud · first-party fraud",sev:"Media",fase:"Post-transacción",canal:"E-commerce",trend:"flat",
+mo:"El titular legítimo desconoce una compra que sí realizó, para obtener el reembolso conservando el bien o servicio. Va desde el desconocimiento genuino por descripción confusa en el extracto, hasta el abuso deliberado y recurrente del mecanismo de contracargo. Es la única modalidad de la lista donde el defraudador es el propio cliente.",
+sc:["Desconocimiento de compras entregadas y con evidencia de uso","Historial de contracargos recurrente del mismo titular","Desconocimiento parcial de un pedido con varios ítems","Reclamo presentado en el límite del plazo","Compra con autenticación fuerte completada y dispositivo habitual"],
+sm:["Ratio de contracargos por cliente muy por encima del promedio del segmento","Desconocimientos concentrados en categorías digitales o de consumo inmediato","Coincidencia entre IP de compra e IP habitual del cliente","Reclamo posterior a evidencia de entrega y uso confirmados","Patrón estacional en un mismo titular"],
+ct:["3-D Secure con autenticación fuerte y retención de evidencia probatoria","Descriptores de extracto claros que identifiquen al comercio real","Scoring de propensión a contracargo abusivo por titular","Retención estructurada de evidencia de entrega y uso","Reglas diferenciadas por categoría de comercio"],
+rp:["Análisis probatorio antes de reembolsar: autenticación, entrega, uso","Representment ante la franquicia con evidencia consolidada","Marcaje del titular en modelo de reincidencia","Revisión de descriptores si el desconocimiento fue genuino","Escalamiento a investigación si hay patrón deliberado"],
+tp:"Estafa (246) cuando hay dolo comprobado; en la mayoría de casos se gestiona por vía contractual y de franquicia",
+ds:"Fraude amigable incluido en la clasificación oficial de modalidades de la SFC, jun-2026"},
+
+{n:"Préstamo falso con cobro anticipado",a:"Gota a gota digital · crédito fantasma",sev:"Alta",fase:"Originación",canal:"Digital / Mensajería",trend:"up",
+mo:"Se ofrece un crédito de aprobación inmediata sin estudio, dirigido a personas con acceso limitado al sistema financiero. Se exige un pago anticipado por 'estudio', 'seguro' o 'garantía' que nunca se devuelve y el crédito nunca se desembolsa. En la variante de gota a gota digital sí hay desembolso, pero con tasas usurarias, acceso abusivo a los contactos del teléfono y cobro mediante extorsión y difamación.",
+sc:["Aprobación sin ningún estudio de crédito","Exigencia de pago previo al desembolso","Oferta por WhatsApp o redes, no por canal formal","Entidad no registrada ante la Superintendencia Financiera","App que exige acceso a contactos, galería y ubicación"],
+sm:["Cliente que transfiere montos pequeños a personas naturales antes de solicitar un crédito formal","Múltiples clientes de segmentos vulnerables transfiriendo a un mismo destino","Cuentas receptoras con alto volumen de créditos pequeños y retiro inmediato","Patrón de pagos periódicos de igual monto a una persona natural","Reclamos con el mismo guion de 'estudio de crédito'"],
+ct:["Advertencia contextual en transferencias con concepto de préstamo o estudio de crédito","Detección de cuentas receptoras con patrón de recaudo de gota a gota","Educación dirigida a segmentos de baja bancarización","Coordinación con la SFC sobre entidades no autorizadas","Oferta de producto formal como alternativa en el momento de la alerta"],
+rp:["Congelamiento de la cuenta receptora y reporte de operación sospechosa","Derivación del cliente a canales de denuncia y a protección si hay extorsión","Consolidación de casos para dimensionar la red","Reporte a autoridad por captación no autorizada y usura","Alerta pública sobre la modalidad"],
+tp:"Estafa (246) · Usura (305) · Extorsión (244) · Captación masiva y habitual (316)",
+ds:"Modalidad de alto impacto social en segmentos vulnerables; expansión digital documentada en Colombia"},
+
+{n:"Vishing corporativo con clonación de voz",a:"Ataque al service desk · fraude interno inducido",sev:"Crítica",fase:"Autenticación",canal:"Voz / Interno",trend:"up",
+mo:"El objetivo deja de ser el cliente y pasa a ser el empleado. El atacante clona con IA la voz de un directivo o de un colega y llama a la mesa de ayuda, a tesorería o a un analista para obtener un restablecimiento de credenciales, la inscripción de un nuevo dispositivo MFA o la ejecución de un pago. Durante 2026 grandes gestoras de Wall Street sufrieron una oleada de este vector, acompañada de extorsión telefónica dirigida a firmas financieras.",
+sc:["Llamada de un 'directivo' con urgencia y petición de saltarse el proceso","Solicitud de reset de MFA o de alta de dispositivo por teléfono","Presión jerárquica y exigencia de confidencialidad","Contacto fuera de horario o en periodo de vacaciones del suplantado","Negativa a validar por el canal corporativo habitual"],
+sm:["Resets de MFA fuera del flujo estándar o con justificación verbal","Alta de dispositivo desde geolocalización inconsistente con el empleado","Accesos privilegiados inmediatamente posteriores a una llamada al service desk","Pagos manuales que rompen el circuito de aprobación dual","Picos de llamadas entrantes a la mesa de ayuda con guion repetido"],
+ct:["Prohibir el reset de credenciales por vía telefónica sin verificación fuera de banda independiente","Palabra clave o token de verificación interno para solicitudes de alta sensibilidad","Doble control obligatorio e inviolable para pagos y para cambios de MFA","Entrenamiento del service desk con simulacros de voz clonada","Registro y grabación de toda solicitud de excepción, con revisión posterior"],
+rp:["Congelar la cuenta afectada y revocar los dispositivos MFA recién inscritos","Verificar con el directivo suplantado por canal presencial o videollamada confirmada","Revisar toda la actividad privilegiada de la ventana comprometida","Activar el protocolo de incidente y notificar al comité de crisis","Preservar la grabación para análisis forense y para el entrenamiento del detector"],
+tp:"Acceso abusivo a sistema informático (269A) · Estafa (246) · Extorsión (244) si hay amenaza",
+ds:"Oleada documentada contra gestoras de Wall Street; extorsión telefónica a firmas financieras reportada por Google — ago 2026"},
+
+{n:"Task scam",a:"Falsas ofertas de trabajo por tareas · estafa de recargas",sev:"Alta",fase:"Transacción",canal:"Mensajería",trend:"up",
+mo:"Reclutamiento por mensajería o redes con la promesa de ingresos por microtareas simples (dar 'me gusta', calificar productos, completar pedidos). Las primeras comisiones se pagan de verdad para construir confianza. Luego se exige 'recargar' saldo propio para desbloquear tareas de mayor valor, y el retiro queda bloqueado tras excusas escalonadas. Combina fraude de inversión con reclutamiento laboral.",
+sc:["Oferta laboral no solicitada por WhatsApp o Telegram","Ingresos prometidos desproporcionados frente al esfuerzo","Exigencia de recargar dinero propio para 'liberar' comisiones","Retiro bloqueado con excusas de impuestos o niveles","Empresa sin registro verificable ni contrato formal"],
+sm:["Transferencias pequeñas y crecientes del cliente a personas naturales o exchanges","Cliente que recibe primero pequeños ingresos y luego revierte a envíos mayores","Múltiples clientes remitiendo al mismo destino sin relación entre sí","Perfil de víctima: búsqueda de ingreso adicional, alta frecuencia de operaciones pequeñas","Cuentas receptoras con dispersión inmediata hacia cripto"],
+ct:["Advertencia contextual ante transferencias con concepto de trabajo, comisión o recarga","Detección del patrón cebo-inversión (ingreso pequeño seguido de envíos crecientes)","Lista interna de destinos ligados a esquemas reportados","Educación dirigida a segmentos jóvenes y a buscadores de empleo","Límites por defecto en cuentas receptoras de reciente apertura"],
+rp:["Congelamiento de la cuenta receptora y reporte de operación sospechosa","Consolidación de casos para dimensionar la red y el delito masa","Comunicación al cliente antes de que escale el monto, no después","Reporte a la plataforma de mensajería y a la autoridad","Alerta preventiva pública sobre la modalidad"],
+tp:"Estafa agravada en delito masa (246-267) · Captación masiva y habitual (316) · Lavado de activos (323)",
+ds:"Modalidad emergente identificada en el monitoreo de prensa LatAm — ago 2026"},
+
+{n:"Interceptación de plásticos en distribución",a:"Tarjetas activadas que nunca llegaron",sev:"Media",fase:"Originación",canal:"Logística",trend:"up",
+mo:"La tarjeta emitida es interceptada en la cadena de distribución —mensajería, portería, buzón— y activada por un tercero que ya cuenta con datos del titular obtenidos por otra vía. El titular descubre el fraude al recibir cobros de un plástico que nunca tuvo en sus manos. Es un fraude de la cadena de suministro, no del canal digital.",
+sc:["Cobros de una tarjeta que el titular nunca recibió","Activación registrada desde un número telefónico distinto al del titular","Entrega confirmada en una dirección que el cliente no reconoce","Concentración de casos en una misma zona o ruta de mensajería","Cambio de dirección de envío poco antes de la emisión"],
+sm:["Activaciones desde dispositivos o teléfonos no asociados al titular","Uso inmediato y agresivo del cupo tras la activación","Correlación de casos con un mismo operador logístico o ruta","Cambio de dirección de correspondencia seguido de solicitud de reposición","Primeras transacciones en comercios de alta liquidez o reventa"],
+ct:["Activación obligatoria desde la app del titular con biometría, nunca por IVR o SMS","Entrega con verificación de identidad y trazabilidad por unidad","Alerta al titular en el momento de despacho y de entrega","Auditoría periódica del operador logístico con muestreo","Emisión digital primero (tarjeta virtual) y plástico como respaldo"],
+rp:["Bloqueo del plástico y reverso de cargos no reconocidos","Investigación de la ruta logística y del punto de pérdida","Reposición por canal seguro con activación biométrica","Reporte al operador logístico y evaluación contractual","Consolidación de casos por zona para detectar el patrón"],
+tp:"Hurto (239) · Falsedad personal (296) · Hurto por medios informáticos (269I)",
+ds:"Casos reportados en la región durante ago-2026; en Colombia el control de la cadena de distribución es el punto crítico"},
+
+{n:"Débito no autorizado por falsa contratación",a:"Domiciliación fraudulenta · falsa venta a domicilio",sev:"Media",fase:"Post-transacción",canal:"Presencial / Telefónico",trend:"flat",
+mo:"Bajo el pretexto de una instalación gratuita, una promoción o una encuesta, se obtienen los datos bancarios del cliente y su firma o autorización verbal, que luego se usan para constituir débitos automáticos recurrentes o cargos únicos no consentidos. El cliente lo detecta semanas después, cuando el débito ya se ha repetido.",
+sc:["Ofertas de instalación o servicio gratuito que piden datos bancarios","Autorizaciones firmadas sin copia entregada al cliente","Débitos recurrentes de un comercio no reconocido","Cargos de bajo monto diseñados para pasar inadvertidos","Dificultad para cancelar la domiciliación con el comercio"],
+sm:["Comercios con alta tasa de desconocimiento de débitos recurrentes","Alta de mandatos de domiciliación en ráfaga desde un mismo comercio","Concentración geográfica de reclamos en una zona de venta puerta a puerta","Comercio de reciente vinculación con crecimiento anómalo de mandatos","Débitos de monto idéntico a muchos clientes sin relación"],
+ct:["Confirmación al cliente por canal propio antes de activar un mandato de domiciliación nuevo","Panel de débitos recurrentes visible y cancelable desde la app","Scoring de riesgo del comercio con umbral de desconocimientos","Retención de la evidencia de mandato exigible al comercio","Revisión reforzada en la vinculación de comercios de venta directa"],
+rp:["Cancelación del mandato y reverso de los débitos no autorizados","Exigencia de evidencia de mandato al comercio","Suspensión del comercio si supera el umbral de desconocimientos","Consolidación de reclamos por comercio para evaluar desvinculación","Reporte a la autoridad de protección al consumidor si hay patrón"],
+tp:"Estafa (246) · Falsedad en documento privado (289) · Violación de datos personales (269F)",
+ds:"Casos reportados durante ago-2026 asociados a ventas de servicios a domicilio"}
+];
+
+const list=document.getElementById('list'),cnt=document.getElementById('count'),q=document.getElementById('q');
+document.getElementById('total').textContent=D.length;
+let F={fase:'all',sev:'all'};
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function host(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return ''}}
+document.getElementById('radar').innerHTML=R.map(r=>`<div class="rcard">
+  <div class="rhead"><span class="rtag">${esc(r.tag)}</span><span class="rdate">${esc(r.fecha)}</span></div>
+  <h3>${esc(r.t)}</h3>
+  <p>${esc(r.d)}</p>
+  <div class="rfoot">
+    <div class="rver ${r.ver}">${esc(r.vlbl)}</div>
+    <div class="rlinks">${r.s.map(([t,u])=>
+      `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(t)} <span class="out">${esc(host(u))}</span></a>`).join('')}</div>
+  </div></div>`).join('');
+function blob(d){return (d.n+' '+d.a+' '+d.mo+' '+d.sc.join(' ')+' '+d.sm.join(' ')+' '+d.ct.join(' ')+' '+d.rp.join(' ')+' '+d.tp+' '+d.ds+' '+d.fase+' '+d.canal).toLowerCase()}
+
+function render(){
+  const t=q.value.trim().toLowerCase();
+  const r=D.filter(d=>(F.fase==='all'||d.fase===F.fase)&&(F.sev==='all'||d.sev===F.sev)&&(!t||blob(d).includes(t)));
+  cnt.textContent=r.length+' de '+D.length+' fichas';
+  if(!r.length){list.innerHTML='<div class="empty">Sin coincidencias. Prueba otro término o limpia los filtros.</div>';return}
+  list.innerHTML=r.map(d=>{
+    const i=D.indexOf(d)+1;
+    const sv=d.sev.toLowerCase().replace('í','i');
+    return `<div class="card"><div class="head">
+      <div class="num">${String(i).padStart(2,'0')}</div>
+      <div class="htxt"><div class="name">${esc(d.n)}</div><div class="alias">${esc(d.a)}</div></div>
+      <div class="tags">
+        <span class="trend ${d.trend}" title="${d.trend==='up'?'En aumento':'Estable'}">${d.trend==='up'?'▲':'▬'}</span>
+        <span class="tag">${esc(d.canal)}</span>
+        <span class="tag">${esc(d.fase)}</span>
+        <span class="sev ${sv}">${esc(d.sev)}</span>
+      </div>
+      <div class="caret">▸</div></div>
+      <div class="body">
+        <p class="mo">${esc(d.mo)}</p>
+        <div class="grid">
+          <div class="box"><h4>Señales de alerta — cliente</h4><ul>${d.sc.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></div>
+          <div class="box"><h4>Señales de monitoreo — entidad</h4><ul>${d.sm.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></div>
+        </div>
+        <div class="box" style="margin-top:14px"><h4>Controles asociados</h4><ul>${d.ct.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></div>
+        <div class="play"><h4>Respuesta recomendada</h4><ol>${d.rp.map(x=>'<li>'+esc(x)+'</li>').join('')}</ol></div>
+        <div class="foot"><span><b>Tipificación:</b> ${esc(d.tp)}</span><span><b>Dato:</b> ${esc(d.ds)}</span></div>
+      </div></div>`}).join('');
+  list.querySelectorAll('.head').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('open'));
+}
+q.oninput=render;
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  const f=c.dataset.f;
+  document.querySelectorAll('.chip[data-f="'+f+'"]').forEach(o=>o.classList.remove('on'));
+  c.classList.add('on');F[f]=c.dataset.v;render();
+});
+render();
+</script>
+</body>
+</html>
