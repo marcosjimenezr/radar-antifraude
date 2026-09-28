@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marcosjimenezr.github.io/radar-antifraude/sitemap.xml
