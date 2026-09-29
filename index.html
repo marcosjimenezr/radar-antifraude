@@ -275,7 +275,7 @@ a{color:inherit}
 .sev{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.06em;
   text-transform:uppercase;border:1px solid currentColor;border-radius:var(--radius);
   padding:3px 7px;white-space:nowrap}
-.sev.crit{color:var(--sev-critica);background:var(--sev-critica-soft)}
+.sev.crit,.sev.critica{color:var(--sev-critica);background:var(--sev-critica-soft)}
 .sev.alta{color:var(--sev-alta);background:var(--sev-alta-soft)}
 .sev.media{color:var(--sev-media);background:var(--sev-media-soft)}
 .caret{color:var(--ink-3);font-size:.8rem;flex:none;transition:transform .15s}
@@ -333,7 +333,7 @@ a{color:inherit}
     --rule:#bbb;--rule-strong:#888;--accent:#8e3f1e;--accent-soft:#fff;--accent-ink:#8e3f1e}
   html,body{background:#fff!important;color:#000!important;font-size:10.5pt;line-height:1.42}
   .wrap{max-width:none;padding:0}
-  .no-print,.tools,.controls,.caret{display:none!important}
+  .no-print,.tools,.controls,.caret,.verficha,.qbox,.count-line{display:none!important}
   .card .body{display:block!important}
   .radar,.pipe,.stats,.stats-lead,#list,.srcs{display:block;background:none;border:none}
   .rcard,.stat,.card,.srcs>div,.pstep{background:none;border-bottom:1px solid #bbb;padding:8pt 0}
@@ -345,17 +345,112 @@ a{color:inherit}
   .sec{break-before:page}
   .alerta{border:1pt solid #8e3f1e}
 }
+
+/* ── Controles visibles ─────────────────────────────────────────────────── */
+.ic{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round}
+#i-luna path{fill:currentColor;stroke:none}
+
+/* Acciones: icono + texto, borde marcado, area tactil amplia */
+.tbtn{display:inline-flex;align-items:center;gap:7px;min-height:38px;
+  font-family:var(--sans);font-size:.8rem;font-weight:600;color:var(--ink-2);
+  background:var(--panel);border:1px solid var(--rule-strong);border-radius:var(--radius);
+  padding:0 13px;cursor:pointer;
+  transition:color .12s,border-color .12s,background .12s}
+.tbtn:hover{color:var(--ink);background:var(--paper);border-color:var(--ink-3)}
+.tbtn:active{background:var(--panel)}
+.tbtn:focus-visible,.chip:focus-visible,.qclear:focus-visible,.head:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px}
+
+/* Buscador */
+.qbox{position:relative;display:flex;align-items:center}
+.qic{position:absolute;left:14px;width:16px;height:16px;fill:none;stroke:var(--ink-3);
+  stroke-width:1.6;stroke-linecap:round;pointer-events:none}
+#q{padding-left:40px;padding-right:44px;min-height:46px;
+  border-width:1.5px;transition:border-color .12s,box-shadow .12s}
+#q:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.qclear{position:absolute;right:8px;display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;color:var(--ink-3);background:none;border:0;border-radius:50%;cursor:pointer;
+  transition:color .12s,background .12s}
+.qclear:hover{color:var(--ink);background:var(--panel)}
+.qclear[hidden]{display:none}
+.count-line{margin:9px 0 0;font-size:.78rem}
+.count{margin-left:0;color:var(--ink-2);font-weight:600}
+
+/* Chips: se leen como interruptores, no como etiquetas */
+.chip{display:inline-flex;align-items:center;gap:5px;min-height:32px;
+  color:var(--ink-2);background:var(--panel);border:1px solid var(--rule-strong);
+  padding:0 11px;font-weight:600}
+.chip:hover{color:var(--ink);background:var(--paper);border-color:var(--ink-3)}
+.chip.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.chip .ck{width:0;height:12px;opacity:0;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;transition:width .12s,opacity .12s}
+.chip.on .ck{width:12px;opacity:1}
+
+/* Cabecera de ficha: el control mas importante del sitio */
+.head{position:relative}
+.head:hover .verficha,.head:focus-visible .verficha{color:var(--accent-ink);
+  border-color:var(--accent);background:var(--accent-soft)}
+.verficha{display:inline-flex;align-items:center;gap:8px;flex:none;
+  font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.02em;
+  color:var(--ink-2);background:var(--paper);
+  border:1px solid var(--rule-strong);border-radius:999px;
+  padding:5px 6px 5px 13px;white-space:nowrap;
+  transition:color .12s,border-color .12s,background .12s}
+.vf-ic{display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;background:var(--panel);
+  transition:background .12s}
+.head:hover .vf-ic,.head:focus-visible .vf-ic{background:#fff}
+.vf-ic svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.9;
+  stroke-linecap:round}
+.vf-ic .vv{transform-origin:8px 8px;transition:transform .16s,opacity .16s}
+.card.open .vf-ic .vv{transform:rotate(90deg);opacity:0}
+.card.open .verficha{color:var(--accent-ink);background:var(--accent-soft);
+  border-color:var(--accent)}
+
+/* Tags atenuados: si todo compite, nada resalta */
+.tag{color:var(--ink-3);border-color:var(--rule);font-weight:500;background:none}
+
+@media(max-width:720px){
+  /* La cabecera se apila: el titulo no compite con el boton */
+  .head{flex-wrap:wrap;row-gap:10px;column-gap:10px}
+  .head .num{order:1}
+  .head .htxt{order:2;flex:1 1 calc(100% - 5ch)}
+  .head .tags{order:3;flex:1 1 auto}
+  .head .verficha{order:4;margin-left:auto}
+  .tbtn{min-height:44px;padding:0 15px;font-size:.84rem}
+  .chip{min-height:38px;padding:0 13px;font-size:.78rem}
+  .qclear{width:38px;height:38px}
+  .verficha{padding:6px 6px 6px 12px}
+  .vf-ic{width:26px;height:26px}
+  .vf-ic svg{width:15px;height:15px}
+}
+
+:root[data-theme="dark"] .chip.on{color:#fff}
+:root[data-theme="dark"] .head:hover .vf-ic,
+:root[data-theme="dark"] .head:focus-visible .vf-ic{background:var(--paper)}
+
 </style>
 </head>
 <body>
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-buscar" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.6"/><line x1="10.4" y1="10.4" x2="14" y2="14"/></symbol>
+<symbol id="i-x" viewBox="0 0 16 16"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></symbol>
+<symbol id="i-check" viewBox="0 0 16 16"><polyline points="3,8.4 6.4,11.8 13,4.6"/></symbol>
+<symbol id="i-luna" viewBox="0 0 16 16"><path d="M13.2 9.6A5.6 5.6 0 0 1 6.4 2.8a5.6 5.6 0 1 0 6.8 6.8z"/></symbol>
+<symbol id="i-sol" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3.2"/><line x1="8" y1="1" x2="8" y2="2.6"/><line x1="8" y1="13.4" x2="8" y2="15"/><line x1="1" y1="8" x2="2.6" y2="8"/><line x1="13.4" y1="8" x2="15" y2="8"/><line x1="3.1" y1="3.1" x2="4.2" y2="4.2"/><line x1="11.8" y1="11.8" x2="12.9" y2="12.9"/><line x1="12.9" y1="3.1" x2="11.8" y2="4.2"/><line x1="4.2" y1="11.8" x2="3.1" y2="12.9"/></symbol>
+<symbol id="i-imprimir" viewBox="0 0 16 16"><path d="M4.5 6V2.2h7V6"/><path d="M4.5 12H2.6V6.6h10.8V12H11.5"/><rect x="4.5" y="9.6" width="7" height="4.2"/></symbol>
+</defs>
+</svg>
 <div class="wrap">
 
 <header class="top">
   <div class="topbar">
     <p class="kicker">Referencia operativa · Seguridad de clientes</p>
     <div class="tools no-print">
-      <button type="button" id="theme" class="tbtn">Modo oscuro</button>
-      <button type="button" id="print" class="tbtn">Imprimir</button>
+      <button type="button" id="theme" class="tbtn" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-luna"/></svg><span id="theme-txt">Modo oscuro</span></button>
+      <button type="button" id="print" class="tbtn"><svg class="ic" aria-hidden="true"><use href="#i-imprimir"/></svg><span>Imprimir</span></button>
     </div>
   </div>
   <h1>Base de Conocimiento Antifraude</h1>
@@ -511,31 +606,35 @@ a{color:inherit}
 </div>
 
 <div class="controls">
-  <input id="q" type="search" placeholder="Buscar modalidad, señal de alerta, control, artículo del código penal…" autocomplete="off">
+  <div class="qbox">
+    <svg class="qic" aria-hidden="true"><use href="#i-buscar"/></svg>
+    <input id="q" type="search" placeholder="Buscar modalidad, señal de alerta, control, artículo del código penal…" autocomplete="off" aria-label="Buscar en las 23 fichas">
+    <button type="button" id="qclear" class="qclear" aria-label="Limpiar la búsqueda" hidden><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <p class="count-line"><span class="count" id="count"></span></p>
   <div class="filters">
     <div class="fgroup">
       <span class="flabel">Fase</span>
-      <button class="chip on" data-f="fase" data-v="all">Todas</button>
-      <button class="chip" data-f="fase" data-v="Originación">Originación</button>
-      <button class="chip" data-f="fase" data-v="Autenticación">Autenticación</button>
-      <button class="chip" data-f="fase" data-v="Transacción">Transacción</button>
-      <button class="chip" data-f="fase" data-v="Post-transacción">Post-transacción</button>
+      <button class="chip on" type="button" data-f="fase" data-v="all" aria-pressed="true"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Todas</button>
+      <button class="chip" type="button" data-f="fase" data-v="Originación" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Originación</button>
+      <button class="chip" type="button" data-f="fase" data-v="Autenticación" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Autenticación</button>
+      <button class="chip" type="button" data-f="fase" data-v="Transacción" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Transacción</button>
+      <button class="chip" type="button" data-f="fase" data-v="Post-transacción" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Post-transacción</button>
     </div>
     <div class="sep"></div>
     <div class="fgroup">
       <span class="flabel">Severidad</span>
-      <button class="chip on" data-f="sev" data-v="all">Todas</button>
-      <button class="chip" data-f="sev" data-v="Crítica">Crítica</button>
-      <button class="chip" data-f="sev" data-v="Alta">Alta</button>
-      <button class="chip" data-f="sev" data-v="Media">Media</button>
+      <button class="chip on" type="button" data-f="sev" data-v="all" aria-pressed="true"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Todas</button>
+      <button class="chip" type="button" data-f="sev" data-v="Crítica" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Crítica</button>
+      <button class="chip" type="button" data-f="sev" data-v="Alta" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Alta</button>
+      <button class="chip" type="button" data-f="sev" data-v="Media" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Media</button>
     </div>
-    <span class="count" id="count"></span>
   </div>
 </div>
 
 <div id="list">
   <article class="card" data-fase="Autenticación" data-sev="Crítica" data-blob="vishing — falso asesor bancario llamada suplantando al banco · voice phishing el atacante llama haciéndose pasar por el área de seguridad o servicio al cliente de la entidad. menciona datos parciales reales del cliente (obtenidos de filtraciones o de la propia red social) para generar credibilidad, reporta una supuesta transacción no reconocida y pide al cliente 'confirmar su identidad' entregando el otp, la clave dinámica o el código de retiro sin tarjeta. suele preceder o acompañar una toma de cuenta en curso. llamada entrante que pide leer un código recibido por sms o app la entidad nunca solicita clave, token, otp ni código de retiro presión de urgencia: 'si no confirma ahora pierde el dinero' piden no colgar ni llamar a la línea oficial mientras 'se resuelve' ofrecen 'bloquear' la cuenta o 'trasladar' el dinero a una cuenta segura generación de otp seguida de intento de transferencia a beneficiario nuevo en &lt;5 min cambio de datos de contacto seguido inmediatamente de transacción alta pico de otp reenviados para un mismo cliente sesión activa desde dispositivo no reconocido mientras hay llamada entrante reportada concentración de beneficiarios nuevos que reciben de múltiples clientes no relacionados autenticación fuera de banda que no dependa de un código legible por voz (push con contexto de la transacción en app) cool-off de 24 h y límite reducido para el primer envío a beneficiario nuevo mostrar en el push el monto y el nombre del destinatario, no solo un código guion cero-otp: campaña permanente de 'nunca pedimos códigos' enriquecer scoring con señal de llamada en curso / apps de detección bloqueo inmediato de canales digitales y congelamiento de la sesión retención de la transferencia si sigue en ventana operativa; solicitud de reverso al banco destino reset de credenciales y re-enrolamiento del dispositivo con verificación reforzada reporte a la mesa de fraude y marcaje del beneficiario receptor en lista interna radicar denuncia y preservar evidencia de la llamada (número, hora, grabación si existe) hurto por medios informáticos (269i) · transferencia no consentida de activos (269j) · estafa (246) 25% de los casos con pérdida en colombia; mediana cop 5.801.306 (transunion, may-2026). estafas de ingeniería social +155% (biocatch, 2026). la clonación de voz con ia elimina las señales clásicas de guion y acento autenticación voz">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">01</div>
       <div class="htxt"><h3 class="name">Vishing — falso asesor bancario</h3><div class="alias">Llamada suplantando al banco · voice phishing</div></div>
       <div class="tags">
@@ -544,7 +643,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">El atacante llama haciéndose pasar por el área de seguridad o servicio al cliente de la entidad. Menciona datos parciales reales del cliente (obtenidos de filtraciones o de la propia red social) para generar credibilidad, reporta una supuesta transacción no reconocida y pide al cliente 'confirmar su identidad' entregando el OTP, la clave dinámica o el código de retiro sin tarjeta. Suele preceder o acompañar una toma de cuenta en curso.</p>
@@ -558,7 +657,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Crítica" data-blob="smishing con suplantación de bre-b sms falso de pagos inmediatos · llaves virtuales aprovechando la adopción reciente del sistema de pagos inmediatos, el atacante envía sms masivos notificando una consignación recibida que 'debe autorizar' o que 'será devuelta', o exigiendo registrar la llave a través de un enlace. bre-b no requiere autorización del receptor: la premisa misma es falsa. el enlace acortado lleva a un sitio clonado con suplantación visual de la entidad donde la víctima entrega credenciales y otp. sms no solicitado con enlace acortado piden 'autorizar', 'confirmar' o 'devolver' una transferencia recibida anuncian registro o actualización de llaves fuera de la app oficial el registro de llaves es gratuito y solo se hace en canales oficiales de la entidad lenguaje de urgencia con plazo de horas ráfagas de logins desde un mismo rango de ip o asn atípico tras campañas de sms dominios recién registrados que imitan la marca (monitoreo de typosquatting) múltiples clientes autenticándose desde un mismo device fingerprint alta tasa de fallos de login seguidos de éxito en ventana corta reclamos concentrados en las 24-48 h siguientes a un envío masivo monitoreo de marca y takedown acelerado de dominios clonados adopción de mensajería verificada y remitente autenticado; eliminar enlaces de los sms legítimos bloqueo de sesión ante referer/origen sospechoso y binding de otp a la sesión comunicación proactiva: 'nunca enviamos enlaces por sms' detección de suplantación visual mediante monitoreo de assets de la marca takedown del dominio y del acortador; reporte al csirt financiero y al operador de telefonía alerta masiva a clientes por canal oficial dentro de las primeras horas bloqueo preventivo de las cuentas que interactuaron con el dominio identificado marcaje y congelamiento de cuentas destino receptoras del flujo reporte a la sfc y a la policía / cai virtual suplantación de sitios web para capturar datos personales (269g) · hurto por medios informáticos (269i) alertas activas en colombia durante 2026; modus operandi documentado por kaspersky — el colombiano, 2026 autenticación sms">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">02</div>
       <div class="htxt"><h3 class="name">Smishing con suplantación de Bre-B</h3><div class="alias">SMS falso de pagos inmediatos · llaves virtuales</div></div>
       <div class="tags">
@@ -567,7 +666,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Aprovechando la adopción reciente del sistema de pagos inmediatos, el atacante envía SMS masivos notificando una consignación recibida que 'debe autorizar' o que 'será devuelta', o exigiendo registrar la llave a través de un enlace. Bre-B no requiere autorización del receptor: la premisa misma es falsa. El enlace acortado lleva a un sitio clonado con suplantación visual de la entidad donde la víctima entrega credenciales y OTP.</p>
@@ -581,7 +680,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Alta" data-blob="phishing con sitio clonado correo o web falsa · portal apócrifo correo o publicación con identidad visual de la entidad, un comercio o una plataforma, anunciando puntos por vencer, una devolución, un bloqueo de cuenta o una factura pendiente. el enlace conduce a un portal clonado que captura usuario, clave y otp en tiempo real (adversary-in-the-middle), permitiendo al atacante iniciar sesión legítima mientras la víctima cree estar autenticándose. dominio con caracteres cambiados o subdominio engañoso ofertas de premios, devoluciones o puntos no solicitados el correo pide iniciar sesión desde el enlace en lugar de la app errores de redacción o remitente que no coincide con el dominio oficial formularios que piden clave y otp en la misma pantalla login exitoso desde geolocalización o dispositivo inconsistente con el patrón del cliente tiempo entre emisión y uso del otp cercano a cero de forma sistemática reuso de un mismo user-agent en muchos clientes distintos transacciones inmediatamente posteriores al primer login desde nuevo dispositivo consultas de saldo masivas seguidas de transferencias autenticación resistente a phishing (fido2/passkeys) para clientes de alto valor dmarc en política de rechazo, spf y dkim alineados device binding y análisis de comportamiento en sesión step-up authentication ante cambio de dispositivo + transacción monitoreo de registro de dominios similares invalidar sesiones activas y forzar reautenticación takedown y notificación al registrador y al proveedor de hosting revisión retroactiva de transacciones de clientes expuestos comunicación segmentada a la base afectada compartir ioc con el sector vía canal gremial suplantación de sitios web (269g) · acceso abusivo a sistema informático (269a) · estafa (246) phishing entre las tres modalidades cibernéticas clasificadas oficialmente por la sfc, jun-2026 autenticación correo / web">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">03</div>
       <div class="htxt"><h3 class="name">Phishing con sitio clonado</h3><div class="alias">Correo o web falsa · portal apócrifo</div></div>
       <div class="tags">
@@ -590,7 +689,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Correo o publicación con identidad visual de la entidad, un comercio o una plataforma, anunciando puntos por vencer, una devolución, un bloqueo de cuenta o una factura pendiente. El enlace conduce a un portal clonado que captura usuario, clave y OTP en tiempo real (adversary-in-the-middle), permitiendo al atacante iniciar sesión legítima mientras la víctima cree estar autenticándose.</p>
@@ -604,7 +703,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Originación" data-sev="Crítica" data-blob="fraude de identidad en originación apertura de productos con identidad suplantada uso de documentos robados, alterados o de datos filtrados para abrir cuentas, solicitar créditos o vincular productos a nombre de un tercero real. la víctima descubre el fraude cuando aparece reportada en centrales de riesgo o recibe cobros. es la fase de mayor exposición: la tasa de fraude en creación de cuentas es un orden de magnitud superior a la de transacción. cliente que desconoce por completo un producto vinculado a su cédula datos de contacto que no corresponden a los históricos del titular solicitud desde ubicación muy distante del domicilio registrado documento con inconsistencias tipográficas o de material prisa por desembolsar y retirar de inmediato tasa de fraude en creación de cuentas de 7,2% frente a 0,3% en transacción — priorizar controles aguas arriba mismo dispositivo o número telefónico usado en múltiples solicitudes con identidades distintas correos con patrón secuencial o dominios desechables velocity: varias solicitudes de la misma ip en minutos desembolso seguido de retiro total en menos de 24 h verificación biométrica con prueba de vida activa y detección de presentación validación documental contra fuente oficial, no solo ocr consulta a centrales de riesgo y a listas negativas del sector análisis de device y de reputación telefónica en el punto de solicitud retención escalonada de fondos en cuentas de reciente apertura congelamiento del producto y bloqueo de desembolsos pendientes reversión del reporte en centrales de riesgo para la víctima suplantada recolección de evidencia biométrica y documental del solicitante denuncia penal y reporte a la unidad de análisis financiero si hay indicio de lavado alimentar el modelo con el caso y marcar dispositivo/teléfono en lista negativa falsedad personal (296) · falsedad en documento (287-289) · estafa (246) · violación de datos personales (269f) creación de cuentas 7,2% vs. inicio de sesión 3,5% vs. transacción 0,3% — transunion, may-2026 originación digital / presencial">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">04</div>
       <div class="htxt"><h3 class="name">Fraude de identidad en originación</h3><div class="alias">Apertura de productos con identidad suplantada</div></div>
       <div class="tags">
@@ -613,7 +712,7 @@ a{color:inherit}
         <span class="tag">Originación</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Uso de documentos robados, alterados o de datos filtrados para abrir cuentas, solicitar créditos o vincular productos a nombre de un tercero real. La víctima descubre el fraude cuando aparece reportada en centrales de riesgo o recibe cobros. Es la fase de mayor exposición: la tasa de fraude en creación de cuentas es un orden de magnitud superior a la de transacción.</p>
@@ -627,7 +726,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Originación" data-sev="Alta" data-blob="identidad sintética synthetic identity · frankenstein id construcción de un perfil que combina datos reales (a menudo de un tercero con poca huella crediticia) con datos falsos o generados, creando una identidad que no corresponde a ninguna persona pero que supera los controles de verificación. el perfil se 'cultiva' durante meses con comportamiento impecable para elevar cupos, y luego ejecuta un bust-out: consume todo el crédito disponible y desaparece. historial crediticio delgado que crece de forma anormalmente ordenada datos demográficos internamente inconsistentes (edad vs. antigüedad del documento) sin huella digital previa: no aparece en fuentes alternas de datos domicilio compartido con otras identidades sin relación aparente escalamiento rápido de cupo sin sustento de ingresos verificable clusters de identidades que comparten teléfono, dirección, dispositivo o cuenta destino comportamiento de pago demasiado perfecto en cliente nuevo uso simultáneo de varios productos hasta el tope justo antes del incumplimiento ausencia total de transaccionalidad orgánica (nómina, servicios, comercios cotidianos) correlación entre identidades por análisis de grafos análisis de grafo de entidades para detectar atributos compartidos verificación de existencia de la persona contra múltiples fuentes independientes, no una sola scoring de 'delgadez' de huella digital en originación revisión obligatoria antes de incrementos de cupo significativos monitoreo de patrones de bust-out suspensión inmediata de cupos y bloqueo de disposiciones análisis de grafo para identificar el resto del cluster antes de actuar cuantificación de exposición agregada del anillo reporte al sector por canal gremial revisión del control de originación que permitió el ingreso estafa agravada (246-267) · falsedad personal (296) · falsedad en documento privado (289) 48,3% de los casos de fraude de identidad en latam involucran ia — unico + liminal, jul-2026 originación digital">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">05</div>
       <div class="htxt"><h3 class="name">Identidad sintética</h3><div class="alias">Synthetic identity · Frankenstein ID</div></div>
       <div class="tags">
@@ -636,7 +735,7 @@ a{color:inherit}
         <span class="tag">Originación</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Construcción de un perfil que combina datos reales (a menudo de un tercero con poca huella crediticia) con datos falsos o generados, creando una identidad que no corresponde a ninguna persona pero que supera los controles de verificación. El perfil se 'cultiva' durante meses con comportamiento impecable para elevar cupos, y luego ejecuta un bust-out: consume todo el crédito disponible y desaparece.</p>
@@ -650,7 +749,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Crítica" data-blob="deepfake y clonación de voz suplantación biométrica con ia · injection attack uso de video o audio generado con ia para superar verificación biométrica, aprobar transacciones por canal telefónico o autorizar operaciones internas suplantando a un directivo. las técnicas van desde ataques básicos de presentación (foto impresa frente a la cámara) hasta inyección directa del stream de video, que evade la cámara del dispositivo por completo. micro-inconsistencias en parpadeo, sincronía labial o iluminación audio con prosodia plana o cortes en respiración solicitud urgente y confidencial de un 'directivo' saltándose el proceso rechazo a cambiar de canal o a una verificación adicional en vivo metadatos del stream inconsistentes con el hardware declarado detección de virtual camera o emulador en el dispositivo anomalías en el pipeline de captura: framerate perfecto, ausencia de ruido de sensor mismo rostro o embedding biométrico asociado a varias identidades reintentos de verificación con variaciones mínimas del mismo asset divergencia entre señal de liveness pasiva y activa liveness activo con retos aleatorios y detección de inyección, no solo de presentación verificación de integridad del canal de captura (anti-virtual-camera, attestation del dispositivo) doble control fuera de banda para operaciones de alto valor: la voz nunca es autorización suficiente política interna: ninguna orden de pago se ejecuta por videollamada sin confirmación por canal independiente monitoreo de proveedores de biometría con métricas de tasa de evasión detención de la operación y verificación por canal alterno confirmado preservación del asset (video/audio) para análisis forense revisión de todas las verificaciones aprobadas por el mismo vector en el periodo notificación a la mesa de fraude y al área de riesgo tecnológico actualizar reglas del motor biométrico y reentrenar el detector estafa (246) · falsedad personal (296) · transferencia no consentida de activos (269j) deepfakes y técnicas avanzadas: 23,3% de los ataques; complejidad media 45,8%; básicos 30,9% — unico + liminal, jul-2026 autenticación video / voz">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">06</div>
       <div class="htxt"><h3 class="name">Deepfake y clonación de voz</h3><div class="alias">Suplantación biométrica con IA · injection attack</div></div>
       <div class="tags">
@@ -659,7 +758,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Uso de video o audio generado con IA para superar verificación biométrica, aprobar transacciones por canal telefónico o autorizar operaciones internas suplantando a un directivo. Las técnicas van desde ataques básicos de presentación (foto impresa frente a la cámara) hasta inyección directa del stream de video, que evade la cámara del dispositivo por completo.</p>
@@ -673,7 +772,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Crítica" data-blob="toma de cuenta (ato) account takeover · secuestro de cuenta el atacante obtiene control de la cuenta digital del cliente mediante credenciales filtradas, phishing, malware, sim swap o ingeniería social. antes de transaccionar suele modificar datos de contacto, subir límites y desactivar alertas para retrasar la detección. la transferencia final va a cuentas mula que dispersan el dinero en minutos. cliente deja de recibir sms o llamadas (posible sim swap) notificaciones de cambio de correo, teléfono o clave no solicitadas cambios de límites transaccionales no reconocidos nuevos beneficiarios inscritos sin conocimiento cierre de sesión inesperado o imposibilidad de ingresar secuencia: nuevo dispositivo → cambio de contacto → alta de beneficiario → transferencia desactivación de alertas seguida de actividad transaccional login desde asn de vpn/proxy con historial de fraude cambio de comportamiento de navegación en sesión (velocidad, patrón de clics) coincidencia de credenciales con volcados de brechas conocidas regla de 'cadena de cambios': congelar transaccionalidad 24-48 h tras modificar datos sensibles alertas inmutables — no desactivables por el propio canal digital coordinación con operadores móviles para señal de cambio reciente de sim mfa resistente a phishing y device binding monitoreo continuo de credenciales expuestas de la base de clientes bloqueo de sesión, reset de credenciales y revocación de dispositivos confiables retención y solicitud de reverso sobre transferencias en ventana contacto con el cliente por canal verificado, nunca por el dato recién modificado marcaje de cuentas mula receptoras y reporte al sector reconstrucción de la línea de tiempo para determinar el vector de entrada acceso abusivo (269a) · hurto por medios informáticos (269i) · transferencia no consentida de activos (269j) tasa de fraude en inicio de sesión: 3,5% en colombia — transunion, may-2026 autenticación digital">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">07</div>
       <div class="htxt"><h3 class="name">Toma de cuenta (ATO)</h3><div class="alias">Account takeover · secuestro de cuenta</div></div>
       <div class="tags">
@@ -682,7 +781,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">El atacante obtiene control de la cuenta digital del cliente mediante credenciales filtradas, phishing, malware, SIM swap o ingeniería social. Antes de transaccionar suele modificar datos de contacto, subir límites y desactivar alertas para retrasar la detección. La transferencia final va a cuentas mula que dispersan el dinero en minutos.</p>
@@ -696,7 +795,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Alta" data-blob="malware bancario y apps de control remoto rat · troyano bancario · overlay se induce a la víctima a instalar una aplicación de 'soporte técnico', 'verificación' o de acceso remoto. el atacante observa la pantalla, captura credenciales mediante superposición de pantallas falsas (overlay) e incluso opera la banca desde el propio dispositivo de la víctima, lo que hace que la transacción parezca completamente legítima al motor de riesgo. instrucción de instalar una app para 'resolver' un problema o 'verificar' una inversión solicitud de permisos de accesibilidad o de proyección de pantalla dispositivo lento, con pantalla negra intermitente o comportamiento errático la persona en la llamada 've' lo que el cliente hace app instalada desde fuera de la tienda oficial detección de apps de acceso remoto o de servicios de accesibilidad activos durante la sesión bancaria transacción con device fingerprint legítimo pero con biometría conductual anómala (patrón de touch, giroscopio inactivo) root/jailbreak o instalación de fuentes desconocidas sesión con overlay detectado sobre la app latencia de interacción inconsistente con uso humano directo sdk de protección en app: detección de overlay, accesibilidad, screen sharing y emuladores bloqueo de la sesión bancaria si hay app de control remoto activa biometría conductual como segunda señal independiente del dispositivo educación específica: 'ninguna entidad pide instalar apps para resolver un problema' attestation de integridad de la app y del sistema operativo terminar la sesión y bloquear el dispositivo como confiable guiar al cliente en la desinstalación y en el restablecimiento del dispositivo reset completo de credenciales desde un dispositivo limpio análisis de la muestra de malware si se puede obtener; compartir ioc revisión de transacciones del periodo comprometido uso de software malicioso (269e) · acceso abusivo (269a) · hurto por medios informáticos (269i) instalación de apps de control remoto documentada como vector en fraudes de inversión — estudio penal, 2026 transacción móvil">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">08</div>
       <div class="htxt"><h3 class="name">Malware bancario y apps de control remoto</h3><div class="alias">RAT · troyano bancario · overlay</div></div>
       <div class="tags">
@@ -705,7 +804,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Se induce a la víctima a instalar una aplicación de 'soporte técnico', 'verificación' o de acceso remoto. El atacante observa la pantalla, captura credenciales mediante superposición de pantallas falsas (overlay) e incluso opera la banca desde el propio dispositivo de la víctima, lo que hace que la transacción parezca completamente legítima al motor de riesgo.</p>
@@ -719,7 +818,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Alta" data-blob="cambiazo sustitución de tarjeta · cambiazo en domicilio sustitución física de la tarjeta del cliente por otra similar, aprovechando distracción o 'ayuda' en cajeros y puntos de pago. ya no ocurre solo en cajeros: hay variantes con falsos empleados que visitan el domicilio para 'recoger la tarjeta bloqueada' o cambiarla, y con datáfonos alterados para cobros por aproximación. personas que ofrecen ayuda no solicitada en el cajero visita domiciliaria de un supuesto funcionario con carné para recoger o reemplazar la tarjeta la entidad no recoge tarjetas en el domicilio del cliente cajero con lector u objetos adosados cobros por aproximación no reconocidos de bajo monto retiros o compras inmediatamente después de un uso en cajero con anomalía reportada concentración geográfica de casos alrededor de un mismo dispositivo transacciones contactless de bajo monto en secuencia rápida uso de la tarjeta en corredores comerciales atípicos para el cliente correlación entre reclamaciones y horario/ubicación de un atm específico inspección periódica y antiskimming en el parque de cajeros alertas transaccionales en tiempo real con opción de bloqueo inmediato desde la app límite y reautenticación para contactless acumulado campaña de 'la entidad nunca va a su casa por su tarjeta' migración a tokenización y billeteras para reducir dependencia del plástico bloqueo y reexpedición inmediata de la tarjeta reverso de transacciones no reconocidas dentro de la política de contracargo inspección del cajero o punto involucrado y reporte de seguridad física compartir la ubicación comprometida con el sector denuncia y entrega de evidencia de video si está disponible hurto calificado (240) · hurto por medios informáticos (269i) · falsedad personal (296) modalidad clasificada oficialmente por la sfc (jun-2026); en expansión fuera del cajero — portafolio, 2026 transacción presencial">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">09</div>
       <div class="htxt"><h3 class="name">Cambiazo</h3><div class="alias">Sustitución de tarjeta · cambiazo en domicilio</div></div>
       <div class="tags">
@@ -728,7 +827,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Sustitución física de la tarjeta del cliente por otra similar, aprovechando distracción o 'ayuda' en cajeros y puntos de pago. Ya no ocurre solo en cajeros: hay variantes con falsos empleados que visitan el domicilio para 'recoger la tarjeta bloqueada' o cambiarla, y con datáfonos alterados para cobros por aproximación.</p>
@@ -742,7 +841,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Alta" data-blob="secuestro de cuentas de mensajería whatsapp hijacking · código de 6 dígitos el atacante solicita a la víctima el código de verificación de seis dígitos con un pretexto (encuesta, sorteo, 'me equivoqué de número'), toma control de la cuenta y desde ella pide dinero urgente a los contactos, explotando la confianza preexistente. variante: pedir que agregue un número desconocido a contactos para pasar filtros. alguien pide el código de verificación que acaba de llegar mensaje de un contacto conocido pidiendo dinero con urgencia y cambio de número se niega a hacer o recibir una llamada de voz o video cuenta cerrada de forma inesperada en el dispositivo del titular historia que impide verificar por otro canal ('estoy sin señal') cuentas destino que reciben pagos de múltiples remitentes no relacionados en poco tiempo transferencias por debajo de umbrales de alerta, repetidas nuevos beneficiarios que coinciden con cuentas ya marcadas por otros casos reclamaciones que describen el mismo guion cuentas de reciente apertura con alta rotación entrante-saliente verificación en dos pasos con pin en la app de mensajería (educación al cliente) alerta contextual en la app bancaria al inscribir beneficiarios nuevos modelo de detección de cuentas mula por patrón de flujo entrante-saliente campaña de 'verifique por llamada antes de enviar dinero' límites bajos por defecto para el primer envío a un beneficiario marcaje y congelamiento de la cuenta receptora identificada como mula solicitud de reverso mientras el dinero no haya sido dispersado notificación al resto de clientes que hayan transferido a la misma cuenta reporte a la plataforma de mensajería y a la autoridad alimentar la lista negativa compartida del sector acceso abusivo (269a) · violación de datos personales (269f) · estafa (246) modalidad recurrente reportada en colombia con tipificación establecida — estudio penal, 2026 autenticación mensajería">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">10</div>
       <div class="htxt"><h3 class="name">Secuestro de cuentas de mensajería</h3><div class="alias">WhatsApp hijacking · código de 6 dígitos</div></div>
       <div class="tags">
@@ -751,7 +850,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">El atacante solicita a la víctima el código de verificación de seis dígitos con un pretexto (encuesta, sorteo, 'me equivoqué de número'), toma control de la cuenta y desde ella pide dinero urgente a los contactos, explotando la confianza preexistente. Variante: pedir que agregue un número desconocido a contactos para pasar filtros.</p>
@@ -765,7 +864,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Alta" data-blob="estafa romántica e ingeniería social afectiva romance scam · pig butchering construcción acelerada de un vínculo afectivo con bombardeo de afecto, seguida de solicitudes de dinero por emergencias inventadas, viajes o 'inversiones conjuntas'. en la variante pig butchering el vínculo se usa para conducir a la víctima a una plataforma de inversión falsa. puede derivar en sextorsión si se obtuvieron imágenes íntimas. relación que avanza demasiado rápido sin encuentro presencial primera solicitud de dinero antes de conocerse excusas sistemáticas para no hacer videollamada propuesta de invertir juntos en una plataforma que la otra parte 'ya conoce' escalamiento de montos tras un primer retiro exitoso que genera confianza cliente con historial estable que inicia transferencias crecientes al exterior o a exchanges retiros de productos de ahorro o pensionales para transferir cambio abrupto de perfil transaccional en cliente maduro transferencias recurrentes a un mismo destino no comercial cliente que rechaza las advertencias del canal y confirma repetidamente fricción con propósito: pantalla de advertencia contextual ante transferencias a destinos de alto riesgo entrenamiento de la primera línea para detectar el guion en llamada modelo de detección de cambio de perfil transaccional (no solo monto absoluto) programa específico para clientes mayores de 60 años retención temporal en transferencias al exterior fuera de patrón contacto humano con el cliente antes de ejecutar, no solo alerta automática documentación del caso y acompañamiento para denuncia solicitud de reverso o congelamiento en el destino cuando aplique evaluación de vulnerabilidad del cliente y activación de protocolo de cliente en riesgo registro del destino en lista negativa estafa (246) · extorsión (244) si hay amenaza con material íntimo adultos mayores de 60 años en ee. uu. reportaron usd 7,7 b en pérdidas, +37% vs. 2024 — fbi ic3, 2026 transacción redes sociales">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">11</div>
       <div class="htxt"><h3 class="name">Estafa romántica e ingeniería social afectiva</h3><div class="alias">Romance scam · pig butchering</div></div>
       <div class="tags">
@@ -774,7 +873,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Construcción acelerada de un vínculo afectivo con bombardeo de afecto, seguida de solicitudes de dinero por emergencias inventadas, viajes o 'inversiones conjuntas'. En la variante pig butchering el vínculo se usa para conducir a la víctima a una plataforma de inversión falsa. Puede derivar en sextorsión si se obtuvieron imágenes íntimas.</p>
@@ -788,7 +887,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Crítica" data-blob="fraude de inversión y pirámides captación masiva · plataformas falsas · cripto plataformas con interfaz profesional prometen rentabilidades imposibles y muestran gráficas de ganancias fabricadas. los primeros retiros pequeños se pagan para generar confianza; luego se induce a aportes mayores y el retiro se bloquea con excusas de 'impuestos' o 'comisiones'. suele acompañarse de instalación de apps de control remoto y de captación sin autorización regulatoria. rentabilidades del 50-100% mensual o 'garantizadas' entidad no verificable en el registro de la superintendencia financiera presión para reinvertir en lugar de retirar cobro de un 'impuesto' o 'comisión' previo para liberar el retiro promoción vía referidos, influencers o grupos cerrados transferencias crecientes del cliente a exchanges o a cuentas de personas naturales múltiples clientes transfiriendo a un mismo destino no comercial cuentas receptoras con altísima rotación y dispersión inmediata retiro de productos de largo plazo para financiar aportes patrón de un retiro pequeño de vuelta seguido de aportes mucho mayores advertencia contextual ante transferencias a destinos asociados a esquemas reportados lista interna de destinos vinculados a captación no autorizada detección de cuentas receptoras con perfil de recolección coordinación con la sfc para alertas públicas educación financiera dirigida sobre rentabilidades imposibles congelamiento de la cuenta receptora bajo criterio de operación sospechosa reporte de operación sospechosa a la unidad de análisis financiero comunicación a los clientes con exposición identificada entrega de trazabilidad a las autoridades publicación de alerta preventiva coordinada con el gremio captación masiva y habitual de dineros (316) · estafa agravada (246-267) · lavado de activos (323) los esquemas de inversión concentraron ~49% de las pérdidas por estafa; usd 11 b en fraude cripto — fbi ic3, 2026 transacción digital">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">12</div>
       <div class="htxt"><h3 class="name">Fraude de inversión y pirámides</h3><div class="alias">Captación masiva · plataformas falsas · cripto</div></div>
       <div class="tags">
@@ -797,7 +896,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Plataformas con interfaz profesional prometen rentabilidades imposibles y muestran gráficas de ganancias fabricadas. Los primeros retiros pequeños se pagan para generar confianza; luego se induce a aportes mayores y el retiro se bloquea con excusas de 'impuestos' o 'comisiones'. Suele acompañarse de instalación de apps de control remoto y de captación sin autorización regulatoria.</p>
@@ -811,7 +910,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Alta" data-blob="suplantación de autoridad falsa citación judicial · falso ente de control correos con logos oficiales de fiscalía, juzgados, dian o policía anuncian citaciones, multas o procesos, adjuntando pdf o enlaces con software malicioso. la variante telefónica exige el pago inmediato de una multa o el traslado del dinero a una 'cuenta segura del estado' para evitar captura o embargo. correo de una autoridad solicitando datos personales o claves adjunto protegido con contraseña provisto en el mismo mensaje ninguna autoridad solicita claves, tokens ni traslados de dinero amenaza de captura o embargo con plazo inmediato instrucción de no comentar el caso con nadie malware detectado en endpoints de clientes empresariales tras campañas dirigidas transferencias urgentes a cuentas de personas naturales justificadas como 'trámite legal' cliente que retira efectivo en montos inusuales tras contacto telefónico correlación de reclamos con una misma campaña de correo cuenta destino con patrón de recolección filtrado avanzado de correo y sandboxing de adjuntos para clientes empresariales guion de primera línea ante 'trámite con autoridad' como bandera roja fricción y verificación humana en retiros de efectivo fuera de patrón campaña educativa con mensaje unificado del sector bloqueo de dominios suplantadores de entidades públicas detener la operación y verificar directamente con la autoridad involucrada aislar y analizar el endpoint si hubo ejecución de malware reporte al csirt y compartición de ioc acompañamiento al cliente en la denuncia revisión de la campaña para identificar el universo de expuestos uso de software malicioso (269e) · acceso abusivo (269a) · violación de datos personales (269f) · estafa (246) modalidad con tipificación múltiple documentada en colombia — estudio penal, 2026 autenticación correo / voz">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">13</div>
       <div class="htxt"><h3 class="name">Suplantación de autoridad</h3><div class="alias">Falsa citación judicial · falso ente de control</div></div>
       <div class="tags">
@@ -820,7 +919,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Correos con logos oficiales de fiscalía, juzgados, DIAN o policía anuncian citaciones, multas o procesos, adjuntando PDF o enlaces con software malicioso. La variante telefónica exige el pago inmediato de una multa o el traslado del dinero a una 'cuenta segura del Estado' para evitar captura o embargo.</p>
@@ -834,7 +933,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Media" data-blob="qr malicioso quishing · código qr alterado sustitución o superposición de códigos qr en espacios públicos, facturas, parquímetros o puntos de pago, redirigiendo a un portal de pago falso o a la descarga de una aplicación maliciosa. el vector aprovecha que el destino no es legible a simple vista y que el usuario no verifica el dominio antes de pagar. adhesivo de qr pegado sobre otro código el qr lleva a un dominio distinto del comercio solicitud de datos de tarjeta en una página sin identidad del comercio monto o beneficiario que no coincide con lo esperado qr en correo o factura no solicitada pagos a comercios con dominio recién registrado concentración de reclamos ligados a una misma ubicación física transacciones de e-commerce con patrón de captura de tarjeta y uso posterior en otro país comercios con alto índice de contracargos y baja antigüedad uso de la misma pasarela por múltiples comercios sospechosos qr dinámico y validado en canales propios de la entidad vista previa del beneficiario y monto antes de confirmar el pago en la app educación sobre verificar el dominio y el nombre del beneficiario monitoreo de comercios adquiridos con señales de riesgo sellos de seguridad en qr físicos de la red propia bloqueo del comercio o del destino identificado reverso o contracargo según la política aplicable reporte al administrador del espacio físico afectado alerta pública sobre la ubicación comprometida compartir el dominio malicioso como ioc suplantación de sitios web (269g) · hurto por medios informáticos (269i) · uso de software malicioso (269e) códigos qr alterados en espacios públicos identificados como vector activo en 2026 — estudio penal transacción presencial / digital">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">14</div>
       <div class="htxt"><h3 class="name">QR malicioso</h3><div class="alias">Quishing · código QR alterado</div></div>
       <div class="tags">
@@ -843,7 +942,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev media">Media</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Sustitución o superposición de códigos QR en espacios públicos, facturas, parquímetros o puntos de pago, redirigiendo a un portal de pago falso o a la descarga de una aplicación maliciosa. El vector aprovecha que el destino no es legible a simple vista y que el usuario no verifica el dominio antes de pagar.</p>
@@ -857,7 +956,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Crítica" data-blob="fraude autorizado por el cliente (app) authorised push payment · pago inducido el cliente autoriza voluntariamente la transferencia, engañado sobre el destinatario o el propósito: pago a un proveedor cuya factura fue interceptada y alterada, compra de un bien inexistente, o traslado a una 'cuenta segura'. la transacción es técnicamente legítima —autenticación correcta, dispositivo conocido— lo que la hace invisible para controles centrados en la identidad. la irrevocabilidad de los pagos inmediatos elimina la ventana de recuperación. cambio de última hora en los datos bancarios de un proveedor conocido presión para pagar de inmediato por fuera del proceso habitual destinatario persona natural en una operación que debería ser empresarial precio muy por debajo del mercado el cliente no puede explicar con claridad a quién le paga primera transferencia a un beneficiario nuevo por monto atípicamente alto confirmación repetida y rápida de advertencias por parte del cliente (patrón de coaching) beneficiario que recibe de múltiples pagadores sin relación transferencia inmediatamente posterior a una llamada entrante prolongada cuenta destino abierta en los últimos 30 días confirmación de nombre del beneficiario (confirmation of payee) antes de ejecutar fricción escalonada: advertencia específica al motivo declarado, no genérica retención de 24 h para el primer pago a beneficiario nuevo por encima de un umbral modelo de detección de cuentas mula del lado receptor, no solo del pagador acuerdos interbancarios de congelamiento rápido y devolución solicitud inmediata de congelamiento al banco receptor — el margen es de minutos trazado de la dispersión hacia cuentas de segundo y tercer nivel evaluación de reembolso según política y grado de manipulación de la víctima marcaje de la cuenta mula y reporte al sector analizar el guion usado para reforzar la advertencia contextual estafa (246) · estafa agravada en delito masa (246-267) · lavado de activos (323) para la red de mulas el dinero suele retirarse en cuestión de horas — la ventana de recuperación es el factor crítico transacción pagos inmediatos">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">15</div>
       <div class="htxt"><h3 class="name">Fraude autorizado por el cliente (APP)</h3><div class="alias">Authorised push payment · pago inducido</div></div>
       <div class="tags">
@@ -866,7 +965,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">El cliente autoriza voluntariamente la transferencia, engañado sobre el destinatario o el propósito: pago a un proveedor cuya factura fue interceptada y alterada, compra de un bien inexistente, o traslado a una 'cuenta segura'. La transacción es técnicamente legítima —autenticación correcta, dispositivo conocido— lo que la hace invisible para controles centrados en la identidad. La irrevocabilidad de los pagos inmediatos elimina la ventana de recuperación.</p>
@@ -880,7 +979,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Media" data-blob="falsas oportunidades comerciales arriendos, empleo y marketplace fraudulentos sociedades fachada o perfiles falsos ofrecen arriendos a precios muy por debajo del mercado, vehículos o propiedades sobre las que no tienen disposición, u ofertas de empleo que exigen un pago previo por 'examen', 'dotación' o 'reserva'. el pago se solicita por transferencia directa, fuera de cualquier plataforma con protección. precio notablemente por debajo del mercado fotos genéricas o tomadas de otros anuncios imposibilidad de visitar el inmueble o ver el bien exigencia de pago anticipado para 'reservar' empresa sin presencia verificable en registro mercantil cuentas de personas naturales recibiendo múltiples pagos de igual monto cuentas de reciente apertura con alta rotación y retiro inmediato concentración de reclamaciones señalando a un mismo titular uso de la cuenta exclusivamente para recepción y retiro correlación con anuncios reportados en plataformas detección de cuentas con perfil de recolección en el lado receptor advertencia contextual en transferencias con concepto de 'arriendo' o 'reserva' educación sobre no pagar por fuera de plataformas con protección cooperación con marketplaces para intercambio de señales límites por defecto en cuentas nuevas congelamiento de la cuenta receptora y retención de saldo disponible consolidación de reclamos para dimensionar el delito masa reporte a la autoridad y al marketplace notificación al resto de afectados identificados bloqueo del titular para apertura de nuevos productos estafa agravada en modalidad de delito masa (246-267) · falsedad en documento privado (289) modalidad con alta frecuencia y bajo ticket individual, pero volumen agregado relevante — estudio penal, 2026 transacción marketplace">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">16</div>
       <div class="htxt"><h3 class="name">Falsas oportunidades comerciales</h3><div class="alias">Arriendos, empleo y marketplace fraudulentos</div></div>
       <div class="tags">
@@ -889,7 +988,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev media">Media</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Sociedades fachada o perfiles falsos ofrecen arriendos a precios muy por debajo del mercado, vehículos o propiedades sobre las que no tienen disposición, u ofertas de empleo que exigen un pago previo por 'examen', 'dotación' o 'reserva'. El pago se solicita por transferencia directa, fuera de cualquier plataforma con protección.</p>
@@ -903,7 +1002,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Post-transacción" data-sev="Media" data-blob="fraude amigable y contracargos friendly fraud · first-party fraud el titular legítimo desconoce una compra que sí realizó, para obtener el reembolso conservando el bien o servicio. va desde el desconocimiento genuino por descripción confusa en el extracto, hasta el abuso deliberado y recurrente del mecanismo de contracargo. es la única modalidad de la lista donde el defraudador es el propio cliente. desconocimiento de compras entregadas y con evidencia de uso historial de contracargos recurrente del mismo titular desconocimiento parcial de un pedido con varios ítems reclamo presentado en el límite del plazo compra con autenticación fuerte completada y dispositivo habitual ratio de contracargos por cliente muy por encima del promedio del segmento desconocimientos concentrados en categorías digitales o de consumo inmediato coincidencia entre ip de compra e ip habitual del cliente reclamo posterior a evidencia de entrega y uso confirmados patrón estacional en un mismo titular 3-d secure con autenticación fuerte y retención de evidencia probatoria descriptores de extracto claros que identifiquen al comercio real scoring de propensión a contracargo abusivo por titular retención estructurada de evidencia de entrega y uso reglas diferenciadas por categoría de comercio análisis probatorio antes de reembolsar: autenticación, entrega, uso representment ante la franquicia con evidencia consolidada marcaje del titular en modelo de reincidencia revisión de descriptores si el desconocimiento fue genuino escalamiento a investigación si hay patrón deliberado estafa (246) cuando hay dolo comprobado; en la mayoría de casos se gestiona por vía contractual y de franquicia fraude amigable incluido en la clasificación oficial de modalidades de la sfc, jun-2026 post-transacción e-commerce">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">17</div>
       <div class="htxt"><h3 class="name">Fraude amigable y contracargos</h3><div class="alias">Friendly fraud · first-party fraud</div></div>
       <div class="tags">
@@ -912,7 +1011,7 @@ a{color:inherit}
         <span class="tag">Post-transacción</span>
         <span class="sev media">Media</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">El titular legítimo desconoce una compra que sí realizó, para obtener el reembolso conservando el bien o servicio. Va desde el desconocimiento genuino por descripción confusa en el extracto, hasta el abuso deliberado y recurrente del mecanismo de contracargo. Es la única modalidad de la lista donde el defraudador es el propio cliente.</p>
@@ -926,7 +1025,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Originación" data-sev="Alta" data-blob="préstamo falso con cobro anticipado gota a gota digital · crédito fantasma se ofrece un crédito de aprobación inmediata sin estudio, dirigido a personas con acceso limitado al sistema financiero. se exige un pago anticipado por 'estudio', 'seguro' o 'garantía' que nunca se devuelve y el crédito nunca se desembolsa. en la variante de gota a gota digital sí hay desembolso, pero con tasas usurarias, acceso abusivo a los contactos del teléfono y cobro mediante extorsión y difamación. aprobación sin ningún estudio de crédito exigencia de pago previo al desembolso oferta por whatsapp o redes, no por canal formal entidad no registrada ante la superintendencia financiera app que exige acceso a contactos, galería y ubicación cliente que transfiere montos pequeños a personas naturales antes de solicitar un crédito formal múltiples clientes de segmentos vulnerables transfiriendo a un mismo destino cuentas receptoras con alto volumen de créditos pequeños y retiro inmediato patrón de pagos periódicos de igual monto a una persona natural reclamos con el mismo guion de 'estudio de crédito' advertencia contextual en transferencias con concepto de préstamo o estudio de crédito detección de cuentas receptoras con patrón de recaudo de gota a gota educación dirigida a segmentos de baja bancarización coordinación con la sfc sobre entidades no autorizadas oferta de producto formal como alternativa en el momento de la alerta congelamiento de la cuenta receptora y reporte de operación sospechosa derivación del cliente a canales de denuncia y a protección si hay extorsión consolidación de casos para dimensionar la red reporte a autoridad por captación no autorizada y usura alerta pública sobre la modalidad estafa (246) · usura (305) · extorsión (244) · captación masiva y habitual (316) modalidad de alto impacto social en segmentos vulnerables; expansión digital documentada en colombia originación digital / mensajería">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">18</div>
       <div class="htxt"><h3 class="name">Préstamo falso con cobro anticipado</h3><div class="alias">Gota a gota digital · crédito fantasma</div></div>
       <div class="tags">
@@ -935,7 +1034,7 @@ a{color:inherit}
         <span class="tag">Originación</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Se ofrece un crédito de aprobación inmediata sin estudio, dirigido a personas con acceso limitado al sistema financiero. Se exige un pago anticipado por 'estudio', 'seguro' o 'garantía' que nunca se devuelve y el crédito nunca se desembolsa. En la variante de gota a gota digital sí hay desembolso, pero con tasas usurarias, acceso abusivo a los contactos del teléfono y cobro mediante extorsión y difamación.</p>
@@ -949,7 +1048,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Autenticación" data-sev="Crítica" data-blob="vishing corporativo con clonación de voz ataque al service desk · fraude interno inducido el objetivo deja de ser el cliente y pasa a ser el empleado. el atacante clona con ia la voz de un directivo o de un colega y llama a la mesa de ayuda, a tesorería o a un analista para obtener un restablecimiento de credenciales, la inscripción de un nuevo dispositivo mfa o la ejecución de un pago. durante 2026 grandes gestoras de wall street sufrieron una oleada de este vector, acompañada de extorsión telefónica dirigida a firmas financieras. llamada de un 'directivo' con urgencia y petición de saltarse el proceso solicitud de reset de mfa o de alta de dispositivo por teléfono presión jerárquica y exigencia de confidencialidad contacto fuera de horario o en periodo de vacaciones del suplantado negativa a validar por el canal corporativo habitual resets de mfa fuera del flujo estándar o con justificación verbal alta de dispositivo desde geolocalización inconsistente con el empleado accesos privilegiados inmediatamente posteriores a una llamada al service desk pagos manuales que rompen el circuito de aprobación dual picos de llamadas entrantes a la mesa de ayuda con guion repetido prohibir el reset de credenciales por vía telefónica sin verificación fuera de banda independiente palabra clave o token de verificación interno para solicitudes de alta sensibilidad doble control obligatorio e inviolable para pagos y para cambios de mfa entrenamiento del service desk con simulacros de voz clonada registro y grabación de toda solicitud de excepción, con revisión posterior congelar la cuenta afectada y revocar los dispositivos mfa recién inscritos verificar con el directivo suplantado por canal presencial o videollamada confirmada revisar toda la actividad privilegiada de la ventana comprometida activar el protocolo de incidente y notificar al comité de crisis preservar la grabación para análisis forense y para el entrenamiento del detector acceso abusivo a sistema informático (269a) · estafa (246) · extorsión (244) si hay amenaza oleada documentada contra gestoras de wall street; extorsión telefónica a firmas financieras reportada por google — ago 2026 autenticación voz / interno">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">19</div>
       <div class="htxt"><h3 class="name">Vishing corporativo con clonación de voz</h3><div class="alias">Ataque al service desk · fraude interno inducido</div></div>
       <div class="tags">
@@ -958,7 +1057,7 @@ a{color:inherit}
         <span class="tag">Autenticación</span>
         <span class="sev critica">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">El objetivo deja de ser el cliente y pasa a ser el empleado. El atacante clona con IA la voz de un directivo o de un colega y llama a la mesa de ayuda, a tesorería o a un analista para obtener un restablecimiento de credenciales, la inscripción de un nuevo dispositivo MFA o la ejecución de un pago. Durante 2026 grandes gestoras de Wall Street sufrieron una oleada de este vector, acompañada de extorsión telefónica dirigida a firmas financieras.</p>
@@ -972,7 +1071,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Alta" data-blob="task scam falsas ofertas de trabajo por tareas · estafa de recargas reclutamiento por mensajería o redes con la promesa de ingresos por microtareas simples (dar 'me gusta', calificar productos, completar pedidos). las primeras comisiones se pagan de verdad para construir confianza. luego se exige 'recargar' saldo propio para desbloquear tareas de mayor valor, y el retiro queda bloqueado tras excusas escalonadas. combina fraude de inversión con reclutamiento laboral. oferta laboral no solicitada por whatsapp o telegram ingresos prometidos desproporcionados frente al esfuerzo exigencia de recargar dinero propio para 'liberar' comisiones retiro bloqueado con excusas de impuestos o niveles empresa sin registro verificable ni contrato formal transferencias pequeñas y crecientes del cliente a personas naturales o exchanges cliente que recibe primero pequeños ingresos y luego revierte a envíos mayores múltiples clientes remitiendo al mismo destino sin relación entre sí perfil de víctima: búsqueda de ingreso adicional, alta frecuencia de operaciones pequeñas cuentas receptoras con dispersión inmediata hacia cripto advertencia contextual ante transferencias con concepto de trabajo, comisión o recarga detección del patrón cebo-inversión (ingreso pequeño seguido de envíos crecientes) lista interna de destinos ligados a esquemas reportados educación dirigida a segmentos jóvenes y a buscadores de empleo límites por defecto en cuentas receptoras de reciente apertura congelamiento de la cuenta receptora y reporte de operación sospechosa consolidación de casos para dimensionar la red y el delito masa comunicación al cliente antes de que escale el monto, no después reporte a la plataforma de mensajería y a la autoridad alerta preventiva pública sobre la modalidad estafa agravada en delito masa (246-267) · captación masiva y habitual (316) · lavado de activos (323) modalidad emergente identificada en el monitoreo de prensa latam — ago 2026 transacción mensajería">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">20</div>
       <div class="htxt"><h3 class="name">Task scam</h3><div class="alias">Falsas ofertas de trabajo por tareas · estafa de recargas</div></div>
       <div class="tags">
@@ -981,7 +1080,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev alta">Alta</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Reclutamiento por mensajería o redes con la promesa de ingresos por microtareas simples (dar 'me gusta', calificar productos, completar pedidos). Las primeras comisiones se pagan de verdad para construir confianza. Luego se exige 'recargar' saldo propio para desbloquear tareas de mayor valor, y el retiro queda bloqueado tras excusas escalonadas. Combina fraude de inversión con reclutamiento laboral.</p>
@@ -995,7 +1094,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Originación" data-sev="Media" data-blob="interceptación de plásticos en distribución tarjetas activadas que nunca llegaron la tarjeta emitida es interceptada en la cadena de distribución —mensajería, portería, buzón— y activada por un tercero que ya cuenta con datos del titular obtenidos por otra vía. el titular descubre el fraude al recibir cobros de un plástico que nunca tuvo en sus manos. es un fraude de la cadena de suministro, no del canal digital. cobros de una tarjeta que el titular nunca recibió activación registrada desde un número telefónico distinto al del titular entrega confirmada en una dirección que el cliente no reconoce concentración de casos en una misma zona o ruta de mensajería cambio de dirección de envío poco antes de la emisión activaciones desde dispositivos o teléfonos no asociados al titular uso inmediato y agresivo del cupo tras la activación correlación de casos con un mismo operador logístico o ruta cambio de dirección de correspondencia seguido de solicitud de reposición primeras transacciones en comercios de alta liquidez o reventa activación obligatoria desde la app del titular con biometría, nunca por ivr o sms entrega con verificación de identidad y trazabilidad por unidad alerta al titular en el momento de despacho y de entrega auditoría periódica del operador logístico con muestreo emisión digital primero (tarjeta virtual) y plástico como respaldo bloqueo del plástico y reverso de cargos no reconocidos investigación de la ruta logística y del punto de pérdida reposición por canal seguro con activación biométrica reporte al operador logístico y evaluación contractual consolidación de casos por zona para detectar el patrón hurto (239) · falsedad personal (296) · hurto por medios informáticos (269i) casos reportados en la región durante ago-2026; en colombia el control de la cadena de distribución es el punto crítico originación logística">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">21</div>
       <div class="htxt"><h3 class="name">Interceptación de plásticos en distribución</h3><div class="alias">Tarjetas activadas que nunca llegaron</div></div>
       <div class="tags">
@@ -1004,7 +1103,7 @@ a{color:inherit}
         <span class="tag">Originación</span>
         <span class="sev media">Media</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">La tarjeta emitida es interceptada en la cadena de distribución —mensajería, portería, buzón— y activada por un tercero que ya cuenta con datos del titular obtenidos por otra vía. El titular descubre el fraude al recibir cobros de un plástico que nunca tuvo en sus manos. Es un fraude de la cadena de suministro, no del canal digital.</p>
@@ -1018,7 +1117,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Post-transacción" data-sev="Media" data-blob="débito no autorizado por falsa contratación domiciliación fraudulenta · falsa venta a domicilio bajo el pretexto de una instalación gratuita, una promoción o una encuesta, se obtienen los datos bancarios del cliente y su firma o autorización verbal, que luego se usan para constituir débitos automáticos recurrentes o cargos únicos no consentidos. el cliente lo detecta semanas después, cuando el débito ya se ha repetido. ofertas de instalación o servicio gratuito que piden datos bancarios autorizaciones firmadas sin copia entregada al cliente débitos recurrentes de un comercio no reconocido cargos de bajo monto diseñados para pasar inadvertidos dificultad para cancelar la domiciliación con el comercio comercios con alta tasa de desconocimiento de débitos recurrentes alta de mandatos de domiciliación en ráfaga desde un mismo comercio concentración geográfica de reclamos en una zona de venta puerta a puerta comercio de reciente vinculación con crecimiento anómalo de mandatos débitos de monto idéntico a muchos clientes sin relación confirmación al cliente por canal propio antes de activar un mandato de domiciliación nuevo panel de débitos recurrentes visible y cancelable desde la app scoring de riesgo del comercio con umbral de desconocimientos retención de la evidencia de mandato exigible al comercio revisión reforzada en la vinculación de comercios de venta directa cancelación del mandato y reverso de los débitos no autorizados exigencia de evidencia de mandato al comercio suspensión del comercio si supera el umbral de desconocimientos consolidación de reclamos por comercio para evaluar desvinculación reporte a la autoridad de protección al consumidor si hay patrón estafa (246) · falsedad en documento privado (289) · violación de datos personales (269f) casos reportados durante ago-2026 asociados a ventas de servicios a domicilio post-transacción presencial / telefónico">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">22</div>
       <div class="htxt"><h3 class="name">Débito no autorizado por falsa contratación</h3><div class="alias">Domiciliación fraudulenta · falsa venta a domicilio</div></div>
       <div class="tags">
@@ -1027,7 +1126,7 @@ a{color:inherit}
         <span class="tag">Post-transacción</span>
         <span class="sev media">Media</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">Bajo el pretexto de una instalación gratuita, una promoción o una encuesta, se obtienen los datos bancarios del cliente y su firma o autorización verbal, que luego se usan para constituir débitos automáticos recurrentes o cargos únicos no consentidos. El cliente lo detecta semanas después, cuando el débito ya se ha repetido.</p>
@@ -1041,7 +1140,7 @@ a{color:inherit}
     </div>
   </article>
   <article class="card" data-fase="Transacción" data-sev="Crítica" data-blob="cuenta mula y red de recepción mulero · money mule · cuenta receptora · dispersión la cuenta mula es el eslabón que convierte el fraude en dinero disponible. el defraudador no retira desde la cuenta de la víctima: la transfiere a cuentas de terceros — reclutados con falsas ofertas de trabajo desde casa o de gestor de cobros, o titulares de identidades sintéticas — que dispersan el saldo en minutos hacia otras cuentas, efectivo o cripto. la ia automatiza el reclutamiento en varios idiomas y genera la documentación de apertura, y la proyección del sector es que agentes autónomos construyan identidades completas sin mulero humano. con pagos inmediatos la ventana de retención se mide en minutos, no en días. le ofrecen dinero por recibir y reenviar transferencias con su cuenta le piden abrir una cuenta o prestar la suya para un 'trabajo' de gestor de cobros la oferta laboral no exige experiencia y paga por operación, no por tiempo le piden entregar clave, token o tarjeta débito a un tercero recibe consignaciones de personas que no conoce y le indican reenviarlas de inmediato cuenta recién abierta que recibe abonos de múltiples terceros sin relación entre sí saldo que entra y sale casi íntegro en cuestión de minutos (cuenta de paso) aperturas masivas con señales de automatización: mismo device fingerprint, tiempos de diligenciamiento no humanos, rangos de ip comunes perfil transaccional inconsistente con el ingreso declarado en la vinculación destino común al que convergen víctimas de distintas modalidades y distintas entidades scoring de riesgo en originación con detección de bots y de identidad sintética, no solo validación documental límites y periodo de maduración para cuentas nuevas antes de habilitar recepción y dispersión plena reglas de cuenta de paso: alerta por ratio entrada/salida y permanencia media del saldo verificación de coincidencia entre nombre del beneficiario y titular de la cuenta destino antes de confirmar el pago canal de intercambio interbancario de cuentas señaladas, con trazabilidad del señalamiento congelamiento inmediato del saldo remanente y bloqueo de dispersión solicitud de retención a las entidades de segundo salto dentro de la ventana útil reporte de operación sospechosa a la uiaf y denuncia ante la autoridad análisis de red para identificar el conjunto de cuentas vinculadas, no el caso aislado preservación de la evidencia técnica de originación de la cuenta receptora para acreditar diligencia bajo la ley 2573 lavado de activos (323) · receptación (447) · concierto para delinquir (340) · omisión de control para el sujeto obligado (325) · transferencia no consentida de activos (269j) operación de julio de 2026: 67 personas abrieron más de 800 cuentas para una red que defraudó unos 140 millones de euros; cifas reportó más de 22.000 casos de mulas en 2025 — confilegal, sep-2026 transacción cuenta receptora">
-    <div class="head">
+    <div class="head" role="button" tabindex="0" aria-expanded="false">
       <div class="num">23</div>
       <div class="htxt"><h3 class="name">Cuenta mula y red de recepción</h3><div class="alias">Mulero · money mule · cuenta receptora · dispersión</div></div>
       <div class="tags">
@@ -1050,7 +1149,7 @@ a{color:inherit}
         <span class="tag">Transacción</span>
         <span class="sev crit">Crítica</span>
       </div>
-      <div class="caret">▸</div>
+      <div class="verficha"><span class="vf-txt">Ver ficha</span><span class="vf-ic"><svg viewBox="0 0 16 16" aria-hidden="true"><line class="vh" x1="3.4" y1="8" x2="12.6" y2="8"/><line class="vv" x1="8" y1="3.4" x2="8" y2="12.6"/></svg></span></div>
     </div>
     <div class="body">
       <p class="mo">La cuenta mula es el eslabón que convierte el fraude en dinero disponible. El defraudador no retira desde la cuenta de la víctima: la transfiere a cuentas de terceros — reclutados con falsas ofertas de trabajo desde casa o de gestor de cobros, o titulares de identidades sintéticas — que dispersan el saldo en minutos hacia otras cuentas, efectivo o cripto. La IA automatiza el reclutamiento en varios idiomas y genera la documentación de apertura, y la proyección del sector es que agentes autónomos construyan identidades completas sin mulero humano. Con pagos inmediatos la ventana de retención se mide en minutos, no en días.</p>
@@ -1133,8 +1232,7 @@ a{color:inherit}
   validados para ningún entorno operativo. Su lectura no sustituye el análisis de riesgo, la
   normativa vigente ni las políticas de la organización que lo consulte.</p>
   <p>Las cifras se atribuyen a su fuente y año. El semáforo de trazabilidad del radar indica el
-  grado de verificación de cada señal. Si detecta un error o una cifra desactualizada, la
-  corrección es bienvenida a través del repositorio.</p>
+  grado de verificación de cada señal.</p>
   <p class="pie-fecha">Última actualización: 28 de septiembre de 2026 · Contenido en español ·
   Uso libre con cita de la fuente original</p>
 </footer>
@@ -1158,16 +1256,34 @@ function render(){
 q.addEventListener('input',render);
 document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
   const f=c.dataset.f;
-  document.querySelectorAll('.chip[data-f="'+f+'"]').forEach(function(o){o.classList.remove('on')});
-  c.classList.add('on');F[f]=c.dataset.v;render();
+  document.querySelectorAll('.chip[data-f="'+f+'"]').forEach(function(o){
+    o.classList.remove('on');o.setAttribute('aria-pressed','false');});
+  c.classList.add('on');c.setAttribute('aria-pressed','true');F[f]=c.dataset.v;render();
 })});
+var qc=document.getElementById('qclear');
+function pintarClear(){qc.hidden=!q.value;}
+q.addEventListener('input',pintarClear);
+qc.addEventListener('click',function(){q.value='';pintarClear();render();q.focus();});
+pintarClear();
+function abrir(hd){
+  var art=hd.parentElement,ab=art.classList.toggle('open');
+  hd.setAttribute('aria-expanded',ab?'true':'false');
+  var t=hd.querySelector('.vf-txt');if(t)t.textContent=ab?'Cerrar ficha':'Ver ficha';
+}
 document.querySelectorAll('#list .head').forEach(function(hd){
-  hd.addEventListener('click',function(){hd.parentElement.classList.toggle('open')});
+  hd.addEventListener('click',function(){abrir(hd);});
+  hd.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){e.preventDefault();abrir(hd);}
+  });
 });
 render();
 var root=document.documentElement,tb=document.getElementById('theme');
 function isDark(){return root.getAttribute('data-theme')==='dark';}
-function paint(){tb.textContent=isDark()?'Modo claro':'Modo oscuro';}
+var tbTxt=document.getElementById('theme-txt'),tbIc=tb.querySelector('.ic use');
+function paint(){var d=isDark();
+  tbTxt.textContent=d?'Modo claro':'Modo oscuro';
+  tbIc.setAttribute('href',d?'#i-sol':'#i-luna');
+  tb.setAttribute('aria-pressed',d?'true':'false');}
 try{if(localStorage.getItem('kb-theme')==='dark')root.setAttribute('data-theme','dark');}catch(e){}
 paint();
 tb.addEventListener('click',function(){
