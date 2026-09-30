@@ -118,12 +118,6 @@ a{color:inherit}
 .top h1{font-family:var(--serif);font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.05;
   font-weight:600;letter-spacing:-.015em;margin:0;max-width:18ch;text-wrap:balance}
 .sub{color:var(--ink-2);margin:20px 0 0;max-width:var(--measure);font-size:1.06rem;line-height:1.62}
-.meta{display:flex;flex-wrap:wrap;gap:6px 24px;margin:30px 0 0;padding:12px 0;
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  font-size:.78rem;color:var(--ink-2)}
-.meta span{display:inline-flex;align-items:baseline;gap:7px}
-.meta b{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-2)}
 
 /* ── Naturaleza del sitio ── */
 .naturaleza{border:1px solid var(--rule-strong);background:var(--panel);border-radius:var(--radius);
@@ -564,8 +558,6 @@ summary.head::marker{content:""}
 .naturaleza:target{box-shadow:inset 3px 0 0 var(--accent)}
 
 
-/* Párrafo de entrada, bajo el nombre del sitio */
-.sub.intro{margin-top:10px}
 
 
 /* Zona de aparato, al final */
@@ -640,6 +632,19 @@ summary.head::marker{content:""}
   .cierre .ct-mail{border:none;color:#000}
 }
 
+
+/* ── Cabecera · portada centrada ───────────────────────────────────────── */
+.cab-b{padding:34px 0 10px}
+.cb-barra{justify-content:flex-end;margin-bottom:34px}
+.cb{text-align:center}
+.cb .kicker{margin:0 0 20px}
+.cab-b h1{max-width:none;margin:0 auto;font-size:clamp(2.4rem,7.4vw,4.4rem);line-height:1.03}
+.cb-filete{display:block;width:62px;height:3px;background:var(--accent);margin:26px auto 24px}
+.cb-lead{margin:0 auto;color:var(--ink-2);font-size:1.06rem;line-height:1.66;max-width:56ch}
+.cb-fecha{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);
+  margin:30px auto 0;padding-top:16px;border-top:1px solid var(--rule);max-width:56ch}
+@media print{.cb-filete{background:#000}}
+
 </style>
 </head>
 <body>
@@ -670,18 +675,19 @@ summary.head::marker{content:""}
 </div>
 <div class="wrap" id="top">
 
-<header class="top">
-  <div class="topbar">
-    <p class="kicker">Consulta académica · Fraude financiero en Colombia y América Latina</p>
+<header class="top cab-b">
+  <div class="topbar cb-barra">
     <div class="tools no-print">
       <button type="button" id="theme" class="tbtn" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-luna"/></svg><span id="theme-txt">Modo oscuro</span></button>
       <button type="button" id="print" class="tbtn"><svg class="ic" aria-hidden="true"><use href="#i-imprimir"/></svg><span>Imprimir</span></button>
     </div>
   </div>
-  <h1>Observatorio Antifraude</h1>
-  <p class="sub intro">Base de conocimiento sobre fraude financiero en Colombia y América Latina: qué está pasando, qué dicen las cifras, qué está cambiando en la regulación y cómo opera cada modalidad. Todo citado a su fuente.</p>
-  <div class="meta">
-    <span><b>Periodo cubierto:</b> 13 de agosto – 28 de septiembre de 2026</span>
+  <div class="cb">
+    <p class="kicker">Consulta académica · Fraude financiero en Colombia y América Latina</p>
+    <h1>Observatorio Antifraude</h1>
+    <span class="cb-filete" aria-hidden="true"></span>
+    <p class="cb-lead">Base de conocimiento sobre fraude financiero en Colombia y América Latina: qué está pasando, qué dicen las cifras, qué está cambiando en la regulación y cómo opera cada modalidad. Todo citado a su fuente.</p>
+    <p class="cb-fecha">Periodo cubierto · 13 de agosto – 28 de septiembre de 2026</p>
   </div>
 </header>
 
