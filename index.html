@@ -518,6 +518,27 @@ summary.head::marker{content:""}
 .tags .nuevo{background:none;color:var(--accent-ink);border:1px solid var(--accent)}
 @media print{.novedades,.nuevo{display:none!important}}
 
+
+/* ── Contacto ──────────────────────────────────────────────────────────── */
+.contacto{background:var(--panel);border:1px solid var(--rule);
+  border-radius:var(--radius);padding:22px}
+@media(min-width:640px){.contacto{padding:28px 32px}}
+.ct-intro{margin:0 0 14px}
+.ct-mail{font-family:var(--mono);font-size:.94em;font-weight:600;
+  color:var(--accent-ink);text-decoration:none;
+  border-bottom:1px solid var(--accent);white-space:nowrap}
+.ct-mail:hover{background:var(--accent-soft)}
+.ct-lista{margin:0;padding-left:20px}
+.ct-lista li{margin-bottom:7px}
+.ct-lista li:last-child{margin-bottom:0}
+.ct-nota{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--rule-strong);
+  font-size:.86rem;color:var(--ink-3)}
+@media print{
+  .contacto{background:none;border:none;padding:0}
+  .ct-mail{border:none;color:#000}
+  .ct-mail[href^="mailto:"]::after{content:none}
+}
+
 </style>
 </head>
 <body>
@@ -541,6 +562,7 @@ summary.head::marker{content:""}
       <li><a href="#catalogo">Catálogo</a></li>
       <li><a href="#marco">Marco</a></li>
       <li><a href="#fuentes">Fuentes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </div>
 </nav>
@@ -1374,6 +1396,19 @@ summary.head::marker{content:""}
   <b>Nota metodológica.</b> Las cifras se reproducen como las publicó su fuente, con el periodo y el año de origen, sin extrapolación ni conversión. Los apartados de <i>señales de monitoreo</i>, <i>controles asociados en la literatura</i> y <i>secuencia de respuesta documentada</i> son síntesis de lo descrito en la literatura técnica y en publicaciones del sector; no son cita textual de una fuente única ni enunciado normativo, y no expresan una posición sobre qué conviene hacer. Cuando una afirmación no pudo contrastarse contra fuente primaria, quedó fuera o se registró con la insignia correspondiente.
 </div>
 
+
+<h2 class="sec" id="contacto">Contáctanos</h2>
+<div class="contacto">
+  <p class="ct-intro">Este sitio se mantiene abierto a la revisión de quien lo consulta.
+  Escríbenos a <a class="ct-mail" href="mailto:observatorioantifraude@gmail.com">observatorioantifraude@gmail.com</a> si:</p>
+  <ul class="ct-lista">
+    <li>Detectas un dato mal citado, una cifra desactualizada o un enlace roto.</li>
+    <li>Conoces un estudio, informe o alerta oficial que debería estar en el radar del periodo.</li>
+    <li>Quieres citar el sitio, usarlo en docencia o en investigación, o preguntar por la metodología de compilación.</li>
+    <li>Tienes cualquier otra consulta relacionada con el material.</li>
+  </ul>
+  <p class="ct-nota">Las respuestas, cuando las haya, no constituyen asesoría legal ni de seguridad.</p>
+</div>
 
 <footer class="pie">
   <p><b>Sitio público de consulta académica.</b> Compilación sobre modalidades de fraude
