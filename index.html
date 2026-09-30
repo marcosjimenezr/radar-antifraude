@@ -187,8 +187,8 @@ a{color:inherit}
 .stats-lead .stat .s{margin-top:12px;font-size:.72rem}
 
 /* ── Semáforo de trazabilidad ── */
-.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0 22px;padding:14px 16px;
-  background:var(--panel);border:1px solid var(--rule);border-radius:var(--radius)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin:16px 0 18px;padding:14px 0 0;
+  background:none;border:0;border-top:1px solid var(--rule)}
 .legend>span:first-child{font-family:var(--sans);font-size:.68rem;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);width:100%}
 .lg{display:inline-flex;align-items:flex-start;gap:7px;font-size:.8rem;color:var(--ink-2);
@@ -213,12 +213,12 @@ a{color:inherit}
 .rcard p b{color:var(--ink)}
 .rfoot{margin-top:auto;padding-top:16px}
 .rver{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.7rem;
-  font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;
-  border:1px solid currentColor;border-radius:var(--radius)}
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:0;
+  border:0;border-radius:0;background:none!important}
 .rver::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
-.rver.primaria,.rver.oficial{color:var(--ok);background:var(--ok-soft)}
-.rver.industria{color:var(--sev-media);background:var(--sev-media-soft)}
-.rver.prensa{color:var(--ink-3);background:var(--neutral-soft)}
+.rver.primaria,.rver.oficial{color:var(--ok)}
+.rver.industria{color:var(--sev-media)}
+.rver.prensa{color:var(--ink-3)}
 .rlinks{display:flex;flex-direction:column;gap:7px;margin-top:14px}
 .rlinks a{font-size:.83rem;line-height:1.35;color:var(--ink-2);text-decoration:none;
   border-left:2px solid var(--rule-strong);padding-left:10px}
@@ -564,10 +564,8 @@ summary.head::marker{content:""}
 .naturaleza:target{box-shadow:inset 3px 0 0 var(--accent)}
 
 
-/* Descriptor bajo el nombre del sitio */
-.descriptor{font-family:var(--sans);font-size:.88rem;font-weight:600;
-  letter-spacing:.01em;color:var(--accent-ink);margin:8px 0 0}
-@media(min-width:640px){.descriptor{font-size:.95rem}}
+/* Párrafo de entrada, bajo el nombre del sitio */
+.sub.intro{margin-top:10px}
 
 
 /* Zona de aparato, al final */
@@ -580,7 +578,7 @@ summary.head::marker{content:""}
 
 
 /* ── Pestañas (opción A) ───────────────────────────────────────────────── */
-.tabs{display:flex;gap:2px;border-bottom:2px solid var(--rule-strong);margin:28px 0 0}
+.tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:2px solid var(--rule-strong);margin:28px 0 0}
 .tab{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--ink-3);
   background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;
   padding:12px 18px;cursor:pointer;transition:color .12s,border-color .12s}
@@ -590,13 +588,40 @@ summary.head::marker{content:""}
 .panel{display:none;padding-top:22px}
 .panel.on{display:block}
 @media print{.panel{display:block!important}.tabs{display:none!important}}
-@media(max-width:700px){.tab{padding:11px 12px;font-size:.82rem;flex:1}}
+@media(max-width:700px){.tab{padding:11px 6px;font-size:.78rem;flex:1 1 calc(50% - 2px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:6px;row-gap:2px;line-height:1.25}
+  .tab .tab-n{margin-left:0;font-size:.64rem;padding:1px 5px}}
 
 
 .tab-n{display:inline-block;margin-left:6px;font-size:.68rem;font-weight:700;
   color:var(--ink-3);background:var(--panel-2);border-radius:999px;padding:1px 6px;
   vertical-align:1px}
 .tab.on .tab-n{color:#fff;background:var(--accent)}
+
+
+/* Naturaleza: dos columnas, «qué es» / «qué no es» */
+.nat-cols{display:grid;gap:22px;margin-top:4px}
+@media(min-width:820px){.nat-cols{grid-template-columns:1fr 1.25fr;gap:38px}}
+.nat-t{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent-ink);margin:0 0 10px;
+  padding-bottom:7px;border-bottom:1px solid var(--rule-strong)}
+.nat-lista{margin:0;padding:0;list-style:none}
+.nat-lista li{position:relative;margin:0 0 11px;padding-left:20px;
+  color:var(--ink-2);font-size:.9rem;line-height:1.55;max-width:none}
+.nat-lista li:last-child{margin-bottom:0}
+.nat-lista li::before{position:absolute;left:0;top:0;font-family:var(--sans);
+  font-weight:700;font-size:.95rem;line-height:1.45}
+.nat-lista.es li::before{content:"·";color:var(--ok);font-size:1.4rem;line-height:1.05}
+.nat-lista.no li::before{content:"×";color:var(--sev-alta)}
+.nat-lista li b{color:var(--ink);font-weight:600}
+.nat-pie{margin:22px 0 0!important;padding-top:14px;border-top:1px solid var(--rule);
+  font-size:.84rem!important;color:var(--ink-3)!important;max-width:none!important}
+
+
+/* Filtro del radar — mismos botones que el catálogo */
+.rfiltro{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 18px}
+.chip-n{font-family:var(--mono);font-size:.72em;opacity:.7;margin-left:3px}
+.rfiltro .count{margin-left:auto;font-size:.75rem;color:var(--ink-3)}
+@media print{.rfiltro{display:none!important}}
 
 </style>
 </head>
@@ -637,20 +662,41 @@ summary.head::marker{content:""}
     </div>
   </div>
   <h1>Observatorio Antifraude</h1>
-  <p class="descriptor">Base de conocimiento sobre modalidades de fraude en Colombia y América Latina</p>
-  <p class="sub">Reúne, por modalidad, el modus operandi descrito, las señales referidas para el cliente y para el monitoreo de la entidad, los controles tratados en la literatura y la tipificación penal de referencia. Cada afirmación se cita a su fuente.</p>
+  <p class="sub intro">Base de conocimiento sobre fraude financiero en Colombia y América Latina: qué está pasando, qué dicen las cifras, qué está cambiando en la regulación y cómo opera cada modalidad. Todo citado a su fuente.</p>
   <div class="meta">
-    <span><b>Actualizado:</b> 28 de septiembre de 2026</span>
-    <span><b>Cobertura:</b> Colombia · América Latina · referencia internacional</span>
-    <span><b>Fichas:</b> <span id="total">23</span></span>
-    <span><b>Vigilancia:</b> consulta SIC abierta · 13 ago – 28 sep</span>
+    <span><b>Periodo cubierto:</b> 13 de agosto – 28 de septiembre de 2026</span>
   </div>
 </header>
 
+<div class="naturaleza" id="naturaleza">
+  <span class="eyebrow nat-h">Naturaleza y finalidad de este sitio</span>
+  <div class="nat-cols">
+    <div class="nat-col">
+      <p class="nat-t">Qué es</p>
+      <ul class="nat-lista es">
+        <li>Un sitio de consulta con fines <b>exclusivamente académicos y de investigación</b>, sin uso comercial.</li>
+        <li>Una compilación de lo publicado sobre fraude financiero en Colombia y América Latina, con <b>cada afirmación citada a su fuente</b>.</li>
+        <li>Material para docencia, investigación, formación y consulta de referencia.</li>
+      </ul>
+    </div>
+    <div class="nat-col">
+      <p class="nat-t">Qué no es</p>
+      <ul class="nat-lista no">
+        <li><b>No es una guía operativa, un manual ni un servicio.</b> No se dirige a ninguna entidad en particular ni presta asesoría de ninguna clase.</li>
+        <li><b>No contiene recomendaciones.</b> Los controles y pasos que recoge se presentan como objeto de estudio, no como criterio a adoptar, y no han sido validados para ningún contexto operativo.</li>
+        <li><b>No representa la posición de ninguna organización</b> — entidad financiera, gremio, regulador o institución académica — ni la de quien lo compila.</li>
+        <li>Las tipificaciones penales se citan como referencia de estudio y <b>no constituyen concepto jurídico</b>.</li>
+        <li>La mención de proveedores no implica evaluación, comparación ni recomendación de producto alguno.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="nat-pie">Cualquier uso operativo exige validación previa contra la normativa vigente y las políticas de la organización que lo consulte.</p>
+</div>
+
 <div class="alerta">
   <div class="alerta-body">
-    <span class="alerta-flag">Reloj en marcha</span>
-    <h2 class="alerta-h">Ley 2573 de 2026 — plazo de reglamentación en curso</h2>
+    <span class="alerta-flag">Seguimiento prioritario</span>
+    <h2 class="alerta-h">Ley 2573 de 2026: ahora la entidad debe probar que verificó la identidad</h2>
     <div class="alerta-cols">
       <p>Promulgada el <b>19 de mayo de 2026</b>. <b>Invierte la carga de la prueba</b> en casos de suplantación: la entidad debe demostrar que verificó adecuadamente la identidad, no el cliente que fue suplantado. Aplica a entidades financieras y crediticias, operadores de telecomunicaciones y establecimientos con originación de crédito o ventas a plazos.</p>
       <p><b>Plazo de 15 días hábiles</b> para resolver reclamos de fraude con evidencia técnica. Vencido sin respuesta activa opera <b>silencio administrativo positivo</b>: la entidad asume el 100% de la pérdida. Sanciones por vía de Ley 1266 de 2008 hasta 2.000 SMLMV (~COP 2.600 millones) y suspensión de canales digitales por vulnerabilidades comprobadas.</p>
@@ -670,10 +716,10 @@ summary.head::marker{content:""}
 </div>
 
 <div class="tabs no-print" role="tablist" aria-label="Secciones">
-  <button class="tab on" role="tab" aria-selected="true"  aria-controls="p-radar"    id="t-radar">Radar<span class="tab-n">8</span></button>
-  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-cifras"   id="t-cifras">Cifras<span class="tab-n">11</span></button>
-  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-catalogo" id="t-catalogo">Catálogo<span class="tab-n">23</span></button>
-  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-marco"    id="t-marco">Marco</button>
+  <button class="tab on" role="tab" aria-selected="true"  aria-controls="p-radar"    id="t-radar">Radar Noticias<span class="tab-n">8</span></button>
+  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-cifras"   id="t-cifras">Cifras de fraude<span class="tab-n">11</span></button>
+  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-catalogo" id="t-catalogo">Modalidades de fraude<span class="tab-n">23</span></button>
+  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-marco"    id="t-marco">Marco regulatorio</button>
 </div>
 <div class="panel on" id="p-radar"    role="tabpanel" aria-labelledby="t-radar">
 <span id="contenido"></span>
@@ -687,8 +733,17 @@ summary.head::marker{content:""}
   <span class="lg"><span class="lgd" style="background:var(--sev-media)"></span><span><b>Industria</b>Informe de un proveedor u organismo sectorial, con metodología propia.</span></span>
   <span class="lg"><span class="lgd" style="background:var(--ink-3)"></span><span><b>Prensa</b>Varios medios sin fuente primaria localizada al momento de la revisión.</span></span>
 </div>
+<div class="rfiltro">
+  <span class="flabel">Filtrar</span>
+  <button class="chip on" type="button" data-trz="all" aria-pressed="true"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Todas <span class="chip-n">8</span></button>
+  <button class="chip" type="button" data-trz="primaria" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Primaria <span class="chip-n">2</span></button>
+  <button class="chip" type="button" data-trz="oficial" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Oficial <span class="chip-n">3</span></button>
+  <button class="chip" type="button" data-trz="industria" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Industria <span class="chip-n">2</span></button>
+  <button class="chip" type="button" data-trz="prensa" aria-pressed="false"><svg class="ck" aria-hidden="true"><use href="#i-check"/></svg>Prensa <span class="chip-n">1</span></button>
+  <span class="count" id="rcount"></span>
+</div>
 <div class="radar">
-  <div class="rcard" data-fecha="2026-09-25">
+  <div class="rcard" data-trz="primaria" data-fecha="2026-09-25">
     <div class="rhead"><span class="rtag">Amenaza · Colombia</span><span class="rdate">25 sep 2026</span></div>
     <h3>Vishing con clonación del número oficial del banco en la pantalla del cliente</h3>
     <p>El Banco de Bogotá alertó sobre una campaña activa en Colombia en la que el atacante falsifica el identificador de llamada para que en el teléfono de la víctima aparezca el número oficial de atención de la entidad. El guión es el de siempre — supuestas transacciones sospechosas, solicitud de claves, códigos y enlaces — pero el spoofing destruye la única señal de verificación que la entidad le había enseñado al cliente a usar. Según el estudio de Tendencias de Fraude de TransUnion del primer semestre de 2026, el 25% de quienes declararon pérdida por fraude la atribuyen a vishing. <b>Observación:</b> la técnica invalida la verificación del número entrante como señal de autenticidad, que es la indicación presente en buena parte del material de educación al cliente publicado en el sector. La literatura sobre spoofing de identificador de llamada describe como alternativas la llamada verificada y el retorno de la llamada por el canal oficial.</p>
@@ -699,7 +754,7 @@ summary.head::marker{content:""}
   
     <p class="rlink"><a href="#ficha-01">Ver ficha 01 · Vishing — falso asesor bancario <span aria-hidden="true">↓</span></a></p>
   </div>
-  <div class="rcard" data-fecha="2026-09-28">
+  <div class="rcard" data-trz="prensa" data-fecha="2026-09-28">
     <div class="rhead"><span class="rtag">Modalidad · Ficha nueva</span><span class="rdate">28 sep 2026</span></div>
     <h3>Cuentas mula potenciadas con IA: el foco regulatorio se mueve hacia la entidad receptora</h3>
     <p>Análisis de Rafael Chelala Riva sobre el eslabón final del fraude. La IA automatiza el reclutamiento de muleros en varios idiomas y genera documentación falsa, y la proyección es que agentes autónomos construyan identidades sintéticas completas sin mulero humano. Cifras citadas: una operación de julio de 2026 con 67 personas que abrieron más de 800 cuentas para una red que defraudó unos 140 millones de euros; Cifas reportó +43% de casos abusivos y más de 22.000 casos de mulas en 2025; BioCatch documentó la triplicación de aperturas por bots en 200 entidades norteamericanas en el 1S 2025. Lo relevante es el giro normativo: PSD3 y PSR imponen al proveedor <b>receptor</b> bloquear operaciones sospechosas, intercambiar información y reembolsar fraudes por suplantación, mientras la STS 1733/2025 aún exonera al banco receptor que ejecutó conforme al identificador único. <b>Pertinencia para el caso colombiano:</b> el debate europeo sobre la posición de la entidad receptora coincide con dos condiciones presentes en Colombia — un sistema de pagos inmediatos en operación y un régimen que invirtió la carga de la prueba en suplantación. Queda registrado como objeto de seguimiento, sin que exista a la fecha desarrollo normativo local sobre la entidad receptora. Incorporado como <b>ficha 23</b>.</p>
@@ -710,7 +765,7 @@ summary.head::marker{content:""}
   
     <p class="rlink"><a href="#ficha-23">Ver ficha 23 · Cuenta mula y red de recepción <span aria-hidden="true">↓</span></a></p>
   </div>
-  <div class="rcard" data-fecha="2026-09-08">
+  <div class="rcard" data-trz="oficial" data-fecha="2026-09-08">
     <div class="rhead"><span class="rtag">Regulación · Colombia</span><span class="rdate">8 sep 2026</span></div>
     <h3>La SIC abre la consulta que va a definir el estándar técnico de la Ley 2573</h3>
     <p>La Delegatura para la Protección de Datos Personales pidió aportes técnicos y jurídicos sobre tecnologías biométricas, mecanismos de autenticación, riesgos para protección de datos, modelos regulatorios internacionales y costos de implementación. Está dirigida expresamente a entidades financieras, operadores de telecomunicaciones y operadores biométricos. Cronograma de la SIC: cierre <b>9 de octubre</b> 4:00 p.m., mesas de trabajo hasta el <b>16 de octubre</b>, proyecto publicado el <b>2 de noviembre</b>, expedición el <b>20 de noviembre</b>. <b>Discrepancia de fecha:</b> Baker McKenzie (10 sep) y Olarte Moure (18 sep) citan cierre el 25 de septiembre; la página de la SIC indica 9 de octubre — confirmar en el formulario oficial antes de radicar. La consulta es el mecanismo de participación previsto en el cronograma antes de la expedición.</p>
@@ -721,7 +776,7 @@ summary.head::marker{content:""}
   
     <p class="rlink"><a href="#ficha-04">Ver ficha 04 · Fraude de identidad en originación <span aria-hidden="true">↓</span></a></p>
   </div>
-  <div class="rcard" data-fecha="2026-09-21">
+  <div class="rcard" data-trz="industria" data-fecha="2026-09-21">
     <div class="rhead"><span class="rtag">Industria · Asobancaria</span><span class="rdate">21 sep 2026</span></div>
     <h3>El 85,1% del fraude ya se concentra en canales digitales</h3>
     <p>Jonathan Malagón, presidente de Asobancaria, publica el corte 2026: el 85,1% del fraude por robo de datos, credenciales de aplicación móvil e información de tarjetas ocurre en canales digitales, y estos concentran el 78,8% de las reclamaciones — 42,9 puntos más que en 2012, cuando el 35,9% del fraude se cometía en canales físicos. Matiza que los casos equivalen al 0,0068% de las operaciones digitales. Cita el Sumsub Identity Fraud Report 2025-2026 (+180% en fraude sofisticado) y el caso de Singapur, con al menos US$3,8 millones transferidos mediante deepfakes. La serie que reporta el gremio va de un 35,9% en canales físicos en 2012 al 85,1% en canales digitales en 2026.</p>
@@ -730,7 +785,7 @@ summary.head::marker{content:""}
       <div class="rlinks"><a href="https://www.larepublica.co/analisis/jonathan-malagon-2590707/nuevos-rostros-una-misma-amenaza-4486009" target="_blank" rel="noopener noreferrer">La República — Jonathan Malagón (Asobancaria): Nuevos rostros, una misma amenaza <span class="out">larepublica.co</span></a></div>
     </div>
   </div>
-  <div class="rcard" data-fecha="2026-09-07">
+  <div class="rcard" data-trz="industria" data-fecha="2026-09-07">
     <div class="rhead"><span class="rtag">Métrica de exposición · Colombia</span><span class="rdate">7 sep 2026</span></div>
     <h3>71% de los colombianos recibió un intento de fraude; en el 46% de esos casos se concretó</h3>
     <p>Estudio de DataCrédito Experian: 71% recibió al menos un intento en el último año y 95% percibe que los ataques son frecuentes. De quienes recibieron un intento, el 46% reporta que alguno se materializó. Los vectores declarados por las víctimas son exactamente los tres que dependen de controles de la entidad: 25% dice que la página o aplicación parecía auténtica, 20% recibió una llamada suplantando a una entidad conocida y 17% interactuó con un enlace que parecía legítimo. Solo el 25% prefiere la app móvil para trámites financieros frente al 54% que aún confia en el canal presencial: la desconfianza ya tiene costo de canal.</p>
@@ -739,7 +794,7 @@ summary.head::marker{content:""}
       <div class="rlinks"><a href="https://www.elespectador.com/economia/el-fraude-digital-ya-alcanza-a-7-de-cada-10-colombianos-datacredito/" target="_blank" rel="noopener noreferrer">El Espectador — El fraude digital ya alcanza a 7 de cada 10 colombianos: DataCrédito <span class="out">elespectador.com</span></a></div>
     </div>
   </div>
-  <div class="rcard" data-fecha="2026-09-19">
+  <div class="rcard" data-trz="oficial" data-fecha="2026-09-19">
     <div class="rhead"><span class="rtag">Autoridad · Colombia</span><span class="rdate">19 sep 2026</span></div>
     <h3>Policía Nacional: más de 3.600 víctimas de estafa en 2026 y pico estacional en Amor y Amistad</h3>
     <p>El Centro Cibernético Policial de la DIJIN reportó más de 3.600 víctimas de estafa identificadas en 2026 y cerca de COP 4.800 millones en criptoactivos recuperados en el último año. El patrón de la temporada combina falsas ofertas de regalos, flores, desayunos sorpresa y planes turísticos con enlaces maliciosos por SMS y perfiles falsos. Las cuatro señales que difunde la autoridad — descuentos del 50 al 70% con urgencia, perfiles desconocidos con precios atractivos, enlaces por SMS a portales falsos y traslado de la conversación a WhatsApp o Telegram — son directamente traducibles a reglas de monitoreo estacional.</p>
@@ -748,7 +803,7 @@ summary.head::marker{content:""}
       <div class="rlinks"><a href="https://www.elpais.com.co/colombia/mas-de-3600-victimas-de-estafa-han-sido-identificadas-en-2026-asi-operan-los-delincuentes-en-amor-y-amistad-1853.html" target="_blank" rel="noopener noreferrer">El País — Más de 3.600 víctimas de estafa en 2026: así operan en Amor y Amistad <span class="out">elpais.com.co</span></a><a href="https://caivirtual.policia.gov.co/" target="_blank" rel="noopener noreferrer">Policía Nacional — CAI Virtual <span class="out">caivirtual.policia.gov.co</span></a></div>
     </div>
   </div>
-  <div class="rcard" data-fecha="2026-09-01">
+  <div class="rcard" data-trz="oficial" data-fecha="2026-09-01">
     <div class="rhead"><span class="rtag">Regulación · Vacío</span><span class="rdate">1 sep 2026</span></div>
     <h3>La SFC no ha emitido en 2026 ninguna circular específica de fraude o identidad digital</h3>
     <p>Revisión del listado oficial de circulares externas de la Superfinanciera hasta la CE 008 del 1 de septiembre de 2026: ninguna aborda fraude, ciberseguridad, identidad digital ni autenticación. La CE 001 del 3 de febrero menciona estándares de seguridad, pero acotados a la arquitectura de finanzas abiertas. Registro de la revisión: a la fecha de corte, el desarrollo normativo de la Ley 2573 aparece por la vía de protección de datos — la consulta de la SIC — y no por la vía prudencial. Las Circulares Externas 007 y 008 de 2018 siguen siendo las normas de seguridad de la información vigentes para entidades vigiladas.</p>
@@ -757,7 +812,7 @@ summary.head::marker{content:""}
       <div class="rlinks"><a href="https://www.superfinanciera.gov.co/publicaciones/10115974/circulares-externas-2026/" target="_blank" rel="noopener noreferrer">Superintendencia Financiera — Circulares Externas 2026 <span class="out">superfinanciera.gov.co</span></a></div>
     </div>
   </div>
-  <div class="rcard">
+  <div class="rcard" data-trz="primaria">
     <div class="rhead"><span class="rtag">Verificación · Cifra desactualizada</span><span class="rdate">periodo</span></div>
     <h3>La cifra de “6,9% de transacciones digitales sospechosas” que circula es de 2024, no de 2026</h3>
     <p>Durante el periodo reapareció en búsquedas y resúmenes la cifra de 6,9% de transacciones sospechosas y +43,5% de intentos de fraude atribuida a TransUnion Colombia. Contrastada contra la sala de prensa de TransUnion, corresponde al primer semestre de 2024, publicada el 24 de octubre de 2024. El dato más reciente publicado por la misma fuente es el del reporte de mayo de 2026 — 2,3% en Colombia frente a 3,8% mundial — que es el que registra este sitio. Se deja constancia de la discrepancia por tratarse de dos cifras de la misma fuente separadas por dos años.</p>
@@ -1422,16 +1477,9 @@ summary.head::marker{content:""}
 
 </div>
 <hr class="aparato-sep">
-<p class="aparato-h">Sobre este sitio</p>
+<p class="aparato-h">Fuentes y contacto</p>
 
-<div class="naturaleza" id="naturaleza">
-  <span class="eyebrow nat-h">Naturaleza y finalidad de este sitio</span>
-  <p>Este es un <b>sitio de consulta</b> con fines <b>exclusivamente académicos y de investigación</b>. Reúne y organiza lo publicado sobre modalidades de fraude financiero en Colombia y América Latina, a partir de fuentes públicas citadas una por una. Su propósito es documentar qué se ha descrito sobre cada modalidad y de dónde proviene cada afirmación, no proponer un curso de acción.</p>
-  <p><b>No es una guía operativa, un manual ni un servicio.</b> No se dirige a ninguna entidad en particular, no presta asesoría de ninguna clase y no está disponible para uso comercial. Está pensado para quien estudia el fenómeno: docencia, investigación, formación y consulta de referencia.</p>
-  <p><b>No contiene recomendaciones.</b> Los apartados de <i>señales de monitoreo</i>, <i>controles asociados en la literatura</i> y <i>secuencia de respuesta documentada</i> recogen controles y pasos descritos en la literatura técnica, en publicaciones de autoridades y en práctica difundida del sector. Se presentan como objeto de estudio, no como criterio a adoptar, y no han sido validados para ningún contexto operativo concreto.</p>
-  <p><b>No representa la posición de ninguna organización</b> — entidad financiera, gremio, regulador o institución académica — ni la de quien lo compila en calidad distinta a esa. Las tipificaciones penales se citan como referencia de estudio y no constituyen concepto jurídico. Cualquier uso operativo exige validación previa contra la normativa vigente y las políticas de la organización que lo consulte.</p>
-  <p><b>Sobre los proveedores mencionados.</b> Algunas cifras provienen de informes publicados por proveedores de tecnología antifraude o por burós de crédito. Se citan únicamente como fuente del dato, con su metodología propia y la insignia de trazabilidad que les corresponde. Su mención no implica evaluación, comparación ni recomendación de producto alguno, y este sitio no evalúa proveedores.</p>
-</div>
+
 
 <h2 class="sec" id="fuentes">Fuentes consultadas</h2>
 <p class="sec-note">Publicaciones de las que proviene cada afirmación del sitio, con el dominio de origen visible.</p>
@@ -1683,6 +1731,28 @@ function pestanaSegunHash(){
 }
 window.addEventListener('hashchange',pestanaSegunHash);
 pestanaSegunHash();
+
+// ── Filtro del radar por nivel de trazabilidad ─────────────────────────────
+(function(){
+  var tarjetas=Array.prototype.slice.call(document.querySelectorAll('.rcard[data-trz]'));
+  var botones=Array.prototype.slice.call(document.querySelectorAll('.rfiltro .chip'));
+  var cnt=document.getElementById('rcount');
+  if(!tarjetas.length||!botones.length)return;
+  function pintar(nivel){
+    var n=0;
+    tarjetas.forEach(function(c){
+      var ok = nivel==='all' || c.dataset.trz===nivel;
+      c.style.display = ok?'':'none'; if(ok)n++;
+    });
+    cnt.textContent = n+' de '+tarjetas.length+' señales';
+    botones.forEach(function(b){
+      var on=b.dataset.trz===nivel;
+      b.classList.toggle('on',on); b.setAttribute('aria-pressed',on?'true':'false');
+    });
+  }
+  botones.forEach(function(b){b.addEventListener('click',function(){pintar(b.dataset.trz);});});
+  pintar('all');
+})();
 
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1a6afc33e1ee4956a1c8ffa633b2d01c"}'></script><!-- End Cloudflare Web Analytics -->
