@@ -569,6 +569,35 @@ summary.head::marker{content:""}
   letter-spacing:.01em;color:var(--accent-ink);margin:8px 0 0}
 @media(min-width:640px){.descriptor{font-size:.95rem}}
 
+
+/* Zona de aparato, al final */
+.aparato-sep{border:0;border-top:2px solid var(--rule-strong);margin:54px 0 0}
+.aparato-h{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin:18px 0 22px}
+.nav-sep{margin-left:10px;padding-left:12px;border-left:1px solid var(--rule-strong)}
+.nav-sep a{color:var(--ink-3)}
+@media print{.aparato-sep{border-top:1px solid #bbb}}
+
+
+/* ── Pestañas (opción A) ───────────────────────────────────────────────── */
+.tabs{display:flex;gap:2px;border-bottom:2px solid var(--rule-strong);margin:28px 0 0}
+.tab{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--ink-3);
+  background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;
+  padding:12px 18px;cursor:pointer;transition:color .12s,border-color .12s}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.panel{display:none;padding-top:22px}
+.panel.on{display:block}
+@media print{.panel{display:block!important}.tabs{display:none!important}}
+@media(max-width:700px){.tab{padding:11px 12px;font-size:.82rem;flex:1}}
+
+
+.tab-n{display:inline-block;margin-left:6px;font-size:.68rem;font-weight:700;
+  color:var(--ink-3);background:var(--panel-2);border-radius:999px;padding:1px 6px;
+  vertical-align:1px}
+.tab.on .tab-n{color:#fff;background:var(--accent)}
+
 </style>
 </head>
 <body>
@@ -587,12 +616,7 @@ summary.head::marker{content:""}
   <div class="navin">
     <a class="navlogo" href="#top"><span class="navlogo-l">Observatorio Antifraude</span><span class="navlogo-s">Observatorio</span></a>
     <ul class="navlist">
-      <li><a href="#radar">Radar</a></li>
-      <li><a href="#cifras">Cifras</a></li>
-      <li><a href="#catalogo">Catálogo</a></li>
-      <li><a href="#marco">Marco</a></li>
-      <li><a href="#fuentes">Fuentes</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#naturaleza">Sobre el sitio</a></li>
     </ul>
   </div>
 </nav>
@@ -623,15 +647,6 @@ summary.head::marker{content:""}
   </div>
 </header>
 
-<div class="naturaleza" id="naturaleza">
-  <span class="eyebrow nat-h">Naturaleza y finalidad de este sitio</span>
-  <p>Este es un <b>sitio de consulta</b> con fines <b>exclusivamente académicos y de investigación</b>. Reúne y organiza lo publicado sobre modalidades de fraude financiero en Colombia y América Latina, a partir de fuentes públicas citadas una por una. Su propósito es documentar qué se ha descrito sobre cada modalidad y de dónde proviene cada afirmación, no proponer un curso de acción.</p>
-  <p><b>No es una guía operativa, un manual ni un servicio.</b> No se dirige a ninguna entidad en particular, no presta asesoría de ninguna clase y no está disponible para uso comercial. Está pensado para quien estudia el fenómeno: docencia, investigación, formación y consulta de referencia.</p>
-  <p><b>No contiene recomendaciones.</b> Los apartados de <i>señales de monitoreo</i>, <i>controles asociados en la literatura</i> y <i>secuencia de respuesta documentada</i> recogen controles y pasos descritos en la literatura técnica, en publicaciones de autoridades y en práctica difundida del sector. Se presentan como objeto de estudio, no como criterio a adoptar, y no han sido validados para ningún contexto operativo concreto.</p>
-  <p><b>No representa la posición de ninguna organización</b> — entidad financiera, gremio, regulador o institución académica — ni la de quien lo compila en calidad distinta a esa. Las tipificaciones penales se citan como referencia de estudio y no constituyen concepto jurídico. Cualquier uso operativo exige validación previa contra la normativa vigente y las políticas de la organización que lo consulte.</p>
-  <p><b>Sobre los proveedores mencionados.</b> Algunas cifras provienen de informes publicados por proveedores de tecnología antifraude o por burós de crédito. Se citan únicamente como fuente del dato, con su metodología propia y la insignia de trazabilidad que les corresponde. Su mención no implica evaluación, comparación ni recomendación de producto alguno, y este sitio no evalúa proveedores.</p>
-</div>
-
 <div class="alerta">
   <div class="alerta-body">
     <span class="alerta-flag">Reloj en marcha</span>
@@ -654,6 +669,13 @@ summary.head::marker{content:""}
   </div>
 </div>
 
+<div class="tabs no-print" role="tablist" aria-label="Secciones">
+  <button class="tab on" role="tab" aria-selected="true"  aria-controls="p-radar"    id="t-radar">Radar<span class="tab-n">8</span></button>
+  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-cifras"   id="t-cifras">Cifras<span class="tab-n">11</span></button>
+  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-catalogo" id="t-catalogo">Catálogo<span class="tab-n">23</span></button>
+  <button class="tab"    role="tab" aria-selected="false" aria-controls="p-marco"    id="t-marco">Marco</button>
+</div>
+<div class="panel on" id="p-radar"    role="tabpanel" aria-labelledby="t-radar">
 <span id="contenido"></span>
 <h2 class="sec" id="radar" style="margin-top:26px">Radar del periodo · 13 ago – 28 sep 2026</h2>
 <p class="sec-note">Señales extraídas de las alertas de monitoreo activas — <i>fraude bancario</i>, <i>banking fraud</i>, <i>vishing</i>, <i>smishing</i>, <i>autenticación digital</i>, <i>identity theft</i> — y de consulta directa a fuente oficial. Cada tarjeta enlaza a sus fuentes.</p>
@@ -746,6 +768,8 @@ summary.head::marker{content:""}
   </div>
 </div>
 
+</div>
+<div class="panel" id="p-cifras"   role="tabpanel" aria-labelledby="t-cifras">
 <h2 class="sec" id="cifras">Panel de cifras</h2>
 <p class="sec-note">11 indicadores con fuente y año. Los tres primeros son los más recientes y los que más cambian una decisión de control.</p>
 <div class="stats-lead">
@@ -764,6 +788,8 @@ summary.head::marker{content:""}
   <div class="stat"><div class="n">2,3%</div><div class="l">Transacciones digitales sospechosas en Colombia 2025 (mundo: 3,8%)</div><div class="s">TransUnion, may-2026</div></div>
 </div>
 
+</div>
+<div class="panel" id="p-catalogo" role="tabpanel" aria-labelledby="t-catalogo">
 <h2 class="sec" id="catalogo">Catálogo de modalidades</h2>
 <p class="sec-note">23 fichas ordenadas por el momento del recorrido en que actúa el fraude. El filtro de fase permite recorrer una etapa a la vez.</p>
 <div class="pipe">
@@ -1379,6 +1405,8 @@ summary.head::marker{content:""}
 </div>
 <div class="empty" id="empty" style="display:none">Sin coincidencias. Pruebe otro término o limpie los filtros.</div>
 
+</div>
+<div class="panel" id="p-marco"    role="tabpanel" aria-labelledby="t-marco">
 <h2 class="sec" id="marco">Marco regulatorio de referencia</h2>
 <p class="sec-note">Normativa colombiana citada como referencia de estudio. No constituye concepto jurídico.</p>
 <div class="note">
@@ -1390,6 +1418,19 @@ summary.head::marker{content:""}
   <b>Septiembre–noviembre de 2026 — consulta pública de la SIC (reglamentación de la Ley 2573)</b>. Abierta el 8 de septiembre por la Delegatura para la Protección de Datos Personales, sobre lineamientos, recomendaciones y protocolos de validación de identidad y tratamiento de datos personales: tecnologías biométricas, mecanismos de autenticación, riesgos de protección de datos, modelos regulatorios internacionales y costos de implementación. Participación por formulario en línea, dirigida entre otros a entidades financieras, operadores de telecomunicaciones y operadores biométricos. Cronograma publicado por la SIC: cierre 9 de octubre 4:00 p.m. (análisis de septiembre citan 25 de septiembre — verificar), mesas de trabajo hasta el 16 de octubre, proyecto el 2 de noviembre, expedición el 20 de noviembre de 2026.<br><br>
   <b>Estado de la vía prudencial (sep-2026)</b> — hasta la Circular Externa 008 del 1 de septiembre de 2026, la SFC no ha expedido en 2026 circular alguna específica sobre fraude, ciberseguridad, identidad digital o autenticación. El desarrollo de la Ley 2573 está avanzando por la vía de protección de datos; para la entidad vigilada el marco operativo sigue siendo el de las Circulares 007 y 008 de 2018.<br><br>
   <b>Referencia regional (ago-2026)</b> — Ciudad de México tipificó penalmente el phishing, el smishing y el vishing, elevando el fraude digital a delito con pena privativa de la libertad. Precedente relevante para el debate colombiano sobre tipificación específica frente al uso actual de la Ley 1273 de 2009.
+</div>
+
+</div>
+<hr class="aparato-sep">
+<p class="aparato-h">Sobre este sitio</p>
+
+<div class="naturaleza" id="naturaleza">
+  <span class="eyebrow nat-h">Naturaleza y finalidad de este sitio</span>
+  <p>Este es un <b>sitio de consulta</b> con fines <b>exclusivamente académicos y de investigación</b>. Reúne y organiza lo publicado sobre modalidades de fraude financiero en Colombia y América Latina, a partir de fuentes públicas citadas una por una. Su propósito es documentar qué se ha descrito sobre cada modalidad y de dónde proviene cada afirmación, no proponer un curso de acción.</p>
+  <p><b>No es una guía operativa, un manual ni un servicio.</b> No se dirige a ninguna entidad en particular, no presta asesoría de ninguna clase y no está disponible para uso comercial. Está pensado para quien estudia el fenómeno: docencia, investigación, formación y consulta de referencia.</p>
+  <p><b>No contiene recomendaciones.</b> Los apartados de <i>señales de monitoreo</i>, <i>controles asociados en la literatura</i> y <i>secuencia de respuesta documentada</i> recogen controles y pasos descritos en la literatura técnica, en publicaciones de autoridades y en práctica difundida del sector. Se presentan como objeto de estudio, no como criterio a adoptar, y no han sido validados para ningún contexto operativo concreto.</p>
+  <p><b>No representa la posición de ninguna organización</b> — entidad financiera, gremio, regulador o institución académica — ni la de quien lo compila en calidad distinta a esa. Las tipificaciones penales se citan como referencia de estudio y no constituyen concepto jurídico. Cualquier uso operativo exige validación previa contra la normativa vigente y las políticas de la organización que lo consulte.</p>
+  <p><b>Sobre los proveedores mencionados.</b> Algunas cifras provienen de informes publicados por proveedores de tecnología antifraude o por burós de crédito. Se citan únicamente como fuente del dato, con su metodología propia y la insignia de trazabilidad que les corresponde. Su mención no implica evaluación, comparación ni recomendación de producto alguno, y este sitio no evalúa proveedores.</p>
 </div>
 
 <h2 class="sec" id="fuentes">Fuentes consultadas</h2>
@@ -1622,6 +1663,27 @@ document.getElementById('print').addEventListener('click',function(){window.prin
   n.textContent=partes.join(' y ')+' desde su última visita ('+anterior.split('-').reverse().join('/')+')';
   n.hidden=false;
 })();
+// ── Pestañas ───────────────────────────────────────────────────────────────
+var tabs=Array.prototype.slice.call(document.querySelectorAll('.tab'));
+function abrirPestana(id,mover){
+  tabs.forEach(function(t){
+    var on=t.getAttribute('aria-controls')===id;
+    t.classList.toggle('on',on); t.setAttribute('aria-selected',on?'true':'false');
+    document.getElementById(t.getAttribute('aria-controls')).classList.toggle('on',on);
+  });
+  if(mover)history.replaceState(null,'','#'+id.replace('p-',''));
+}
+tabs.forEach(function(t){t.addEventListener('click',function(){
+  abrirPestana(t.getAttribute('aria-controls'),true);});});
+// un enlace a ficha debe abrir la pestaña del catálogo
+function pestanaSegunHash(){
+  var x=location.hash.replace('#','');
+  if(/^ficha-\d+$/.test(x))return abrirPestana('p-catalogo',false);
+  if(['radar','cifras','catalogo','marco'].indexOf(x)>=0)return abrirPestana('p-'+x,false);
+}
+window.addEventListener('hashchange',pestanaSegunHash);
+pestanaSegunHash();
+
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1a6afc33e1ee4956a1c8ffa633b2d01c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
