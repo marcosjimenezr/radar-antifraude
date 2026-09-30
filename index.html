@@ -539,6 +539,33 @@ summary.head::marker{content:""}
   .ct-mail[href^="mailto:"]::after{content:none}
 }
 
+
+/* ── Franja de contexto ────────────────────────────────────────────────── */
+.ctxbar{position:sticky;top:46px;z-index:49;
+  background:var(--accent-soft);border-bottom:1px solid var(--rule)}
+.ctxin{max-width:1440px;margin:0 auto;padding:0 16px;min-height:30px;
+  display:flex;align-items:center;gap:12px}
+@media(min-width:640px){.ctxin{padding:0 32px}}
+.ctxin p{margin:0;font-family:var(--sans);font-size:.74rem;line-height:1.35;
+  color:var(--accent-ink);padding:6px 0}
+.ctxin p b{font-weight:700}
+.ctxin a{flex:none;margin-left:auto;font-family:var(--sans);font-size:.72rem;
+  font-weight:600;color:var(--accent-ink);text-decoration:none;white-space:nowrap;
+  border-bottom:1px solid var(--accent);padding-bottom:1px}
+.ctxin a:hover{background:var(--accent)}
+.ctxin a:hover{color:#fff}
+.ctx-corta{display:none}
+@media(max-width:700px){
+  .ctx-larga{display:none}
+  .ctx-corta{display:inline}
+  .ctxin{gap:10px}
+  .ctxin p{font-size:.7rem}
+  .ctxin a{font-size:.68rem}
+}
+/* los anclajes no quedan tapados por las dos franjas */
+[id]{scroll-margin-top:92px}
+.naturaleza:target{box-shadow:inset 3px 0 0 var(--accent)}
+
 </style>
 </head>
 <body>
@@ -566,6 +593,12 @@ summary.head::marker{content:""}
     </ul>
   </div>
 </nav>
+<div class="ctxbar no-print">
+  <div class="ctxin">
+    <p><b>Sitio de consulta académica.</b><span class="ctx-larga"> Documenta y cita lo publicado sobre cada modalidad;</span><span class="ctx-corta"> Documenta lo publicado;</span> no formula recomendaciones.</p>
+    <a href="#naturaleza">Qué es esto</a>
+  </div>
+</div>
 <div class="wrap" id="top">
 
 <header class="top">
@@ -586,7 +619,7 @@ summary.head::marker{content:""}
   </div>
 </header>
 
-<div class="naturaleza">
+<div class="naturaleza" id="naturaleza">
   <span class="eyebrow nat-h">Naturaleza y finalidad de este sitio</span>
   <p>Este es un <b>sitio de consulta</b> con fines <b>exclusivamente académicos y de investigación</b>. Reúne y organiza lo publicado sobre modalidades de fraude financiero en Colombia y América Latina, a partir de fuentes públicas citadas una por una. Su propósito es documentar qué se ha descrito sobre cada modalidad y de dónde proviene cada afirmación, no proponer un curso de acción.</p>
   <p><b>No es una guía operativa, un manual ni un servicio.</b> No se dirige a ninguna entidad en particular, no presta asesoría de ninguna clase y no está disponible para uso comercial. Está pensado para quien estudia el fenómeno: docencia, investigación, formación y consulta de referencia.</p>
