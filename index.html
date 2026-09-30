@@ -623,6 +623,23 @@ summary.head::marker{content:""}
 .rfiltro .count{margin-left:auto;font-size:.75rem;color:var(--ink-3)}
 @media print{.rfiltro{display:none!important}}
 
+
+/* ── Franja de cierre: contacto y aviso, uno al lado del otro ──────────── */
+.cierre{margin-top:72px;padding:24px 0 56px;border-top:2px solid var(--ink);
+  color:var(--ink-2);font-size:.8rem;line-height:1.55}
+.ci-cols{display:grid;gap:22px}
+@media(min-width:760px){.ci-cols{grid-template-columns:1fr 1.45fr;gap:44px}}
+.ci-col p{margin:0;max-width:none}
+.ci-t{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 7px!important;
+  padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.cierre b{color:var(--ink)}
+.cierre .ct-mail{white-space:nowrap}
+@media print{
+  .cierre{padding-bottom:0}
+  .cierre .ct-mail{border:none;color:#000}
+}
+
 </style>
 </head>
 <body>
@@ -1525,33 +1542,25 @@ summary.head::marker{content:""}
 </div>
 
 
-<h2 class="sec" id="contacto">Contacto</h2>
-<p class="sec-note">Canal de correo para correcciones, sugerencias de fuentes y consultas sobre el uso del material.</p>
-<div class="contacto">
-  <p class="ct-intro">Este sitio se mantiene abierto a la revisión de quien lo consulta.
-  Escriba a <a class="ct-mail" href="mailto:observatorioantifraude@gmail.com">observatorioantifraude@gmail.com</a> si:</p>
-  <ul class="ct-lista">
-    <li>Detecta un dato mal citado, una cifra desactualizada o un enlace roto.</li>
-    <li>Conoce un estudio, informe o alerta oficial que debería figurar en el radar del periodo.</li>
-    <li>Desea citar el sitio, usarlo en docencia o en investigación, o consultar la metodología de compilación.</li>
-    <li>Tiene cualquier otra consulta relacionada con el material.</li>
-  </ul>
-  <p class="ct-nota">Las respuestas, cuando las haya, no constituyen asesoría legal ni de seguridad.</p>
-</div>
-
-<footer class="pie">
-  <p><b>Sitio público de consulta académica.</b> Compilación sobre modalidades de fraude
-  financiero en Colombia y América Latina, elaborada a partir de fuentes públicas citadas una por
-  una, con fines exclusivamente académicos y de investigación. Se publica sin autoría atribuida,
-  sin fin comercial, y no representa la posición de ninguna entidad financiera, gremio, organismo
-  regulador ni institución académica.</p>
-  <p>Sitio de estudio. Los apartados de <i>señales de monitoreo</i>, <i>controles asociados
-  en la literatura</i> y <i>secuencia de respuesta documentada</i> describen lo que se ha publicado
-  sobre cada modalidad; no constituyen recomendación, asesoría legal ni de seguridad, ni han sido
-  validados para ningún entorno operativo. Su lectura no sustituye el análisis de riesgo, la
-  normativa vigente ni las políticas de la organización que lo consulte.</p>
-  <p>Las cifras se atribuyen a su fuente y año. El semáforo de trazabilidad del radar indica el
-  grado de verificación de cada señal.</p>
+<footer class="cierre" id="contacto">
+  <div class="ci-cols">
+    <div class="ci-col">
+      <p class="ci-t">Contacto</p>
+      <p>Correcciones, datos mal citados, enlaces rotos o fuentes que deberían estar
+      en el radar: <a class="ct-mail" href="mailto:observatorioantifraude@gmail.com">observatorioantifraude@gmail.com</a>.
+      También para citar el sitio, usarlo en docencia o consultar la metodología.
+      Las respuestas, cuando las haya, no constituyen asesoría legal ni de seguridad.</p>
+    </div>
+    <div class="ci-col">
+      <p class="ci-t">Aviso</p>
+      <p><b>Sitio público de consulta académica.</b> Compilación sobre modalidades de fraude
+      financiero en Colombia y América Latina, a partir de fuentes públicas citadas una por una.
+      Se publica sin autoría atribuida, sin fin comercial, y no representa la posición de
+      ninguna entidad financiera, gremio, organismo regulador ni institución académica.
+      Los apartados de señales, controles y respuesta describen lo publicado; no constituyen
+      recomendación ni han sido validados para ningún entorno operativo.</p>
+    </div>
+  </div>
   <p class="pie-fecha">Última actualización: 28 de septiembre de 2026 · Contenido en español ·
   Uso libre con cita de la fuente original</p>
 </footer>
